@@ -18,8 +18,8 @@ export default function Home() {
       <div className="flex-1 px-6 py-8 max-w-4xl">
         <Breadcrumbs
           items={[
-            { label: 'Documentation', href: '/' },
-            { label: 'Introduction', href: '/', current: true },
+            { label: 'Documentation', href: '/docs' },
+            { label: 'Introduction', href: '/intro', current: true },
           ]}
         />
 
