@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Book, ChevronDown, ChevronRight, Code, Users, Zap } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import DevelopmentButton from '@/components/ui/DevelopmentButton';
 
 const navigationItems = [
   {
@@ -99,6 +100,12 @@ export function Sidebar() {
               </div>
             );
           })}
+          <div key={'component-testing'}>
+            <DevelopmentButton
+              link={'/component-testing'}
+              title={'Component Testing'}
+            />
+          </div>
         </nav>
       </div>
     </aside>
