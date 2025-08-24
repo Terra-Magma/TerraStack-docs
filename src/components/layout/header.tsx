@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Menu, Search, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import DevelopmentButton from '@/components/ui/DevelopmentButton';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,7 +17,7 @@ export function Header() {
       <div className="container flex h-16 items-center px-6">
         <div className="flex items-center gap-6 flex-1">
           <Link
-            href="/public"
+            href="/"
             className="flex items-center gap-3"
           >
             <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
@@ -26,6 +27,30 @@ export function Header() {
           </Link>
 
           <nav className="hidden md:flex items-center gap-6 text-sm">
+            <Link
+              href="/packages"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Packages
+            </Link>
+            <Link
+              href="/products"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Products
+            </Link>
+            <Link
+              href="/services"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Services
+            </Link>
+            <Link
+              href="/support"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Support
+            </Link>
             <Link
               href="/docs"
               className="text-muted-foreground hover:text-foreground transition-colors"
@@ -44,12 +69,12 @@ export function Header() {
             >
               Examples
             </Link>
-            <Link
-              href="/community"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Community
-            </Link>
+            <div key={'component-testing'}>
+              <DevelopmentButton
+                link={'/component-testing'}
+                title={'Component Testing'}
+              />
+            </div>
           </nav>
         </div>
 
@@ -87,6 +112,34 @@ export function Header() {
           </div>
           <div className="space-y-2">
             <Link
+              href="/packages"
+              className="block py-2 text-muted-foreground hover:text-foreground transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Packages
+            </Link>
+            <Link
+              href="/products"
+              className="block py-2 text-muted-foreground hover:text-foreground transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Products
+            </Link>
+            <Link
+              href="/services"
+              className="block py-2 text-muted-foreground hover:text-foreground transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Services
+            </Link>
+            <Link
+              href="/support"
+              className="block py-2 text-muted-foreground hover:text-foreground transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Support
+            </Link>
+            <Link
               href="/docs"
               className="block py-2 text-muted-foreground hover:text-foreground transition-colors"
               onClick={() => setIsMenuOpen(false)}
@@ -106,13 +159,6 @@ export function Header() {
               onClick={() => setIsMenuOpen(false)}
             >
               Examples
-            </Link>
-            <Link
-              href="/community"
-              className="block py-2 text-muted-foreground hover:text-foreground transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Community
             </Link>
           </div>
         </nav>
