@@ -8,6 +8,12 @@ import { ThemeToggle } from '@/components/theme-toggle';
 import { Menu, Search, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import DevelopmentButton from '@/components/ui/DevelopmentButton';
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+} from '@/components/ui/navigation-menu';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,26 +39,25 @@ export function Header() {
             </div>
             <span className="font-semibold text-lg">TerraStack</span>
           </Link>
-
-          <nav className="hidden lg:flex items-center gap-6 text-sm">
-            {items.map((item) => {
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  {item.title}
-                </Link>
-              );
-            })}
-            <div key={'component-testing'}>
-              <DevelopmentButton
-                link={'/component-testing'}
-                title={'Component Testing'}
-              />
-            </div>
-          </nav>
+          <NavigationMenu className="hidden lg:flex items-center gap-6 text-sm">
+            <NavigationMenuList>
+              {items.map((item) => (
+                <NavigationMenuItem key={item.href}>
+                  <NavigationMenuLink asChild>
+                    <Link href={item.href}>{item.title}</Link>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+              ))}
+              <NavigationMenuItem>
+                <div key={'component-testing'}>
+                  <DevelopmentButton
+                    link={'/component-testing'}
+                    title={'Component Testing'}
+                  />
+                </div>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
         </div>
 
         <div className="flex items-center gap-4">
