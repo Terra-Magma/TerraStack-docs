@@ -4,6 +4,7 @@ import { PageNavigation } from '@/components/layout/page-navigation';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import AdoptionVisual from '@/components/visuals/adoption';
 
 const tableOfContents = [
   { id: 'overview', title: 'Overview', level: 2 },
@@ -83,6 +84,11 @@ export default function Home() {
             <div className="bg-muted/50 border-l-4 border-blue-500 p-6 rounded-r-lg mb-6">
               <p className="text-sm text-muted-foreground">Coming soon...</p>
             </div>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold mb-4">Current Adoption</h2>
+            <AdoptionVisual />
           </section>
 
           <section
