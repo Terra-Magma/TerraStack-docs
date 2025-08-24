@@ -133,3 +133,27 @@
         @apply bg-background text-foreground;
     }
 }
+
+h1, h2 {
+    font-weight: 600;
+    color: var(--foreground);
+}
+
+h1 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+a {
+    /*text-decoration: underline;*/
+    color: var(--primary-hover)
+}
+
+p {
+    margin: .5rem 0;
+}
