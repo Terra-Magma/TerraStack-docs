@@ -26,7 +26,7 @@ export function Header() {
             <span className="font-semibold text-lg">TerraStack</span>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-6 text-sm">
+          <nav className="hidden lg:flex items-center gap-6 text-sm">
             <Link
               href="/packages"
               className="text-muted-foreground hover:text-foreground transition-colors"
@@ -79,7 +79,7 @@ export function Header() {
         </div>
 
         <div className="flex items-center gap-4">
-          <div className="hidden md:flex items-center gap-2 relative">
+          <div className="hidden lg:flex items-center gap-2 relative">
             <Search className="absolute left-3 h-4 w-4 text-muted-foreground" />
             <Input
               placeholder="Search documentation..."
@@ -92,7 +92,7 @@ export function Header() {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className="lg:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -101,7 +101,7 @@ export function Header() {
       </div>
 
       {/* Mobile menu */}
-      <div className={cn('md:hidden border-t bg-background/95 backdrop-blur', isMenuOpen ? 'block' : 'hidden')}>
+      <div className={cn('lg:hidden border-t bg-background/95 backdrop-blur', isMenuOpen ? 'block' : 'hidden')}>
         <nav className="container px-6 py-4 space-y-4">
           <div className="relative">
             <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />

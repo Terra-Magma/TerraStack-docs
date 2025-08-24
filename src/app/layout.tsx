@@ -26,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="min-h-screen bg-background">
             <Header />
             <div className="flex">
-              <main className="flex-1 lg:pl-64">{children}</main>
+              <main className="flex-1 w-max">{children}</main>
             </div>
           </div>
         </ThemeProvider>

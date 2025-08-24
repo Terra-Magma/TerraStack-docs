@@ -1,4 +1,3 @@
-import NotFound from '@/app/404/page';
 import { Button } from '@/components/ui/button';
 import {
   Breadcrumb,
@@ -20,7 +19,8 @@ import {
 export default function ComponentTesting() {
   const env = process.env.NODE_ENV;
   if (env !== 'development') {
-    return <NotFound />;
+    window.location.href = '/404';
+    return null;
   }
 
   return (
