@@ -1,3 +1,4 @@
+'use client';
 import { Button } from '@/components/ui/button';
 import {
   Breadcrumb,
@@ -15,11 +16,18 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { useEffect } from 'react';
 
 export default function ComponentTesting() {
   const env = process.env.NODE_ENV;
+
+  useEffect(() => {
+    if (env !== 'development') {
+      window.location.href = '/404';
+    }
+  }, [env]);
+
   if (env !== 'development') {
-    window.location.href = '/404';
     return null;
   }
 
