@@ -34,14 +34,14 @@ export default function ProblemsPage() {
         </div>
         <div className="row">
           <div className="col">
-            <p>
+            <p className={'body-text'}>
               Most complex problems in engineering consist of a surprisingly number of smaller sub-problems. Internet
               architecture is no different. If one had to pick how many sub-problems there are in network protocol
               stacks, &quot;10&quot; would be a good guess. But the sub-problems <i>are</i> complex, so we illustrate
               them by way of fictional actions of fictional internet users.
             </p>
             <h2 id="addressing">Addressing</h2>
-            <p>
+            <p className={'body-text'}>
               Two friends, Alpha and Beta, take different cruise ships from different respective ports of departure to
               meet at{' '}
               <Link
@@ -70,7 +70,7 @@ export default function ProblemsPage() {
               .
             </p>
             <h2 id="naming">Naming</h2>
-            <p>
+            <p className={'body-text'}>
               The .mp3-playback client should have a means of specifying which server application on Beta’s smartphone
               should be the focus of a connection. Identifying the .mp3-playback server application using an identifier
               that is easily remembered by humans is one aspect the{' '}
@@ -83,13 +83,13 @@ export default function ProblemsPage() {
               problem.
             </p>
             <h2 id="numbering">Numbering</h2>
-            <p>
+            <p className={'body-text'}>
               The .mp3-playback client should have a means of specifying which server application on Beta’s smartphone
               should be the focus of a connection. Identifying the .mp3-playback server application using an identifier
               that is easily efficiently manipulated by computers is one aspect the numbering problem.
             </p>
             <h2 id="reliability">Reliability</h2>
-            <p>
+            <p className={'body-text'}>
               The free Wi-Fi access point near Beta on Beta’s ship is so popular, it becomes nearly saturated. Packets
               become lost, corrupted, reordered, replicated, and delayed. Maintaining the semblance of faultless
               continuity of the data stream is the{' '}
@@ -102,7 +102,7 @@ export default function ProblemsPage() {
               problem.
             </p>
             <h2 id="prioritization">Prioritization</h2>
-            <p>
+            <p className={'body-text'}>
               While Alpha is listening to one of Beta’s .mp3 files, Beta receives an important phone call from her
               mother. Prioritizing the voice stream over the .mp3-playback stream to minimize the delay that the voice
               packets experience in Beta’s smartphone, as well as every Internet net node between Beta’s smartphone and
@@ -116,13 +116,13 @@ export default function ProblemsPage() {
               problem.
             </p>
             <h2 id="security">Security</h2>
-            <p>
+            <p className={'body-text'}>
               Beta’s mother has the intention of reading back private information over the voice connection, securely.
               Being able to establish a secure connection between two smartphones, where information can be both veiled
               and signed, independently, using only the addresses of the respective nodes, is the security problem.
             </p>
             <h2 id="mobility">Mobility</h2>
-            <p>
+            <p className={'body-text'}>
               The saturated Wi-Fi access point becomes too much for Beta to bear. Beta instinctively walks away from the
               area of congestion, along the deck of the ship, not realizing that, while encircling the ship, she makes
               and breaks connections with no less than 20 different WiFi access points. There is no detectable
@@ -136,7 +136,7 @@ export default function ProblemsPage() {
               or without security, multicast, or any other feature active, is the mobility problem.
             </p>
             <h2 id="multicast">Multicast</h2>
-            <p>
+            <p className={'body-text'}>
               Suddenly, near Beta’s ship, out of the ocean arises the mythological beast,{' '}
               <Link
                 target="_blank"
@@ -155,7 +155,7 @@ export default function ProblemsPage() {
               without having to rely on a proprietary streaming, cloud, or edge service, is the multicast problem.
             </p>
             <h2 id="api">API</h2>
-            <p>
+            <p className={'body-text'}>
               Providing a programmer’s network application API that allows a relatively inexperienced high-school
               student to be the author of the 1,000,000,000–user video streaming application, with mobility of both
               source of feed and many of the 1,000,000,000 target nodes to be mobile, simultaneously, perhaps with

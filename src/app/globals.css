@@ -164,4 +164,14 @@ p {
 
 ol {
   margin: 0.5rem 0;
+  list-style: outside decimal;
+  padding-left: 1.25rem;
+}
+
+li {
+  margin: 1rem 1rem;
+}
+
+.body-text {
+  margin-left: 1rem;
 }

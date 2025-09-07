@@ -88,15 +88,15 @@ export default function SolutionsPage() {
               </li>
             </ol>
             <h2 id="addressing-1">Addressing</h2>
-            <p>To solve the addressing problem, we note the following maxim:</p>
-            <p>
+            <p className={'body-text'}>To solve the addressing problem, we note the following maxim:</p>
+            <p className={'body-text'}>
               <i>Language shapes the way we think, and determines what we can think about.</i> - Benjamin Lee Whorf.
             </p>
-            <p>If we heed this maxim, we might follow with:</p>
-            <p>
+            <p className={'body-text'}>If we heed this maxim, we might follow with:</p>
+            <p className={'body-text'}>
               <i>To solve, correctly, the naming problem, one must, correctly, name the problem.</i>
             </p>
-            <p>
+            <p className={'body-text'}>
               So-called{' '}
               <Link
                 target="_blank"
@@ -108,36 +108,36 @@ export default function SolutionsPage() {
               long been calling domain names are actually addresses. This seemingly trivial nitick is not trivial at
               all.
             </p>
-            <p>
+            <p className={'body-text'}>
               But if FQDN&apos;s are actually addresses, and IP address are addresses, then these two types of
               identfiers have the same referencing power, and are paraellel conceptual alternatives.
             </p>
-            <p>
+            <p className={'body-text'}>
               Both of these forms are capable of unambiguosly identifying a location. Which form should be employed is
               determined by context: Humans do well with textual addresses because they are easier to remember.
               Computers do well with digital addresses because they are efficient to store and process.
             </p>
             <h2 id="naming-1">Naming</h2>
-            <p>
+            <p className={'body-text'}>
               Once we have recognized textual address as the proper term for an unambiguous identifier within a global
               space, the next question becomes: What do we call the individual components of a textual address? They are
               names. These names are their own first-class primitives. whitehouse is a name.
             </p>
             <h2 id="numbering-1">Numbering</h2>
-            <p>
+            <p className={'body-text'}>
               If textual addresses are composed of names, then what are digital addresses composed of? They are composed
               of numbers. These numbers are their own first-class primitives.
             </p>
             <h2 id="reliability-1">Reliability</h2>
-            <p>To Be Done.</p>
+            <p className={'body-text'}>To Be Done.</p>
             <h2 id="routing">Routing</h2>
-            <p>To Be Done.</p>
+            <p className={'body-text'}>To Be Done.</p>
             <h2 id="prioritization-1">Prioritization</h2>
-            <p>To Be Done.</p>
+            <p className={'body-text'}>To Be Done.</p>
             <h2 id="security-1">Security</h2>
-            <p>To Be Done.</p>
+            <p className={'body-text'}>To Be Done.</p>
             <h2 id="mobility-1">Mobility</h2>
-            <p>
+            <p className={'body-text'}>
               The{' '}
               <Link
                 target="_blank"
@@ -156,9 +156,9 @@ export default function SolutionsPage() {
               mobility problem, one solves the core of the V2X problem.
             </p>
             <h2 id="multicast-1">Multicast</h2>
-            <p>To Be Done.</p>
+            <p className={'body-text'}>To Be Done.</p>
             <h2 id="api-1">API</h2>
-            <p>To Be Done.</p>
+            <p className={'body-text'}>To Be Done.</p>
           </div>
         </div>
         <PageNavigation

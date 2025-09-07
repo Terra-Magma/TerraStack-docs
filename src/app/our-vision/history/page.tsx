@@ -33,9 +33,9 @@ export default function HistoryPage() {
         </div>
         <div className="row">
           <div className="col">
-            <p>The Internet is a hack.</p>
+            <p className={'italic text-gray-200'}>The Internet is a hack.</p>
             <h2 id="1969">1969</h2>
-            <p>
+            <p className={'body-text'}>
               The hack started in 1969 with the{' '}
               <Link
                 target="_blank"
@@ -68,7 +68,7 @@ export default function HistoryPage() {
               laid the foundations of what would become the dominant protocols of the Internet.
             </p>
             <h2 id="1983">1983</h2>
-            <p>
+            <p className={'body-text'}>
               The year 1983 was a turning-point. At that time, researchers realized that the fuzzines surrounding their
               creation was starting to disappear. They could rightly say that they had created something exceptionally
               useful for mankind, because, even then, people around the world had grown to depend on their protocol,
@@ -76,7 +76,7 @@ export default function HistoryPage() {
               of data gathered during high-energy physics experiments.
             </p>
             <h2 id="1990">1990</h2>
-            <p>
+            <p className={'body-text'}>
               At some point between 1983 and 1990, it became clear that the Internet would break-out of the insular
               communities of academia, government, and large corporations. Home users were starting to find ways to
               connect. While new casual users were welcomed, it was also alarming, as the number of Internet Protocol
@@ -84,7 +84,7 @@ export default function HistoryPage() {
               there were already 5+ billion people on planet, and given the likelihood that each person would eventually
               have at least one device connected to the Internet, there was clearly not enough addresses.
             </p>
-            <p>
+            <p className={'body-text'}>
               Researchers who were responsible for the technical architecture of the Internet so far decided to do
               something about this situation. They decided to fix the Internet Protocol. They labeled the effort IPnG,
               for{' '}
@@ -97,11 +97,11 @@ export default function HistoryPage() {
               . But while everyone agreed that IP should be fixed, there was disagreement regarding what part of it to
               keep, and what part of it to throw away.
             </p>
-            <p>
+            <p className={'body-text'}>
               Moreover, not-enough-addresses was only one problem with IP. There were others, like no inherent security,
               which forced every software developer to roll their own security schemes.
             </p>
-            <p>
+            <p className={'body-text'}>
               The researchers agreed that, while they were fixing the{' '}
               <Link
                 target="_blank"
@@ -120,13 +120,13 @@ export default function HistoryPage() {
               suffering. A brief, congenial tussle ensued between these factions, and the patch-it-up faction, being in
               the majority, won.
             </p>
-            <p>
+            <p className={'body-text'}>
               The patched protocol IPnG, would eventually be called IPv6, for <i>Internet Protocol version 6</i>, given
               that the extant protocol was already at version 4, and version 5, which never materialized, was castaway.
               After the advent of the WWW, it was expected that if IPv6 was not deployed soon, the Internet would
               implode under its own weight, nominally in 1996.
             </p>
-            <p>
+            <p className={'body-text'}>
               While deliberation occurred{' '}
               <Link
                 target="_blank"
@@ -138,7 +138,7 @@ export default function HistoryPage() {
               addresses.
             </p>
             <h2 id="1996">1996</h2>
-            <p>
+            <p className={'body-text'}>
               The Internet did not implode due to lack of IP addreses. Very clever people of the{' '}
               <Link
                 target="_blank"
@@ -151,7 +151,7 @@ export default function HistoryPage() {
               &quot;good&quot; technology that is employed in the Internet.
             </p>
             <h2 id="2005">2005</h2>
-            <p>
+            <p className={'body-text'}>
               But these patches were hacks, and everyone who worked in computer networking knew they were hacks. The
               ratio of applied intelligence to net result was astounding. So, observers began to wonder if our
               collective intellectual suffering was self-inflicted, that perhaps the get-it-right people might have been
@@ -162,7 +162,7 @@ export default function HistoryPage() {
               US entities to at least try. Research organizations around the world were encouraged to rethink the
               Internet.
             </p>
-            <p></p>
+            <br />
             <ol>
               <li>
                 To the great expectation and relief of many,{' '}
@@ -254,7 +254,7 @@ export default function HistoryPage() {
                 , another type of experimental testbed.
               </li>
             </ol>
-            <p>
+            <p className={'body-text'}>
               Other{' '}
               <Link
                 target="_blank"
@@ -271,13 +271,13 @@ export default function HistoryPage() {
               </Link>
               .
             </p>
-            <p>
+            <p className={'body-text'}>
               A few open-source/commercial overlay type networks arose. While useful, they do not solve the problems of
               computer networking at a fundamental level, as they require the existence of some underlying protocol to
               function, and the goal of clean-slate Internet is to repair the underlying protocol.
             </p>
             <h2 id="2013">2013</h2>
-            <p>
+            <p className={'body-text'}>
               None of the clean slate efforts resulted in a network protocol stack that could replace TCP/IPv4. But the
               Internet needed to continue growing, and growing it did, until Internet researchers were forced to
               prevent, with yet another hack, the Internet from collapsing onto itself because of{' '}
@@ -289,7 +289,7 @@ export default function HistoryPage() {
               </Link>
             </p>
             <h2 id="2023">2023</h2>
-            <p>
+            <p className={'body-text'}>
               <Link
                 target="_blank"
                 href="https://www.geni.net/"
@@ -306,7 +306,7 @@ export default function HistoryPage() {
               .
             </p>
             <h2 id="2024">2024</h2>
-            <p>
+            <p className={'body-text'}>
               After working quietly in parallel with fix-the-Internet efforts, Terra Magma released Terra Stack on
               2024-01-01.
             </p>
@@ -332,78 +332,76 @@ export default function HistoryPage() {
                 Provide a forum that facilitates discussion of the social and political aspect of Internet operation.
               </li>
             </ol>
-            <p>
-              Terra Stack is none of these. Terra Stack is a true clean-slate Internet protocol stack:
-              <ol>
-                <li>
-                  Terra Stack is not a tweak of TCP, UDP, or IP. It is a redo of TCP/UDP/IP. It also redoes several
-                  ancillary protocols such as (
-                  <Link
-                    target="_blank"
-                    href="https://en.wikipedia.org/wiki/Domain_Name_System"
-                  >
-                    DNS
-                  </Link>
-                  ,{' '}
-                  <Link
-                    target="_blank"
-                    href="https://en.wikipedia.org/wiki/Network_address_translation"
-                  >
-                    NAT
-                  </Link>
-                  ,{' '}
-                  <Link
-                    target="_blank"
-                    href="https://en.wikipedia.org/wiki/Border_Gateway_Protocol"
-                  >
-                    BGP
-                  </Link>
-                  ,{' '}
-                  <Link
-                    target="_blank"
-                    href="https://en.wikipedia.org/wiki/Interior_gateway_protocol"
-                  >
-                    IGP
-                  </Link>
-                  ,{' '}
-                  <Link
-                    target="_blank"
-                    href="https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol"
-                  >
-                    ICMP
-                  </Link>
-                  ,{' '}
-                  <Link
-                    target="_blank"
-                    href="https://en.wikipedia.org/wiki/Transport_Layer_Security"
-                  >
-                    TLS
-                  </Link>
-                  , etc.).
-                </li>
-                <li>
-                  Terra Stack is not an overlay module that cannot operate without TCP/IPv4 or TCP/IPv6. It can run over
-                  over Ethernet and other{' '}
-                  <Link
-                    target="_blank"
-                    href="https://en.wikipedia.org/wiki/Data_link_layer"
-                  >
-                    Layer-
-                  </Link>
-                  2 links.
-                </li>
-                <li>
-                  Terra Stack is not a software framework whose specificity is left to the imagination of the observer.
-                </li>
-                <li>
-                  Terra Stack is not a blueprint that facilitates discussion of social and political implications of
-                  Future Internet architectures.
-                </li>
-                <li>
-                  Terra Stack is not an environment that facilitates experimentation with clean-slate protocol stacks.
-                </li>
-              </ol>
-            </p>
+            <p>Terra Stack is none of these. Terra Stack is a true clean-slate Internet protocol stack:</p>
+            <ol>
+              <li>
+                Terra Stack is not a tweak of TCP, UDP, or IP. It is a redo of TCP/UDP/IP. It also redoes several
+                ancillary protocols such as (
+                <Link
+                  target="_blank"
+                  href="https://en.wikipedia.org/wiki/Domain_Name_System"
+                >
+                  DNS
+                </Link>
+                ,{' '}
+                <Link
+                  target="_blank"
+                  href="https://en.wikipedia.org/wiki/Network_address_translation"
+                >
+                  NAT
+                </Link>
+                ,{' '}
+                <Link
+                  target="_blank"
+                  href="https://en.wikipedia.org/wiki/Border_Gateway_Protocol"
+                >
+                  BGP
+                </Link>
+                ,{' '}
+                <Link
+                  target="_blank"
+                  href="https://en.wikipedia.org/wiki/Interior_gateway_protocol"
+                >
+                  IGP
+                </Link>
+                ,{' '}
+                <Link
+                  target="_blank"
+                  href="https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol"
+                >
+                  ICMP
+                </Link>
+                ,{' '}
+                <Link
+                  target="_blank"
+                  href="https://en.wikipedia.org/wiki/Transport_Layer_Security"
+                >
+                  TLS
+                </Link>
+                , etc.).
+              </li>
+              <li>
+                Terra Stack is not an overlay module that cannot operate without TCP/IPv4 or TCP/IPv6. It can run over
+                over Ethernet and other{' '}
+                <Link
+                  target="_blank"
+                  href="https://en.wikipedia.org/wiki/Data_link_layer"
+                >
+                  Layer-
+                </Link>
+                2 links.
+              </li>
+              <li>
+                Terra Stack is not a software framework whose specificity is left to the imagination of the observer.
+              </li>
+              <li>
+                Terra Stack is not a blueprint that facilitates discussion of social and political implications of
+                Future Internet architectures.
+              </li>
+              <li>
+                Terra Stack is not an environment that facilitates experimentation with clean-slate protocol stacks.
+              </li>
+            </ol>
             <p>Terra Stack is functionally equivalent with TCP/IPv4 and TCP/IPv6.</p>
           </div>
         </div>
