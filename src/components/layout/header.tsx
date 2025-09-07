@@ -10,9 +10,11 @@ import { cn } from '@/lib/utils';
 import DevelopmentButton from '@/components/ui/DevelopmentButton';
 import {
   NavigationMenu,
+  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
+  NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu';
 
 export function Header() {
@@ -24,6 +26,18 @@ export function Header() {
     { title: 'Services', href: '/services' },
     { title: 'Support', href: '/support' },
     { title: 'Documentation', href: '/docs' },
+    {
+      title: 'Vision',
+      href: '/our-vision',
+      children: [
+        { title: 'A Brief History', href: '/our-vision/history' },
+        { title: 'Problems', href: '/our-vision/problems' },
+        { title: 'Solution', href: '/our-vision/solution' },
+        { title: 'Supported Platforms', href: '/our-vision/supported-platforms' },
+        { title: 'Existing Protocols', href: '/our-vision/what-about-existing-protocols' },
+        { title: 'Schedule', href: '/our-vision/schedule' },
+      ],
+    },
   ];
 
   return (
@@ -39,15 +53,41 @@ export function Header() {
             </div>
             <span className="font-semibold text-lg">TerraStack</span>
           </Link>
-          <NavigationMenu className="hidden lg:flex items-center gap-6 text-sm">
+          <NavigationMenu
+            className="hidden lg:flex"
+            viewport={false}
+          >
             <NavigationMenuList>
-              {items.map((item) => (
-                <NavigationMenuItem key={item.href}>
-                  <NavigationMenuLink asChild>
-                    <Link href={item.href}>{item.title}</Link>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-              ))}
+              {items.map(
+                (item) =>
+                  (item.children && (
+                    <NavigationMenuItem key={item.href}>
+                      <NavigationMenuTrigger style={{ color: 'var(--primary-hover)' }}>
+                        <Link href={item.href}>{item.title}</Link>
+                      </NavigationMenuTrigger>
+                      <NavigationMenuContent>
+                        <ul className="grid w-[200px] gap-4">
+                          {item.children.map((child) => (
+                            <li
+                              key={child.href}
+                              className="m-0"
+                            >
+                              <NavigationMenuLink asChild>
+                                <Link href={child.href}>{child.title}</Link>
+                              </NavigationMenuLink>
+                            </li>
+                          ))}
+                        </ul>
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
+                  )) || (
+                    <NavigationMenuItem key={item.href}>
+                      <NavigationMenuLink asChild>
+                        <Link href={item.href}>{item.title}</Link>
+                      </NavigationMenuLink>
+                    </NavigationMenuItem>
+                  )
+              )}
               <NavigationMenuItem>
                 <div key={'component-testing'}>
                   <DevelopmentButton
