@@ -1,5 +1,8 @@
 ﻿import Link from 'next/link';
 import { TableOfContents } from '@/components/layout/table-of-contents';
+import { Breadcrumbs } from '@/components/ui/breadcrumbs';
+import { PageNavigation } from '@/components/layout/page-navigation';
+import Disclaimer from '@/components/layout/disclaimer';
 
 export default function SupportedPlatformsPage() {
   const tableOfContents = [{ id: 'supported-platforms', title: 'Supported Platforms', level: 2 }];
@@ -7,6 +10,12 @@ export default function SupportedPlatformsPage() {
   return (
     <div className="m-4 vision flex justify-center">
       <div className="flex-1 px-6 py-8 max-w-4xl">
+        <Breadcrumbs
+          items={[
+            { label: 'Our Vision', href: '/our-vision' },
+            { label: 'Supported Platforms', href: '/our-vision/supported-platforms', current: true },
+          ]}
+        />
         <div className="row">
           <div className="col text-center">
             <h1 id="supported-platforms">Supported Platforms</h1>
@@ -64,25 +73,11 @@ export default function SupportedPlatformsPage() {
             </p>
           </div>
         </div>
-        <div
-          className="row text-center"
-          style={{ marginTop: '3em' }}
-        >
-          <div className="col">
-            <p>
-              <i>
-                Statements made herein are the views of Terra Magma and do not imply the endorsement by any person or
-                organization.
-              </i>
-            </p>
-            <p>
-              <i>
-                Please <Link href="/Contact/Contact.stm">inform us</Link> of any factual errors so that we may correct
-                them.
-              </i>
-            </p>
-          </div>
-        </div>
+        <PageNavigation
+          next={{ title: 'What About Existing Protocols?', href: '/our-vision/what-about-existing-protocols' }}
+          prev={{ title: 'Solutions', href: '/our-vision/solutions' }}
+        />
+        <Disclaimer />
       </div>
       <div className="hidden xl:block w-64 flex-shrink-0">
         <div className="sticky top-24 p-6">

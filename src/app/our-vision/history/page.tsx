@@ -1,5 +1,8 @@
 ﻿import Link from 'next/link';
 import { TableOfContents } from '@/components/layout/table-of-contents';
+import { Breadcrumbs } from '@/components/ui/breadcrumbs';
+import { PageNavigation } from '@/components/layout/page-navigation';
+import Disclaimer from '@/components/layout/disclaimer';
 
 export default function HistoryPage() {
   const tableOfContents = [
@@ -17,6 +20,12 @@ export default function HistoryPage() {
   return (
     <div className="m-4 vision flex justify-center">
       <div className="flex-1 px-6 py-8 max-w-4xl">
+        <Breadcrumbs
+          items={[
+            { label: 'Our Vision', href: '/our-vision' },
+            { label: 'A Brief History', href: '/our-vision/history' },
+          ]}
+        />
         <div className="row">
           <div className="col text-center">
             <h1 id="history">A Brief History</h1>
@@ -397,26 +406,12 @@ export default function HistoryPage() {
             </p>
             <p>Terra Stack is functionally equivalent with TCP/IPv4 and TCP/IPv6.</p>
           </div>
-          <div
-            className="row text-center"
-            style={{ marginTop: '3em' }}
-          >
-            <div className="col">
-              <p>
-                <i>
-                  Statements made herein are the views of Terra Magma and do not imply the endorsement by any person or
-                  organization.
-                </i>
-              </p>
-              <p>
-                <i>
-                  Please <Link href="/Contact/Contact.stm">inform us</Link> of any factual errors so that we may correct
-                  them.
-                </i>
-              </p>
-            </div>
-          </div>
         </div>
+        <PageNavigation
+          prev={null}
+          next={{ title: 'Problems', href: '/our-vision/problems' }}
+        />
+        <Disclaimer />
       </div>
       <div className="hidden xl:block w-64 flex-shrink-0">
         <div className="sticky top-24 p-6">

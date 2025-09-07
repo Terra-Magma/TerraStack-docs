@@ -1,9 +1,22 @@
 ﻿import Link from 'next/link';
+import { Breadcrumbs } from '@/components/ui/breadcrumbs';
+import { PageNavigation } from '@/components/layout/page-navigation';
+import Disclaimer from '@/components/layout/disclaimer';
 
 export default function ExistingProtocolsPage() {
   return (
     <div className="m-4 vision flex justify-center">
       <div className="flex-1 px-6 py-8 max-w-4xl">
+        <Breadcrumbs
+          items={[
+            { label: 'Our Vision', href: '/our-vision' },
+            {
+              label: 'What About TCP/UDP/IPv4/IPv6?',
+              href: '/our-vision/what-about-existing-protocols',
+              current: true,
+            },
+          ]}
+        />
         <div className="row">
           <div className="col text-center">
             <h1>What About TCP/UDP/IPv4/IPv6?</h1>
@@ -226,25 +239,11 @@ export default function ExistingProtocolsPage() {
             </table>
           </div>
         </div>
-        <div
-          className="row text-center"
-          style={{ marginTop: '3em' }}
-        >
-          <div className="col">
-            <p>
-              <i>
-                Statements made herein are the views of Terra Magma and do not imply the endorsement by any person or
-                organization.
-              </i>
-            </p>
-            <p>
-              <i>
-                Please <Link href="/Contact/Contact.stm">inform us</Link> of any factual errors so that we may correct
-                them.
-              </i>
-            </p>
-          </div>
-        </div>
+        <PageNavigation
+          next={{ title: 'Schedule', href: '/our-vision/schedule' }}
+          prev={{ title: 'Supported Platforms', href: '/our-vision/supported-platforms' }}
+        />
+        <Disclaimer />
       </div>
     </div>
   );
