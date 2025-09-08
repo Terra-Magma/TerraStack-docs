@@ -2,7 +2,9 @@
 import { PageNavigation } from '@/components/layout/page-navigation';
 import Disclaimer from '@/components/layout/disclaimer';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import LanIcon from '@mui/icons-material/Lan';
+import WifiIcon from '@mui/icons-material/Wifi';
+import WifiOffIcon from '@mui/icons-material/WifiOff';
+import Wifi2BarIcon from '@mui/icons-material/Wifi2Bar';
 
 export default function ExistingProtocolsPage() {
   const data = [
@@ -60,10 +62,20 @@ export default function ExistingProtocolsPage() {
   ];
 
   const getIcon = (text: string): Element => {
-    if (text === 'yes') {
-      return <LanIcon />;
+    switch (text) {
+      case 'yes':
+        return <WifiIcon className="text-success" />;
+      case 'no':
+        return <WifiOffIcon className="text-ember" />;
+      case 'yes*':
+        return (
+          <span>
+            <Wifi2BarIcon className="text-magma" />*
+          </span>
+        );
+      default:
+        return <span>{text}</span>;
     }
-    return <span>{text}</span>;
   };
 
   return (
@@ -117,8 +129,8 @@ export default function ExistingProtocolsPage() {
                       {row.feature}
                     </TableCell>
                     <TableCell className={'text-center'}>{getIcon(row.tcpv4)}</TableCell>
-                    <TableCell className={'text-center'}>{row.tcpv6}</TableCell>
-                    <TableCell className={'text-center'}>{row.terra}</TableCell>
+                    <TableCell className={'text-center'}>{getIcon(row.tcpv6)}</TableCell>
+                    <TableCell className={'text-center'}>{getIcon(row.terra)}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>
