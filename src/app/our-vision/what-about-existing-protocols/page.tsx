@@ -5,6 +5,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import WifiIcon from '@mui/icons-material/Wifi';
 import WifiOffIcon from '@mui/icons-material/WifiOff';
 import Wifi2BarIcon from '@mui/icons-material/Wifi2Bar';
+import {ReactElement} from "react";
 
 export default function ExistingProtocolsPage() {
   const data = [
@@ -61,7 +62,7 @@ export default function ExistingProtocolsPage() {
     { feature: 'Most features are functionly orthogonal.', tcpv4: 'yes', tcpv6: 'yes', terra: 'yes' },
   ];
 
-  const getIcon = (text: string): Element => {
+  const getIcon = (text: string) => {
     switch (text) {
       case 'yes':
         return <WifiIcon className="text-success" />;
@@ -103,19 +104,16 @@ export default function ExistingProtocolsPage() {
                 <TableRow>
                   <TableHead className="w-[100px]">Feature</TableHead>
                   <TableHead
-                    style={{ color: 'var(--primary-hover)' }}
                     className={'text-center'}
                   >
                     TCP/IP4
                   </TableHead>
                   <TableHead
-                    style={{ color: 'var(--primary-hover)' }}
                     className={'text-center'}
                   >
                     TCP/IP6
                   </TableHead>
                   <TableHead
-                    style={{ color: 'var(--primary-hover)' }}
                     className={'text-center'}
                   >
                     TerraStack
