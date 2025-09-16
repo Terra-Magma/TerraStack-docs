@@ -124,8 +124,8 @@ export default function InstallationPage() {
                             /usr/share/keyrings/terrastack.gpg
                           </div>
                           <div>
-                            $ echo "deb [signed-by=/usr/share/keyrings/terrastack.gpg] https://dl.terrastack.io/apt
-                            stable main" | sudo tee /etc/apt/sources.list.d/terrastack.list
+                            $ echo &quot;deb [signed-by=/usr/share/keyrings/terrastack.gpg] https://dl.terrastack.io/apt
+                            stable main&quot; | sudo tee /etc/apt/sources.list.d/terrastack.list
                           </div>
                           <div>$ sudo apt update && sudo apt install terrastack</div>
                         </div>
