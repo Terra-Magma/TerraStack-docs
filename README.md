@@ -1,6 +1,7 @@
 # TerraStack Documentation
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is the official documentation for TerraStack, a modern web protocol stack.
+It provides a comprehensive guide to using TerraStack, including installation instructions, features, and examples.
 
 ## Running development server
 
