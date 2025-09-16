@@ -1,5 +1,4 @@
-﻿import Link from 'next/link';
-import { Breadcrumbs } from '@/components/ui/breadcrumbs';
+﻿import { Breadcrumbs } from '@/components/ui/breadcrumbs';
 import { PageNavigation } from '@/components/layout/page-navigation';
 import Disclaimer from '@/components/layout/disclaimer';
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";

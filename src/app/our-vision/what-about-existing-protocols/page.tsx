@@ -5,7 +5,6 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import WifiIcon from '@mui/icons-material/Wifi';
 import WifiOffIcon from '@mui/icons-material/WifiOff';
 import Wifi2BarIcon from '@mui/icons-material/Wifi2Bar';
-import {ReactElement} from "react";
 
 export default function ExistingProtocolsPage() {
   const data = [
@@ -103,21 +102,9 @@ export default function ExistingProtocolsPage() {
               <TableHeader>
                 <TableRow>
                   <TableHead className="w-[100px]">Feature</TableHead>
-                  <TableHead
-                    className={'text-center'}
-                  >
-                    TCP/IP4
-                  </TableHead>
-                  <TableHead
-                    className={'text-center'}
-                  >
-                    TCP/IP6
-                  </TableHead>
-                  <TableHead
-                    className={'text-center'}
-                  >
-                    TerraStack
-                  </TableHead>
+                  <TableHead className={'text-center'}>TCP/IP4</TableHead>
+                  <TableHead className={'text-center'}>TCP/IP6</TableHead>
+                  <TableHead className={'text-center'}>TerraStack</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
