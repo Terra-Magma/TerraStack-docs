@@ -42,7 +42,10 @@ export default function Home() {
 
           <h1 className="text-4xl font-bold text-foreground mb-4">Welcome to TerraStack</h1>
 
-          <p className="text-xl text-muted-foreground mb-8 leading-relaxed">Description coming soon...</p>
+          <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+            Description coming soon...
+            {/* TODO: Fill out */}
+          </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
             <Button
@@ -65,7 +68,10 @@ export default function Home() {
             className="mb-12"
           >
             <h2 className="text-2xl font-semibold mb-4">Overview</h2>
-            <p className="text-muted-foreground mb-4 leading-relaxed">Coming soon...</p>
+            <p className="text-muted-foreground mb-4 leading-relaxed">
+              Coming soon...
+              {/* TODO: Fill out */}
+            </p>
           </section>
 
           <section
@@ -73,7 +79,10 @@ export default function Home() {
             className="mb-12"
           >
             <h2 className="text-2xl font-semibold mb-6">Key Features</h2>
-            <div className="grid md:grid-cols-3 gap-6">Coming soon...</div>
+            <div className="grid md:grid-cols-3 gap-6">
+              Coming soon...
+              {/* TODO: Fill out */}
+            </div>
           </section>
 
           <section
@@ -82,13 +91,17 @@ export default function Home() {
           >
             <h2 className="text-2xl font-semibold mb-4">Why TerraStack?</h2>
             <div className="bg-muted/50 border-l-4 border-blue-500 p-6 rounded-r-lg mb-6">
-              <p className="text-sm text-muted-foreground">Coming soon...</p>
+              <p className="text-sm text-muted-foreground">
+                Coming soon...
+                {/* TODO: Fill out */}
+              </p>
             </div>
           </section>
 
           <section>
             <h2 className="text-2xl font-semibold mb-4">Current Adoption</h2>
             <AdoptionVisual />
+            {/*    TODO: get this data from api */}
           </section>
 
           <section
