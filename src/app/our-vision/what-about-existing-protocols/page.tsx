@@ -34,7 +34,7 @@ export default function ExistingProtocolsPage() {
     { feature: 'Security typically requires certificates.', tcpv4: 'yes', tcpv6: 'yes', terra: 'no' },
     { feature: 'Connections are secure by default.', tcpv4: 'no', tcpv6: 'no', terra: 'yes' },
     { feature: 'Nodes are topologically mobile by default.', tcpv4: 'no', tcpv6: 'no', terra: 'yes' },
-    { feature: 'Connections beteeen applications can be made by port name.', tcpv4: 'no', tcpv6: 'no', terra: 'yes' },
+    { feature: 'Connections between applications can be made by port name.', tcpv4: 'no', tcpv6: 'no', terra: 'yes' },
     {
       feature: 'Connections between applications can be made by port number.',
       tcpv4: 'yes',
