@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'TerraStack Documentation',
-  description: 'Comprehensive documentation for TerraStack - the next generation IPv4 replacement',
+  description: 'Comprehensive documentation for TerraStack - the next generation IPv4 alternative',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
