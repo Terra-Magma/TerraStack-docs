@@ -109,15 +109,19 @@ h2 {
 
 a {
   color: var(--primary-hover);
-  padding: 0 0.25rem;
-  width: auto;
+
+  &:not([data-slot="navigation-menu-link"]) {
+    padding: 0 0.25rem;
+    width: auto;
+
+    &:hover {
+      color: var(--primary);
+      background-color: var(--accent);
+      border-radius: 0.25rem;
+    }
+  }
 }
 
-a:hover {
-  color: var(--primary);
-  background-color: var(--accent);
-  border-radius: 0.25rem;
-}
 
 p {
   margin: 0.5rem 0;
