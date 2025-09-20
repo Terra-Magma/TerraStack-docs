@@ -112,7 +112,7 @@
   --secondary-foreground: #fcfcfc;
   --muted: #444444;
   --muted-foreground: #b3b3b3; /* Light grayish tone */
-  --accent: #2f2f2f; /* basalt */
+  --accent: #333333; /* charcoal */
   --accent-foreground: #fcfcfc;
   --destructive: #ff4f5e;
   --border: rgba(255, 255, 255, 0.1);
@@ -164,11 +164,14 @@ h2 {
 }
 
 a {
-  /*text-decoration: underline;*/
   color: var(--primary-hover);
+  padding: 0 0.25rem;
+  width: auto;
 }
 a:hover {
   color: var(--primary);
+  background-color: var(--accent);
+  border-radius: 0.25rem;
 }
 
 p {

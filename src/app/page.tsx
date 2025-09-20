@@ -106,7 +106,7 @@ export default function Home() {
 
           <section
             id="getting-started"
-            className="mb-12"
+            className="my-12"
           >
             <h2 className="text-2xl font-semibold mb-4">Getting Started</h2>
             <p className="text-muted-foreground mb-6">
