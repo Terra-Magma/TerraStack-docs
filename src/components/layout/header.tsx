@@ -38,6 +38,14 @@ export function Header() {
         { title: 'Schedule', href: '/our-vision/schedule' },
       ],
     },
+    {
+      title: 'Adoption',
+      href: '/adoption',
+      children: [
+        { title: 'Early Adoption', href: '/adoption/early-adoption' },
+        { title: 'Current Adoption', href: '/adoption/current-adoption' },
+      ],
+    },
   ];
 
   return (

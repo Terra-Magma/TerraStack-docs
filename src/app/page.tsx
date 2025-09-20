@@ -4,7 +4,6 @@ import { PageNavigation } from '@/components/layout/page-navigation';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
-import AdoptionVisual from '@/components/visuals/adoption';
 
 const tableOfContents = [
   { id: 'overview', title: 'Overview', level: 2 },
@@ -96,12 +95,6 @@ export default function Home() {
                 {/* TODO: Fill out */}
               </p>
             </div>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">Current Adoption</h2>
-            <AdoptionVisual />
-            {/*    TODO: get this data from api */}
           </section>
 
           <section
