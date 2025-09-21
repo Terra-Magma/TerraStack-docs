@@ -8,27 +8,46 @@ on:
 
 
 jobs:
-  build:
-    name: Build for PR
-    uses: ./.github/workflows/build-app.yaml
-    with:
-      artifact_name: 'iis-site'
+  #  build:
+  #    name: Build for PR
+  #    uses: ./.github/workflows/build-app.yaml
+  #    with:
+  #      artifact_name: 'iis-site'
 
-  deploy:
+  build-and-deploy:
     runs-on: iis
-    needs: build
+    #    needs: build
     steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v5
-        with:
-          name: 'iis-site'
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build with Next.js
+        id: build
+        run: |
+          $ErrorActionPreference = 'Stop'
+          try {
+           npx next build 2> build-errors.txt
+          } catch {
+            Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "## ❌ Build failed"
+            Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value '```'
+            if (Test-Path build-errors.txt) { Get-Content build-errors.txt | ForEach-Object { Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value $_ } }
+            Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value '```'
+            exit 1
+          }
 
       #      - name: Stop IIS
       #        run: Stop-IISSite -Name "terra-stack-docs"
       #        shell: powershell
 
       - name: Move application files
-        run: Copy-Item -Path "./iis-site/*" -Destination "C:/inetpub/TerraMagma/TerraStack/docs" -Recurse -Force
+        run: |
+          Copy-Item -Path "./node-modules" -Destination "C:/inetpub/TerraMagma/TerraStack/docs/" -Recurse -Force
+          Copy-Item -Path "./.next" -Destination "C:/inetpub/TerraMagma/TerraStack/docs/" -Recurse -Force
+          Copy-Item -Path "./server.js" -Destination "C:/inetpub/TerraMagma/TerraStack/docs/"  -Force
+          Copy-Item -Path "./web.config" -Destination "C:/inetpub/TerraMagma/TerraStack/docs/" -Force
         shell: powershell
 
 #      - name: Start IIS
