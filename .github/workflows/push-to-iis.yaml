@@ -1,0 +1,38 @@
+name: Push to IIS Server
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build app
+        uses: ./build-app.yaml
+        with:
+          artifact_name: 'iis-site'
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v5
+        with:
+          name: 'iis-site'
+
+      - name: Stop IIS
+        run: Stop-IISSite -Name "terra-stack-docs"
+        shell: powershell
+
+      - name: Move application files
+        run: Copy-Item -Path "./iis-site/*" -Destination "C:/inetpub/wwwroot/terra-stack-docs" -Recurse -Force
+        shell: powershell
+
+      - name: Start IIS
+        run: Start-IISSite -Name "terra-stack-docs"
+        shell: powershell
