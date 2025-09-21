@@ -27,14 +27,16 @@ jobs:
       - name: Build with Next.js
         id: build
         run: |
-          set -o pipefail
-          npx next build 2>build-errors.txt || (
-            echo "## ❌ Build failed" >> $GITHUB_STEP_SUMMARY
-            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
-            cat build-errors.txt >> $GITHUB_STEP_SUMMARY
-            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          $ErrorActionPreference = 'Stop'
+          try {
+           npx next build 2> build-errors.txt
+          } catch {
+            Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "## ❌ Build failed"
+            Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value '```'
+            if (Test-Path build-errors.txt) { Get-Content build-errors.txt | ForEach-Object { Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value $_ } }
+            Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value '```'
             exit 1
-          )
+          }
 
       #      - name: Stop IIS
       #        run: Stop-IISSite -Name "terra-stack-docs"
