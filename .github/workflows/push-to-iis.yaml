@@ -63,5 +63,5 @@ jobs:
 
       - name: Unzip build artifacts
         run: |
-          Remove-Item -Path C:\inetpub\TerraMagna\TerraStack\docs\* -Recurse -Force
-          Expand-Archive -Path nextjs-build.zip -DestinationPath C:\inetpub\TerraMagna\TerraStack\docs -Force
+          Remove-Item -Path C:\inetpub\TerraMagma\TerraStack\docs\* -Recurse -Force
+          Expand-Archive -Path nextjs-build.zip -DestinationPath C:\inetpub\TerraMagma\TerraStack\docs -Force
