@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Build app
-        uses: terra-magma/terrastack-docs/.github/workflows/build-app.yaml
+        uses: ./.github/workflows/build-app.yaml
         with:
           artifact_name: 'iis-site'
 
