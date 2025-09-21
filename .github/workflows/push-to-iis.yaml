@@ -1,0 +1,36 @@
+name: Push to IIS Server
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+
+jobs:
+  build:
+    name: Build for PR
+    uses: ./.github/workflows/build-app.yaml
+    with:
+      artifact_name: 'iis-site'
+
+  deploy:
+    runs-on: iis
+    needs: build
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v5
+        with:
+          name: 'iis-site'
+
+      - name: Stop IIS
+        run: Stop-IISSite -Name "terra-stack-docs"
+        shell: powershell
+
+      - name: Move application files
+        run: Copy-Item -Path "./iis-site/*" -Destination "C:/inetpub/terrastack-docs-wwwroot" -Recurse -Force
+        shell: powershell
+
+      - name: Start IIS
+        run: Start-IISSite -Name "TerraStack-docs"
+        shell: powershell

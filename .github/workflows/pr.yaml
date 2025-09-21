@@ -1,0 +1,13 @@
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build for PR
+    uses: ./.github/workflows/build-app.yaml
+    with:
+      artifact_name: 'pr-site'
+
