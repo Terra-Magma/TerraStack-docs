@@ -9,14 +9,10 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
-      
-      - name: Build app
-        uses: ./.github/workflows/build-app.yaml
-        with:
-          artifact_name: 'iis-site'
+    name: Build for PR
+    uses: ./.github/workflows/build-app.yaml
+    with:
+      artifact_name: 'iis-site'
 
   deploy:
     runs-on: iis

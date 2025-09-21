@@ -23,15 +23,11 @@ concurrency:
 jobs:
   # Build job
   build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
-
-      - name: Build app
-        uses: ./.github/workflows/build-app.yaml
-        with:
-          artifact_name: 'published-site'
-          produce_pages_artifact: true
+    name: Build for PR
+    uses: ./.github/workflows/build-app.yaml
+    with:
+      artifact_name: 'published-site'
+      produce_pages_artifact: true
 
   # Deployment job
   deploy:
