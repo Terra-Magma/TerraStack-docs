@@ -28,7 +28,7 @@ jobs:
         shell: powershell
 
       - name: Move application files
-        run: Copy-Item -Path "./iis-site/*" -Destination "C:/inetpub/terrastack-docs-wwwroot" -Recurse -Force
+        run: Copy-Item -Path "./iis-site/*" -Destination "C:/inetpub/TerraMagma/TerraStack/docs" -Recurse -Force
         shell: powershell
 
       - name: Start IIS
