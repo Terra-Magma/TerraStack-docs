@@ -11,6 +11,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v5
+      
       - name: Build app
         uses: ./.github/workflows/build-app.yaml
         with:
