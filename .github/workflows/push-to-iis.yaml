@@ -37,15 +37,18 @@ jobs:
             echo '```' >> $GITHUB_STEP_SUMMARY
             exit 1
           fi
+          
+          #zip artifact files
+
+      - name: Compress build output
+        run: |
+          zip -r nextjs-build.zip .next node_modules server.js web.config
+
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: nextjs-build
-          path: |
-            .next
-            node_modules
-            server.js
-            web.config
+          path: nextjs-build.zip
   
   
 
@@ -53,17 +56,10 @@ jobs:
     runs-on: iis
     needs: build
     steps:
-      - name: Set NODE_OPTIONS for increased memory
-        shell: powershell
-        run: |
-          $env:NODE_OPTIONS="--max-old-space-size=3072"
-
       - name: Download build artifacts
         uses: actions/download-artifact@v5
         with:
           name: nextjs-build
 
-      - name: Move application files
-        run: |
-          Copy-Item -Path "./nextjs-build/*" -Destination "C:/inetpub/TerraMagma/TerraStack/docs" -Recurse -Force
-        shell: powershell
+      - name: Unzip build artifacts
+        run: unzip nextjs-build.zip -d C:\inetpub\TerraMagma\TerraStack\docs
