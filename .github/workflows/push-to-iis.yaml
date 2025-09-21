@@ -8,15 +8,9 @@ on:
 
 
 jobs:
-  #  build:
-  #    name: Build for PR
-  #    uses: ./.github/workflows/build-app.yaml
-  #    with:
-  #      artifact_name: 'iis-site'
-
-  build-and-deploy:
-    runs-on: iis
-    #    needs: build
+  build:
+    name: Build for PR
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -31,30 +25,40 @@ jobs:
 
       - name: Build with Next.js
         id: build
+        shell: bash
         run: |
-          $ErrorActionPreference = 'Stop'
-          try {
-           npx next build 2> build-errors.txt
-          } catch {
-            Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "## ❌ Build failed"
-            Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value '```'
-            if (Test-Path build-errors.txt) { Get-Content build-errors.txt | ForEach-Object { Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value $_ } }
-            Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value '```'
+          set -o pipefail
+          if ! npx next build 2> >(tee build-errors.txt >&2); then
+            echo "## ❌ Build failed" >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            if [ -f build-errors.txt ]; then
+              cat build-errors.txt >> $GITHUB_STEP_SUMMARY
+            fi
+            echo '```' >> $GITHUB_STEP_SUMMARY
             exit 1
-          }
+          fi
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: nextjs-build
+          path: |
+            .next
+            node_modules
+            server.js
+            web.config
+  
+  
 
-      #      - name: Stop IIS
-      #        run: Stop-IISSite -Name "terra-stack-docs"
-      #        shell: powershell
+  deploy:
+    runs-on: iis
+    needs: build
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: nextjs-build
 
       - name: Move application files
         run: |
-          Copy-Item -Path "./node-modules" -Destination "C:/inetpub/TerraMagma/TerraStack/docs/" -Recurse -Force
-          Copy-Item -Path "./.next" -Destination "C:/inetpub/TerraMagma/TerraStack/docs/" -Recurse -Force
-          Copy-Item -Path "./server.js" -Destination "C:/inetpub/TerraMagma/TerraStack/docs/"  -Force
-          Copy-Item -Path "./web.config" -Destination "C:/inetpub/TerraMagma/TerraStack/docs/" -Force
+          Copy-Item -Path "./nextjs-build/*" -Destination "C:/inetpub/TerraMagma/TerraStack/docs" -Recurse -Force
         shell: powershell
-
-#      - name: Start IIS
-#        run: Start-IISSite -Name "TerraStack-docs"
-#        shell: powershell
