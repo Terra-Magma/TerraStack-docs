@@ -29,6 +29,7 @@ jobs:
         uses: ./build-app.yaml
         with:
           artifact_name: 'published-site'
+          produce_pages_artifact: true
 
   # Deployment job
   deploy:
