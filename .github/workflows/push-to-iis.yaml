@@ -8,15 +8,15 @@ on:
 
 
 jobs:
-  build:
-    name: Build for PR
-    uses: ./.github/workflows/build-app.yaml
-    with:
-      artifact_name: 'iis-site'
+  #  build:
+  #    name: Build for PR
+  #    uses: ./.github/workflows/build-app.yaml
+  #    with:
+  #      artifact_name: 'iis-site'
 
-  deploy:
+  build-and-deploy:
     runs-on: iis
-    needs: build
+    #    needs: build
     steps:
       - name: Checkout
         uses: actions/checkout@v5
