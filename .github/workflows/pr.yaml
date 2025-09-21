@@ -1,0 +1,15 @@
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build for PR
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build app
+        uses: ./build-app.yaml
+        with:
+          artifact_name: 'pr-site'
