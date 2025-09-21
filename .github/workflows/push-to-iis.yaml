@@ -12,12 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Build app
-        uses: ./build-app.yaml
+        uses: terra-magma/terrastack-docs/.github/workflows/build-app.yaml
         with:
           artifact_name: 'iis-site'
 
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: iis
     needs: build
     steps:
       - name: Download artifact
