@@ -21,22 +21,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-        with:
-          static_site_generator: next
-
-      - name: Restore cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            .next/cache
-          # Generate a new cache whenever adoption or source files change.
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
-          # If source files changed but adoption didn't, rebuild from a prior cache.
-          restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
-
       - name: Install dependencies
         run: npm ci
 
@@ -60,8 +44,8 @@ jobs:
         run: |
           Copy-Item -Path "./node-modules" -Destination "C:/inetpub/TerraMagma/TerraStack/docs/" -Recurse -Force
           Copy-Item -Path "./.next" -Destination "C:/inetpub/TerraMagma/TerraStack/docs/" -Recurse -Force
-          Copy-Item -Path "./server.js" -Destination "C:/inetpub/TerraMagma/TerraStack/docs/" -Recurse -Force
-          Copy-Item -Path "./web.config" -Destination "C:/inetpub/TerraMagma/TerraStack/docs/" -Recurse -Force
+          Copy-Item -Path "./server.js" -Destination "C:/inetpub/TerraMagma/TerraStack/docs/"  -Force
+          Copy-Item -Path "./web.config" -Destination "C:/inetpub/TerraMagma/TerraStack/docs/" -Force
         shell: powershell
 
 #      - name: Start IIS
