@@ -53,6 +53,11 @@ jobs:
     runs-on: iis
     needs: build
     steps:
+      - name: Set NODE_OPTIONS for increased memory
+        shell: powershell
+        run: |
+          $env:NODE_OPTIONS="--max-old-space-size=3072"
+
       - name: Download build artifacts
         uses: actions/download-artifact@v5
         with:
