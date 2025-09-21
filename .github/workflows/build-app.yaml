@@ -1,10 +1,6 @@
 on:
   workflow_call:
     inputs:
-      produce_pages_artifact:
-        required: false
-        type: boolean
-        default: false
       artifact_name:
         required: true
         type: string
@@ -68,16 +64,8 @@ jobs:
             echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
             exit 1
           )
-      - name: Upload pages artifact
-        if: ${{ inputs.produce_pages_artifact }}
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: ./out
-          name: ${{ inputs.artifact_name }}
-          
       - name: Upload artifact
-        if: ${{ !inputs.produce_pages_artifact }}
         uses: actions/upload-artifact@v4
         with:
+          path: ./
           name: ${{ inputs.artifact_name }}
-          path: ./out
