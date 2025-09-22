@@ -4,18 +4,14 @@ module.exports = {
       name: 'terrastack-docs',
       script: 'server.js',
       watch: '.',
+      autorestart: true,
+      ignore_watch: ['node_modules', 'out'],
+      pre_reload: 'npm install && npm run build',
+      post_update: 'npm install && npm run build',
+      env: {
+        NODE_ENV: 'production',
+        PORT: 3000,
+      },
     },
   ],
-
-  deploy: {
-    production: {
-      host: 'localhost',
-      ref: 'origin/main',
-      repo: 'git@github.com:Terra-Magma/TerraStack-docs',
-      path: '/Users/sbarnes/Code/terrastack-test',
-      'pre-deploy-local': '',
-      'post-deploy': 'npm install && npm run build && pm2 reload ecosystem.config.js --env production',
-      'pre-setup': '',
-    },
-  },
 };
