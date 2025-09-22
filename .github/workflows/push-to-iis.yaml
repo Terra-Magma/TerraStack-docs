@@ -24,9 +24,14 @@ jobs:
           git config --global --add safe.directory C:/inetpub/TerraMagma
           git pull
 
-      - name: Update App
+      - name: NPM Install
         shell: cmd
         working-directory: C:\inetpub\TerraMagma
         run: |
           npm install
+
+      - name: Build Project
+        shell: cmd
+        working-directory: C:\inetpub\TerraMagma
+        run: |
           npm run build
