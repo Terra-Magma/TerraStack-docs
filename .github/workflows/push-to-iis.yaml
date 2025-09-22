@@ -1,67 +1,17 @@
 name: Push to IIS Server
 
 on:
-  #  push:
-  #    branches:
-  #      - main
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
-
 jobs:
-  build:
-    name: Build for PR
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-
-      - name: Setup Node
-        uses: actions/setup-node@v5
-        with:
-          node-version: "24"
-
-      - name: Install dependencies
-        run: npm ci --verbose
-
-      - name: Build with Next.js
-        id: build
-        shell: bash
-        run: |
-          set -o pipefail
-          if ! npx next build 2> >(tee build-errors.txt >&2); then
-            echo "## ❌ Build failed" >> $GITHUB_STEP_SUMMARY
-            echo '```' >> $GITHUB_STEP_SUMMARY
-            if [ -f build-errors.txt ]; then
-              cat build-errors.txt >> $GITHUB_STEP_SUMMARY
-            fi
-            echo '```' >> $GITHUB_STEP_SUMMARY
-            exit 1
-          fi
-          
-          #zip artifact files
-
-      - name: Compress build output
-        run: |
-          zip -r nextjs-build.zip .next node_modules server.js web.config
-
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: nextjs-build
-          path: nextjs-build.zip
-  
-  
-
   deploy:
     runs-on: iis
-    needs: build
     steps:
-      - name: Download build artifacts
-        uses: actions/download-artifact@v5
-        with:
-          name: nextjs-build
-
-      - name: Unzip build artifacts
+      - name: Pull from GitHub
+        shell: powershell
+        working-directory: C:\inetpub\TerraMagma
         run: |
-          Remove-Item -Path C:\inetpub\TerraMagma\TerraStack\docs\* -Recurse -Force
-          Expand-Archive -Path nextjs-build.zip -DestinationPath C:\inetpub\TerraMagma\TerraStack\docs -Force -Verbose
+          git pull
