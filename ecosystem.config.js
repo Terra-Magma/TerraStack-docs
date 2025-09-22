@@ -3,7 +3,7 @@ module.exports = {
     {
       name: 'terrastack-docs',
       script: 'serve',
-      watch: ['.'],
+      watch: ['./out'],
       autorestart: true,
       ignore_watch: ['node_modules', 'out'],
       post_update: ['npm install', 'npm run build'],
