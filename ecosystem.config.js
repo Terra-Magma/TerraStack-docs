@@ -11,7 +11,7 @@ module.exports = {
     production: {
       host: 'localhost',
       ref: 'origin/main',
-      repo: 'git@github.com:terra-master/terrastack-docs.git',
+      repo: 'git@github.com:Terra-Magma/TerraStack-docs.git',
       path: '/Users/sbarnes/Code/terrastack-test',
       'pre-deploy-local': '',
       'post-deploy': 'npm install && pm2 reload ecosystem.config.js --env production',
