@@ -11,6 +11,8 @@ jobs:
     runs-on: iis
     steps:
       - name: Pull from GitHub
+        env:
+          PATH: "${{ env.PATH }};C:\\Program\ Files\\Git\\cmd"
         shell: cmd
         working-directory: C:\inetpub\TerraMagma
         run: |
