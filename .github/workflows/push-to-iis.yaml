@@ -16,4 +16,5 @@ jobs:
         shell: cmd
         working-directory: C:\inetpub\TerraMagma
         run: |
+          git config --global --add safe.directory C:/inetpub/TerraMagma
           git pull
