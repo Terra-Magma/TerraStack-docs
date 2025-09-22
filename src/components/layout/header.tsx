@@ -59,7 +59,7 @@ export function Header() {
             <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">TS</span>
             </div>
-            <span className="font-semibold text-lg">TerraStack</span>
+            <span className="font-semibold text-lg">TerraMagma</span>
           </Link>
           <NavigationMenu
             className="hidden lg:flex"
