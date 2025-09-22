@@ -14,4 +14,4 @@ jobs:
         shell: powershell
         working-directory: C:\inetpub\TerraMagma
         run: |
-          C:\Program Files\Git\cmd\git.exe pull
+          "C:\Program Files\Git\cmd\git.exe pull"
