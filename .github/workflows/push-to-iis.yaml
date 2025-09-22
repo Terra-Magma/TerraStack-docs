@@ -18,5 +18,12 @@ jobs:
         run: |
           git config --global --add safe.directory C:/inetpub/TerraMagma
           git pull
+
+      - name: Update App
+        env:
+          PATH: "${{ env.PATH }};C:\\nvm4w\\nodejs"
+        shell: cmd
+        working-directory: C:\inetpub\TerraMagma
+        run: |
           npm install
           npm run build
