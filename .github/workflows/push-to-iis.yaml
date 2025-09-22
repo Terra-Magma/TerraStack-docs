@@ -11,7 +11,7 @@ jobs:
     runs-on: iis
     steps:
       - name: Pull from GitHub
-        shell: powershell
+        shell: cmd
         working-directory: C:\inetpub\TerraMagma
         run: |
           "C:\Program Files\Git\cmd\git.exe pull"
