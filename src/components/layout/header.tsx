@@ -1,11 +1,12 @@
 'use client';
 
+import * as React from 'react';
 import { useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ThemeToggle } from '@/components/theme-toggle';
-import { Menu, Search, X } from 'lucide-react';
+import { ChevronDownIcon, Menu, Search, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import DevelopmentButton from '@/components/ui/DevelopmentButton';
 import {
@@ -16,13 +17,25 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu';
+import GithubButton from '@/components/layout/github-button';
+import './header.css';
 
 export function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
+
+  const [navMenuOpenProducts, setNavMenuOpenProducts] = React.useState(false);
+  const [navMenuOpenVision, setNavMenuOpenVision] = React.useState(false);
+  const [navMenuOpenAdoption, setNavMenuOpenAdoption] = React.useState(false);
 
   const items = [
     { title: 'Packages', href: '/packages' },
-    { title: 'Products', href: '/products' },
+    {
+      title: 'Products',
+      href: '/products',
+      children: [{ title: 'TerraStack', href: '/terrastack' }],
+      menuOpen: navMenuOpenProducts,
+      setNavMenuOpen: setNavMenuOpenProducts,
+    },
     { title: 'Services', href: '/services' },
     { title: 'Support', href: '/support' },
     { title: 'Documentation', href: '/docs' },
@@ -37,6 +50,8 @@ export function Header() {
         { title: 'Existing Protocols', href: '/our-vision/what-about-existing-protocols' },
         { title: 'Schedule', href: '/our-vision/schedule' },
       ],
+      menuOpen: navMenuOpenVision,
+      setNavMenuOpen: setNavMenuOpenVision,
     },
     {
       title: 'Adoption',
@@ -45,6 +60,8 @@ export function Header() {
         { title: 'Early Adoption', href: '/adoption/early-adoption' },
         { title: 'Current Adoption', href: '/adoption/current-adoption' },
       ],
+      menuOpen: navMenuOpenAdoption,
+      setNavMenuOpen: setNavMenuOpenAdoption,
     },
   ];
 
@@ -116,7 +133,7 @@ export function Header() {
               className="w-64 pl-10"
             />
           </div>
-
+          <GithubButton />
           <ThemeToggle />
 
           <Button
@@ -141,18 +158,61 @@ export function Header() {
             />
           </div>
           <div className="space-y-2">
-            {items.map((item) => {
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="block py-2 text-muted-foreground hover:text-foreground transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.title}
-                </Link>
-              );
-            })}
+            {items.map(
+              (item) =>
+                (item.children && (
+                  <div key={item.href}>
+                    <div
+                      key={item.href}
+                      className=" py-2 hover:text-primary text-magma transition-colors flex items-center group cursor-pointer"
+                      onClick={() => item.setNavMenuOpen!(!item.menuOpen)}
+                    >
+                      {item.title}
+                      <ChevronDownIcon
+                        className={cn(
+                          'relative top-[1px] ml-1 size-3 transition duration-300',
+                          item.menuOpen ? 'rotate-180' : ''
+                        )}
+                        aria-hidden="true"
+                      />
+                    </div>
+                    <div
+                      className={cn('animated-div flex flex-col')}
+                      style={
+                        item.menuOpen
+                          ? {
+                              height: `${item.children.length * 36}px`,
+                            }
+                          : {}
+                      }
+                    >
+                      {item.children.map((child) => (
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          className={cn('!py-2 ml-5 text-sm transition-colors group cursor-pointer nav-item')}
+                          onClick={() => {
+                            item.setNavMenuOpen!(false);
+                            setIsMenuOpen(false);
+                          }}
+                        >
+                          {child.title}
+                        </Link>
+                      ))}
+                    </div>
+                    <div className={cn(item.menuOpen ? '' : 'hidden', 'animate-shadow')}></div>
+                  </div>
+                )) || (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="block py-2 transition-colors nav-item"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.title}
+                  </Link>
+                )
+            )}
           </div>
         </nav>
       </div>

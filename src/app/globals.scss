@@ -110,7 +110,7 @@ h2 {
 a {
   color: var(--primary-hover);
 
-  &:not([data-slot="navigation-menu-link"]) {
+  &:not([data-slot="navigation-menu-link"]) &:not(.nav-item) {
     padding: 0 0.25rem;
     width: auto;
 
