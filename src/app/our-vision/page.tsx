@@ -29,7 +29,7 @@ export default function VisionPage() {
               <Link
                 key={link.id}
                 href={link.href}
-                style={{ fontSize: '2em', textDecoration: 'underline' }}
+                style={{ fontSize: '2em' }}
               >
                 {link.label}
               </Link>

@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "npx serve@latest out",
-    "lint": "eslint"
+    "lint": "eslint",
+    "start:iis": "node server.js"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -76,6 +77,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.5.0",
+    "sass": "^1.93.0",
     "typescript": "^5"
   },
   "overrides": {

@@ -52,6 +52,14 @@ export function Header() {
       menuOpen: navMenuOpenVision,
       setNavMenuOpen: setNavMenuOpenVision,
     },
+    {
+      title: 'Adoption',
+      href: '/adoption',
+      children: [
+        { title: 'Early Adoption', href: '/adoption/early-adoption' },
+        { title: 'Current Adoption', href: '/adoption/current-adoption' },
+      ],
+    },
   ];
 
   return (
@@ -65,7 +73,7 @@ export function Header() {
             <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">TS</span>
             </div>
-            <span className="font-semibold text-lg">TerraStack</span>
+            <span className="font-semibold text-lg">TerraMagma</span>
           </Link>
           <NavigationMenu
             className="hidden lg:flex"

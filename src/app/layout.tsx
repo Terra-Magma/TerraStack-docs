@@ -1,4 +1,5 @@
 import './globals.css';
+import './globals.scss';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Header } from '@/components/layout/header';
@@ -8,7 +9,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'TerraStack Documentation',
-  description: 'Comprehensive documentation for TerraStack - the next generation IPv4 replacement',
+  description: 'Comprehensive documentation for TerraStack - the next generation IPv4 alternative',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
