@@ -1,28 +1,29 @@
 'use client';
 
-import { useState } from 'react';
+import {useState} from 'react';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { ThemeToggle } from '@/components/theme-toggle';
-import { Menu, Search, X } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import {Button} from '@/components/ui/button';
+import {Input} from '@/components/ui/input';
+import {ThemeToggle} from '@/components/theme-toggle';
+import {Menu, Search, X} from 'lucide-react';
+import {cn} from '@/lib/utils';
 import DevelopmentButton from '@/components/ui/DevelopmentButton';
 import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
+    NavigationMenu,
+    NavigationMenuContent,
+    NavigationMenuItem,
+    NavigationMenuLink,
+    NavigationMenuList,
+    NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu';
+import GithubButton from '@/components/layout/github-button';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const items = [
     { title: 'Packages', href: '/packages' },
-    { title: 'Products', href: '/products' },
+    { title: 'Products', href: '/products', children: [{ title: 'TerraStack', href: '/terrastack' }] },
     { title: 'Services', href: '/services' },
     { title: 'Support', href: '/support' },
     { title: 'Documentation', href: '/docs' },
@@ -108,7 +109,7 @@ export function Header() {
               className="w-64 pl-10"
             />
           </div>
-
+          <GithubButton />
           <ThemeToggle />
 
           <Button
