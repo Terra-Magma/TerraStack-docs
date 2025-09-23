@@ -25,6 +25,7 @@ export function Header() {
 
   const [navMenuOpenProducts, setNavMenuOpenProducts] = React.useState(false);
   const [navMenuOpenVision, setNavMenuOpenVision] = React.useState(false);
+  const [navMenuOpenAdoption, setNavMenuOpenAdoption] = React.useState(false);
 
   const items = [
     { title: 'Packages', href: '/packages' },
@@ -59,6 +60,8 @@ export function Header() {
         { title: 'Early Adoption', href: '/adoption/early-adoption' },
         { title: 'Current Adoption', href: '/adoption/current-adoption' },
       ],
+      menuOpen: navMenuOpenAdoption,
+      setNavMenuOpen: setNavMenuOpenAdoption,
     },
   ];
 
@@ -161,9 +164,8 @@ export function Header() {
                   <div key={item.href}>
                     <div
                       key={item.href}
-                      // href={item.href}
-                      className=" py-2  hover:text-primary text-magma transition-colors flex items-center group cursor-pointer"
-                      onClick={() => item.setNavMenuOpen(!item.menuOpen)}
+                      className=" py-2 hover:text-primary text-magma transition-colors flex items-center group cursor-pointer"
+                      onClick={() => item.setNavMenuOpen!(!item.menuOpen)}
                     >
                       {item.title}
                       <ChevronDownIcon
@@ -188,9 +190,9 @@ export function Header() {
                         <Link
                           key={child.href}
                           href={child.href}
-                          className={cn(' py-2 ml-5 text-sm transition-colors group cursor-pointer')}
+                          className={cn('!py-2 ml-5 text-sm transition-colors group cursor-pointer nav-item')}
                           onClick={() => {
-                            item.setNavMenuOpen(false);
+                            item.setNavMenuOpen!(false);
                             setIsMenuOpen(false);
                           }}
                         >
@@ -204,7 +206,7 @@ export function Header() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="block py-2 transition-colors"
+                    className="block py-2 transition-colors nav-item"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.title}
