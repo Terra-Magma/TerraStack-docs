@@ -1,4 +1,6 @@
-import Link from 'next/link';
+'use client';
+
+import { Button } from '@/components/ui/button';
 
 export default function NotFound() {
   return (
@@ -6,12 +8,14 @@ export default function NotFound() {
       <div className="text-center">
         <h1 className="text-6xl font-bold text-foreground mb-4">404</h1>
         <p className="text-xl text-muted-foreground mb-8">Page Not Found</p>
-        <Link
-          href="/public"
-          className="inline-block px-6 py-3 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition"
+        <Button
+          variant={'default'}
+          onClick={() => {
+            window.location.href = '/';
+          }}
         >
           Go to Homepage
-        </Link>
+        </Button>
       </div>
     </div>
   );
