@@ -42,8 +42,12 @@ export default function Home() {
           <h1 className="text-4xl font-bold text-foreground mb-4">Welcome to TerraStack</h1>
 
           <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-            Description coming soon...
-            {/* TODO: Fill out */}
+            Terra Stack is a “clean-slate” network protocol stack. It answers the question:
+            <br />
+            <i>
+              &nbsp;&nbsp;&nbsp;&nbsp; If we could redo the core protocol of the Internet from scratch, what would it
+              look like?
+            </i>
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
@@ -66,10 +70,11 @@ export default function Home() {
             id="overview"
             className="mb-12"
           >
-            <h2 className="text-2xl font-semibold mb-4">Overview</h2>
+            <h2 className="text-2xl font-semibold mb-4">Our Goal</h2>
             <p className="text-muted-foreground mb-4 leading-relaxed">
-              Coming soon...
-              {/* TODO: Fill out */}
+              The first iteration of any technology is never perfect. It takes several iterations before the technology
+              starts to reach its final form. The goal of Terra Stack is to provide a model for a more advanced
+              iteration of a protocol stack that is capable of running the Internet.
             </p>
           </section>
 
@@ -77,10 +82,42 @@ export default function Home() {
             id="key-features"
             className="mb-12"
           >
-            <h2 className="text-2xl font-semibold mb-6">Key Features</h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              Coming soon...
-              {/* TODO: Fill out */}
+            <h2 className="text-2xl font-semibold mb-6">What makes us different?</h2>
+            <div className="">
+              <p>
+                Terra Stack combines currently disparate technologies into a single multi-threaded portable executable.
+              </p>
+              <ol>
+                <li>
+                  Naming - Names are universally UNICODE and are the preferred method of identification of process
+                  connection points, etc.
+                </li>
+                <li>
+                  Numbering - numbers are always of sufficient size to eliminate the possibility of regrets in design
+                  choices, say, 100 years from now.
+                </li>
+                <li>
+                  Addressing - Both the textual and the digital addressing schemes for identifying nodes are based on
+                  theoretical principles and bring clarity to the nature of addressing.
+                </li>
+                <li>
+                  Routing - Routing is based on theoretical principles and eliminates some of the peculiarities
+                  associated with IPv4 such as high-latency between nodes that are geographically adjacent.
+                </li>
+                <li>Security - A full public-key infrastructure eliminates the need for usernames and passwords.</li>
+                <li>
+                  Mobility - Generalized mobility permits applications to remain connected even as wireless interfaces
+                  make/break their links.
+                </li>
+                <li>
+                  Rate-Control - The rate-control algorithm finally allows parity between the rate that an application
+                  experiences and the theoretical maximum of the underlying hardware.
+                </li>
+                <li>
+                  Large-Scale Multicast - In full-deployment of Terra Stack, a single source node would be able to
+                  multicast to 1,000,000 target nodes with essentially no performance degradation.
+                </li>
+              </ol>
             </div>
           </section>
 
@@ -91,8 +128,8 @@ export default function Home() {
             <h2 className="text-2xl font-semibold mb-4">Why TerraStack?</h2>
             <div className="bg-muted/50 border-l-4 border-blue-500 p-6 rounded-r-lg mb-6">
               <p className="text-sm text-muted-foreground">
-                Coming soon...
-                {/* TODO: Fill out */}
+                Terra Stack is the seed of advanced distributed Internet applications. It might be helpful to become
+                familiar with it before Terra Magma starts delivering those applications.
               </p>
             </div>
           </section>
