@@ -26,10 +26,8 @@ jobs:
           echo "container-tag=$TIMESTAMP" >> $GITHUB_OUTPUT
 
       - name: Docker Build
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           push: true
           tags: ghcr.io/terramagma/terrastack-docs:${{ github.sha }}.${{ steps.timestamp.outputs.container-tag }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
