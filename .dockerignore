@@ -1,0 +1,18 @@
+﻿    # Exclude the node_modules directory
+    node_modules/
+
+    # Exclude the .git directory
+    .git/
+
+    # Exclude all log files
+    *.log
+
+    # Exclude specific files
+    .env
+    README.md
+
+    # Exclude build output directories
+    .next/
+    dist/
+    build/
+    out/
