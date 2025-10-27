@@ -25,7 +25,5 @@ jobs:
         with:
           context: .
           push: false
-          tags:
-            - ghcr.io/terramagma/terrastack-docs:latest
-            - ghcr.io/terramagma/terrastack-docs:${{ steps.timestamp.outputs.container-tag }}
+          tags: ghcr.io/terramagma/terrastack-docs:latest,ghcr.io/terramagma/terrastack-docs:${{ steps.timestamp.outputs.container-tag }}
 
