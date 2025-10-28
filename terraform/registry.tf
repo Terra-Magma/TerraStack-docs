@@ -1,4 +1,4 @@
-﻿resource "portainer_registry" "github" {
+resource "portainer_registry" "github" {
   name                     = "GitHub Registry"
   type                     = 8
   url                      = "ghcr.io"

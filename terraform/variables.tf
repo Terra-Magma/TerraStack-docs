@@ -1,4 +1,4 @@
-﻿variable "portainer_url" {
+variable "portainer_url" {
   type = string
 }
 

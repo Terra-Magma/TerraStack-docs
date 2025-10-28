@@ -1,4 +1,4 @@
-﻿resource "portainer_stack" "terrastack-docs" {
+resource "portainer_stack" "terrastack-docs" {
   name            = "terrastack-docs"
   deployment_type = "standalone"
   method          = "file"
