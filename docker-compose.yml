@@ -4,6 +4,8 @@
     #    ports:
     #      - "8080:3000"
     restart: unless-stopped
+    networks:
+      - r_proxy
     environment:
       - NODE_ENV=production
     labels:
@@ -11,3 +13,7 @@
       - "traefik.http.routers.terrastack-docs.rule=Host(`terramagma.barnes-development.com`)"
       - "traefik.http.routers.terrastack-docs.entrypoints=websecure"
       - "traefik.http.services.terrastack-docs.loadbalancer.server.port=3000"
+
+networks:
+  r_proxy:
+    external: true
