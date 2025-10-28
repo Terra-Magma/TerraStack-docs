@@ -1,5 +1,5 @@
 resource "portainer_registry" "github" {
-  name                     = "GitHub Registry"
+  name                     = "GitHub"
   type                     = 8
   url                      = "ghcr.io"
   authentication           = true
