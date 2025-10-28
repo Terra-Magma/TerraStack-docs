@@ -70,5 +70,7 @@ jobs:
         env:
           TF_VAR_portainer_url: ${{ secrets.PORTAINER_URL }}
           TF_VAR_portainer_api_key: ${{ secrets.PORTAINER_API_KEY }}
+          TF_VAR_github_registry_username: ${{ github.actor }}
+          TF_VAR_github_registry_access_token: ${{ secrets.GITHUB_TOKEN }}
         run: terraform plan -input=false
         working-directory: ./terraform
