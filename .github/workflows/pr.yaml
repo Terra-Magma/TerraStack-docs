@@ -42,3 +42,33 @@ jobs:
           context: .
           push: true
           tags: ghcr.io/terra-magma/terrastack-docs:${{ github.sha }}.${{ steps.timestamp.outputs.container-tag }}
+
+  terraform:
+    name: 'Terraform'
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init
+        run: terraform init
+        working-directory: ./terraform
+
+      - name: Terraform Format
+        run: terraform fmt -check
+        working-directory: ./terraform
+
+      - name: Terraform Plan
+        env:
+          TF_VAR_portainer_url: ${{ secrets.PORTAINER_URL }}
+          TF_VAR_portainer_api_key: ${{ secrets.PORTAINER_API_KEY }}
+        run: terraform plan -input=false
+        working-directory: ./terraform

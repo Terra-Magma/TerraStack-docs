@@ -1,0 +1,13 @@
+﻿services:
+  docs:
+    image: ghcr.io/terra-magma/terrastack-docs:latest
+    #    ports:
+    #      - "8080:3000"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.terrastack-docs.rule=Host(`terramagma.barnes-development.com`)"
+      - "traefik.http.routers.terrastack-docs.entrypoints=websecure"
+      - "traefik.http.services.terrastack-docs.loadbalancer.server.port=3000"
