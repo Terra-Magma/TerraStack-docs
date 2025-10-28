@@ -20,8 +20,3 @@ variable "terramagma_local_ip" {
   type        = string
   description = "Local IP address of the Terramagma host"
 }
-
-variable "postgres_connection_string" {
-  type        = string
-  description = "Connection string for the PostgreSQL backend"
-}
