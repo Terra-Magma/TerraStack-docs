@@ -1,20 +1,14 @@
+﻿name: push-to-prod.yaml
 on:
-  pull_request:
+  push:
     branches:
       - main
-  workflow_dispatch:
 
 permissions:
   contents: read
   packages: write
 
 jobs:
-  build:
-    name: Build for PR
-    uses: ./.github/workflows/build-app.yaml
-    with:
-      artifact_name: 'pr-site'
-
   build-docker:
     runs-on: ubuntu-latest
     steps:
@@ -33,15 +27,16 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          PR_NUM=$(gh pr list --search '${{github.sha}}' -s all --json number -q '.[] | .number' || echo "latest")
           TIMESTAMP=$(printf '%(%Y.%m.%d.%H%M%S)T\n' -1)
-          echo "container-tag=$TIMESTAMP" >> $GITHUB_OUTPUT
+          echo "container-tag=$PR_NUM.$TIMESTAMP" >> $GITHUB_OUTPUT
 
       - name: Docker Build
         uses: docker/build-push-action@v6
         with:
           context: .
           push: true
-          tags: ghcr.io/terra-magma/terrastack-docs:${{ github.sha }}.${{ steps.timestamp.outputs.container-tag }}
+          tags: ghcr.io/terra-magma/terrastack-docs:latest,ghcr.io/terra-magma/terrastack-docs:${{ steps.timestamp.outputs.container-tag }}
 
   terraform:
     name: 'Terraform'
@@ -74,3 +69,14 @@ jobs:
           TF_VAR_github_registry_access_token: ${{ secrets.GITHUB_TOKEN }}
         run: terraform plan -input=false
         working-directory: ./terraform
+
+      - name: Terraform Apply
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        env:
+          TF_VAR_portainer_url: ${{ secrets.PORTAINER_URL }}
+          TF_VAR_portainer_api_key: ${{ secrets.PORTAINER_API_KEY }}
+          TF_VAR_github_registry_username: ${{ github.actor }}
+          TF_VAR_github_registry_access_token: ${{ secrets.GITHUB_TOKEN }}
+        run: terraform apply -auto-approve -input=false
+        working-directory: ./terraform
+
