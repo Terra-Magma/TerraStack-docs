@@ -72,5 +72,6 @@ jobs:
           TF_VAR_portainer_api_key: ${{ secrets.PORTAINER_API_KEY }}
           TF_VAR_github_registry_username: ${{ github.actor }}
           TF_VAR_github_registry_access_token: ${{ secrets.GITHUB_TOKEN }}
+          TF_VAR_terramagma_local_ip: ${{ secrets.TERRAMAGMA_LOCAL_IP }}
         run: terraform plan -input=false
         working-directory: ./terraform
