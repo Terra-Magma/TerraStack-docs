@@ -1,5 +1,4 @@
-import Link from 'next/link';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Link } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface PageNavigationItem {

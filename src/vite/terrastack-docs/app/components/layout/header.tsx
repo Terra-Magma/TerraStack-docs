@@ -2,11 +2,9 @@
 
 import * as React from 'react';
 import { useState } from 'react';
-import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { ThemeToggle } from '@/components/theme-toggle';
-import { ChevronDownIcon, Menu, Search, X } from 'lucide-react';
+import { ChevronDownIcon, Link, Menu, Search, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import DevelopmentButton from '@/components/ui/DevelopmentButton';
 import {
@@ -134,7 +132,7 @@ export function Header() {
             />
           </div>
           <GithubButton />
-          <ThemeToggle />
+          {/*<ThemeToggle />*/}
 
           <Button
             variant="ghost"

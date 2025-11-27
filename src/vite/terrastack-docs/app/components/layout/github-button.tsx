@@ -1,11 +1,9 @@
-﻿import { usePathname } from 'next/navigation';
-import githubDark from '@/assets/github-mark.svg';
+﻿import githubDark from '@/assets/github-mark.svg';
 import githubLight from '@/assets/github-mark-white.svg';
-import Image from 'next/image';
-import { useTheme } from 'next-themes';
+import { useLocation } from 'react-router';
 
 export default function GithubButton() {
-  const pathname = usePathname();
+  const { pathname } = useLocation();
 
   const githubRoute = pathname.includes('terrastack')
     ? 'https://github.com/Terra-Magma/TerraStack'
@@ -15,11 +13,12 @@ export default function GithubButton() {
     window.open(githubRoute, '_blank', 'noopener,noreferrer');
   };
 
-  const { theme } = useTheme();
+  // const { theme } = useTheme();
+  const theme = 'light'; //TODO: Placeholder for theme, replace with actual theme logic
   const iconSize = 30;
   console.log({ theme });
   return (
-    <Image
+    <img
       src={theme === 'light' ? githubDark : githubLight}
       width={iconSize}
       height={iconSize}

@@ -15,20 +15,13 @@ export function meta({}: Route.MetaArgs) {
 }
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-    >
-      <body className="">
-        <div className="min-h-screen bg-background">
-          <Header />
-          <div className="flex">
-            <main className="flex-1 w-max">
-              <Outlet />
-            </main>
-          </div>
-        </div>
-      </body>
-    </html>
+    <div className="min-h-screen bg-background">
+      <Header />
+      <div className="flex">
+        <main className="flex-1 w-max">
+          <Outlet />
+        </main>
+      </div>
+    </div>
   );
 }
