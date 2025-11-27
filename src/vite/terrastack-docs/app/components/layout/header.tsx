@@ -17,6 +17,7 @@ import {
 } from '@/components/ui/navigation-menu';
 import GithubButton from '@/components/layout/github-button';
 import './header.css';
+import { ThemeToggle } from '~/components/theme-toggle';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
@@ -132,7 +133,7 @@ export function Header() {
             />
           </div>
           <GithubButton />
-          {/*<ThemeToggle />*/}
+          <ThemeToggle />
 
           <Button
             variant="ghost"
