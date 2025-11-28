@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { ChevronDownIcon, Link, Menu, Search, X } from 'lucide-react';
+import { ChevronDownIcon, Menu, Search, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import DevelopmentButton from '@/components/ui/DevelopmentButton';
 import {
@@ -18,6 +18,7 @@ import {
 import GithubButton from '@/components/layout/github-button';
 import './header.css';
 import { ThemeToggle } from '~/components/theme-toggle';
+import { Link } from '@mui/material';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(true);

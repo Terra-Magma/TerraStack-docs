@@ -1,5 +1,3 @@
-import '@/globals.css';
-import '@/globals.scss';
 import { Header } from '@/components/layout/header';
 import { Outlet } from 'react-router';
 import type { Route } from '../../.react-router/types/app/routes/+types/home';

@@ -4,57 +4,199 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-obsidian: #0d0d0d;
-  --color-lava: #e6400e;
-  --color-deep-lava: #8b0000;
-  --color-ember: #b22222;
-  --color-cold-ember: rgba(178, 34, 34, 0.53);
-  --color-magma: #ff6f00;
-  --color-ash: #cccccc;
-  --color-basalt: #2f2f2f;
-  --color-pumice: #f5f5f5;
-  --color-charcoal: #333333;
-  --color-sulfur: #ffd700;
-  --color-slate: #1c1c1c;
-  --color-clay: #d8cab8;
-  --color-success: #25dd09;
-  --color-very-light: #fcfcfc;
-  --color-light-grayish: #b3b3b3;
-  --color-coal: #353535;
-  --color-dark-coal: #252525;
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-sidebar-ring: var(--sidebar-ring);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar: var(--sidebar);
+    --color-chart-5: var(--chart-5);
+    --color-chart-4: var(--chart-4);
+    --color-chart-3: var(--chart-3);
+    --color-chart-2: var(--chart-2);
+    --color-chart-1: var(--chart-1);
+    --color-ring: var(--ring);
+    --color-input: var(--input);
+    --color-border: var(--border);
+    --color-destructive: var(--destructive);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-accent: var(--accent);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-muted: var(--muted);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-popover: var(--popover);
+    --color-card-foreground: var(--card-foreground);
+    --color-card: var(--card);
+    --radius-sm: calc(var(--radius) - 4px);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) + 4px);
+    --color-obsidian: #0d0d0d;
+    --color-lava: #e6400e;
+    --color-deep-lava: #8b0000;
+    --color-ember: #b22222;
+    --color-cold-ember: rgba(178, 34, 34, 0.53);
+    --color-magma: #ff6f00;
+    --color-ash: #cccccc;
+    --color-basalt: #2f2f2f;
+    --color-pumice: #f5f5f5;
+    --color-charcoal: #333333;
+    --color-sulfur: #ffd700;
+    --color-slate: #1c1c1c;
+    --color-clay: #d8cab8;
+    --color-success: #25dd09;
+    --color-very-light: #fcfcfc;
+    --color-light-grayish: #b3b3b3;
+    --color-coal: #353535;
+    --color-dark-coal: #252525;
+}
+
+:root {
+    --bg: var(--color-pumice); /* pumice */
+    --text: var(--color-slate); /* slate */
+    --radius: 0.625rem;
+    --background: #ffffff;
+    --foreground: var(--color-dark-coal);
+    --card: #ffffff;
+    --card-foreground: var(--color-dark-coal);
+    --popover: #ffffff;
+    --popover-foreground: var(--color-dark-coal);
+    --primary: var(--color-lava);
+    --primary-foreground: var(--color-very-light);
+    --secondary: var(--color-sulfur);
+    --secondary-foreground: var(--color-coal);
+    --muted: #f7f7f7;
+    --muted-foreground: #888888; /* More readable on pumice */
+    --accent: var(--color-clay);
+    --accent-foreground: var(--color-coal);
+    --destructive: #d7263d;
+    --border: #ebebeb;
+    --input: #ebebeb;
+    --ring: var(--color-light-grayish);
+    --chart-1: #e67e22;
+    --chart-2: #3b9eff;
+    --chart-3: #5a6aff;
+    --chart-4: #ffd166;
+    --chart-5: #ffb347;
+    --sidebar: var(--color-basalt);
+    --sidebar-foreground: var(--color-dark-coal);
+    --sidebar-primary: var(--color-lava);
+    --sidebar-primary-foreground: var(--color-coal); /* Matches other foregrounds */
+    --sidebar-accent: var(--color-sulfur);
+    --sidebar-accent-foreground: var(--color-coal);
+    --sidebar-border: #ebebeb;
+    --sidebar-ring: var(--color-light-grayish);
+    --primary-hover: var(--color-magma);
+    --accent-hover: var(--color-ember);
+    --destructive-hover: var(--color-deep-lava);
+    --destructive-foreground: var(--color-very-light);
+}
+
+.dark {
+    --bg: var(--color-obsidian);
+    --text: var(--color-ash);
+    --background: var(--color-dark-coal);
+    --foreground: var(--color-very-light);
+    --card: var(--color-coal);
+    --card-foreground: var(--color-very-light);
+    --popover: var(--color-coal);
+    --popover-foreground: var(--color-very-light);
+    --primary: var(--color-lava);
+    --primary-foreground: var(--color-coal);
+    --secondary: var(--color-magma);
+    --secondary-foreground: var(--color-very-light);
+    --muted: #444444;
+    --muted-foreground: var(--color-light-grayish);
+    --accent: var(--color-charcoal);
+    --accent-foreground: var(--color-very-light);
+    --destructive: #ff4f5e;
+    --border: rgba(255, 255, 255, 0.1);
+    --input: rgba(255, 255, 255, 0.15);
+    --ring: #888888;
+    --chart-1: #6c63ff;
+    --chart-2: #ffd166;
+    --chart-3: #ffb347;
+    --chart-4: #7f53ac;
+    --chart-5: #ff6f61;
+    --sidebar: var(--color-basalt);
+    --sidebar-foreground: var(--color-very-light);
+    --sidebar-primary: var(--color-lava);
+    --sidebar-primary-foreground: var(--color-very-light);
+    --sidebar-accent: var(--color-sulfur);
+    --sidebar-accent-foreground: var(--color-very-light);
+    --sidebar-border: rgba(255, 255, 255, 0.1);
+    --sidebar-ring: var(--color-light-grayish);
+    --primary-hover: var(--color-magma);
+    --accent-hover: var(--color-ember);
+    --destructive-hover: var(--color-deep-lava);
+    --destructive-foreground: var(--color-very-light); /* Bright for contrast */
+}
+
+@layer base {
+    * {
+        @apply border-border outline-ring/50;
+    }
+
+    body {
+        @apply bg-background text-foreground dark:bg-background dark:text-foreground;
+    }
+}
+
+h1,
+h2 {
+    font-weight: 600;
+    color: var(--foreground);
+}
+
+h1 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+a {
+    color: var(--primary) !important;
+    text-decoration: none !important;
+
+    &:not([data-slot="navigation-menu-link"]) &:not(.nav-item) {
+        padding: 0 0.25rem;
+        width: auto;
+
+        &:hover {
+            color: var(--primary-hover) !important;
+            background-color: var(--accent);
+            border-radius: 0.25rem;
+        }
+    }
+}
+
+
+p {
+    margin: 0.5rem 0;
+}
+
+ol {
+    margin: 0.5rem 0;
+    list-style: outside decimal;
+    padding-left: 1.25rem;
+}
+
+li.body-text {
+    margin: 1rem 1rem;
+}
+
+.body-text {
+    margin-left: 1rem;
 }
