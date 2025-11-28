@@ -54,11 +54,11 @@ export function Header() {
       setNavMenuOpen: setNavMenuOpenVision,
     },
     {
-      title: 'Adoption',
+      title: 'Index',
       href: '/adoption',
       children: [
-        { title: 'Early Adoption', href: '/adoption/early-adoption' },
-        { title: 'Current Adoption', href: '/adoption/current-adoption' },
+        { title: 'Early Index', href: '/adoption/early-adoption' },
+        { title: 'Current Index', href: '/adoption/current-adoption' },
       ],
       menuOpen: navMenuOpenAdoption,
       setNavMenuOpen: setNavMenuOpenAdoption,

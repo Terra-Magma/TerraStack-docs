@@ -12,7 +12,7 @@ export default function AdoptionVisual() {
 
   const chartConfig = {
     users: {
-      label: 'Adoption',
+      label: 'Index',
       color: 'var(--chart-1)',
     },
   } satisfies ChartConfig;
