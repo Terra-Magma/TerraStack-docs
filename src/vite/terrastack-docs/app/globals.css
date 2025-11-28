@@ -69,7 +69,7 @@
     --card-foreground: var(--color-dark-coal);
     --popover: #ffffff;
     --popover-foreground: var(--color-dark-coal);
-    --primary: var(--color-lava);
+    --primary: var(--color-magma);
     --primary-foreground: var(--color-very-light);
     --secondary: var(--color-sulfur);
     --secondary-foreground: var(--color-coal);
@@ -94,7 +94,7 @@
     --sidebar-accent-foreground: var(--color-coal);
     --sidebar-border: #ebebeb;
     --sidebar-ring: var(--color-light-grayish);
-    --primary-hover: var(--color-magma);
+    --primary-hover: var(--color-lava);
     --accent-hover: var(--color-ember);
     --destructive-hover: var(--color-deep-lava);
     --destructive-foreground: var(--color-very-light);
@@ -109,7 +109,7 @@
     --card-foreground: var(--color-very-light);
     --popover: var(--color-coal);
     --popover-foreground: var(--color-very-light);
-    --primary: var(--color-lava);
+    --primary: var(--color-magma);
     --primary-foreground: var(--color-coal);
     --secondary: var(--color-magma);
     --secondary-foreground: var(--color-very-light);
@@ -134,7 +134,7 @@
     --sidebar-accent-foreground: var(--color-very-light);
     --sidebar-border: rgba(255, 255, 255, 0.1);
     --sidebar-ring: var(--color-light-grayish);
-    --primary-hover: var(--color-magma);
+    --primary-hover: var(--color-lava);
     --accent-hover: var(--color-ember);
     --destructive-hover: var(--color-deep-lava);
     --destructive-foreground: var(--color-very-light); /* Bright for contrast */
@@ -168,12 +168,10 @@ h2 {
 
 a {
     color: var(--primary) !important;
+    text-decoration-color: var(--primary) !important;
+    text-decoration: none !important;
 
-    &[data-slot="navigation-menu-link"], .nav-item {
-        text-decoration: none !important;
-    }
-
-    &:not([data-slot="navigation-menu-link"]) &:not(.nav-item) {
+    &:not(.nav-item) {
         padding: 0 0.25rem;
         width: auto;
 
@@ -181,6 +179,7 @@ a {
             color: var(--primary-hover) !important;
             background-color: var(--accent);
             border-radius: 0.25rem;
+            text-decoration-color: var(--primary-hover) !important;
         }
     }
 }

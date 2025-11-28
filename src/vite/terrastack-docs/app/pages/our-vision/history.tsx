@@ -1,4 +1,4 @@
-﻿import Link from 'next/link';
+﻿import { Link } from '@mui/material';
 import { TableOfContents } from '~/components/layout/table-of-contents';
 import { Breadcrumbs } from '~/components/ui/breadcrumbs';
 import { PageNavigation } from '~/components/layout/page-navigation';

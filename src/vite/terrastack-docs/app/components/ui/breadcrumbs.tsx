@@ -1,5 +1,6 @@
-import { ChevronRight, Link } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Link } from '@mui/material';
 
 interface BreadcrumbItem {
   label: string;

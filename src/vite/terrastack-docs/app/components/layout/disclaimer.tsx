@@ -1,4 +1,4 @@
-﻿import { Link } from 'lucide-react';
+﻿import { Link } from '@mui/material';
 
 export default function Disclaimer() {
   return (

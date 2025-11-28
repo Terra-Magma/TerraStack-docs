@@ -30,6 +30,7 @@ export default function VisionPage() {
                 key={link.id}
                 href={link.href}
                 style={{ fontSize: '2em' }}
+                className="!underline"
               >
                 {link.label}
               </Link>

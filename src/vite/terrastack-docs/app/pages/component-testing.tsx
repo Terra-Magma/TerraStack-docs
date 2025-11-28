@@ -9,7 +9,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '~/components/ui/breadcrumb';
-import Link from 'next/link';
+import { Link } from '@mui/material';
 import {
   DropdownMenu,
   DropdownMenuContent,

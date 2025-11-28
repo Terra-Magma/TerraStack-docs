@@ -71,7 +71,7 @@ export function Header() {
         <div className="flex items-center gap-6 flex-1">
           <Link
             href="/"
-            className="flex items-center gap-3"
+            className="flex items-center gap-3 no-underline"
           >
             <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">TS</span>
@@ -87,7 +87,7 @@ export function Header() {
                 (item) =>
                   (item.children && (
                     <NavigationMenuItem key={item.href}>
-                      <NavigationMenuTrigger className="text-primary-hover bg-transparent">
+                      <NavigationMenuTrigger className="text-primary-hover bg-transparent nav-item">
                         <Link href={item.href}>{item.title}</Link>
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>
@@ -98,7 +98,12 @@ export function Header() {
                               className="m-0"
                             >
                               <NavigationMenuLink asChild>
-                                <Link href={child.href}>{child.title}</Link>
+                                <Link
+                                  className="nav-item"
+                                  href={child.href}
+                                >
+                                  {child.title}
+                                </Link>
                               </NavigationMenuLink>
                             </li>
                           ))}
@@ -108,7 +113,12 @@ export function Header() {
                   )) || (
                     <NavigationMenuItem key={item.href}>
                       <NavigationMenuLink asChild>
-                        <Link href={item.href}>{item.title}</Link>
+                        <Link
+                          className="nav-item"
+                          href={item.href}
+                        >
+                          {item.title}
+                        </Link>
                       </NavigationMenuLink>
                     </NavigationMenuItem>
                   )
