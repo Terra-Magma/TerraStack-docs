@@ -157,14 +157,14 @@ export function Header() {
               className="pl-10"
             />
           </div>
-          <div className="space-y-2">
+          <div>
             {items.map(
               (item) =>
                 (item.children && (
                   <div key={item.href}>
                     <div
                       key={item.href}
-                      className=" py-2 hover:text-primary text-magma transition-colors flex items-center group cursor-pointer"
+                      className="text-primary transition-colors flex items-center group cursor-pointer hover:bg-accent rounded-sm p-2"
                       onClick={() => item.setNavMenuOpen!(!item.menuOpen)}
                     >
                       {item.title}
@@ -177,11 +177,11 @@ export function Header() {
                       />
                     </div>
                     <div
-                      className={cn('animated-div flex flex-col')}
+                      className={cn('px-2 animated-div flex flex-col')}
                       style={
                         item.menuOpen
                           ? {
-                              height: `${item.children.length * 36}px`,
+                              height: `${item.children.length * 40}px`,
                             }
                           : {}
                       }
@@ -190,7 +190,9 @@ export function Header() {
                         <Link
                           key={child.href}
                           href={child.href}
-                          className={cn('!py-2 ml-5 text-sm transition-colors group cursor-pointer nav-item')}
+                          className={cn(
+                            'text-sm transition-colors group cursor-pointer nav-item hover:bg-accent rounded-sm !p-2'
+                          )}
                           onClick={() => {
                             item.setNavMenuOpen!(false);
                             setIsMenuOpen(false);
@@ -206,7 +208,7 @@ export function Header() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="block py-2 transition-colors nav-item"
+                    className="block transition-colors nav-item  hover:bg-accent rounded-sm p-2"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.title}
