@@ -9,10 +9,10 @@ type LightDark = 'light' | 'dark';
 
 const ThemeContext = createContext<ThemeContextType | null>(null);
 
-function getCookie(name) {
+function getCookie(name: string) {
   const value = `; ${document.cookie}`;
   const parts = value.split(`; ${name}=`);
-  if (parts.length === 2) return parts.pop().split(';').shift();
+  if (parts.length === 2) return parts.pop()!.split(';').shift();
 }
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
