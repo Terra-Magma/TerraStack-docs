@@ -52,6 +52,7 @@ export default function Home() {
 
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
             <Button
+              variant="default"
               size="lg"
               className="flex items-center gap-2"
             >

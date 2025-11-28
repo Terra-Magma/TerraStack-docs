@@ -87,7 +87,7 @@ export function Header() {
                 (item) =>
                   (item.children && (
                     <NavigationMenuItem key={item.href}>
-                      <NavigationMenuTrigger style={{ color: 'var(--primary-hover)' }}>
+                      <NavigationMenuTrigger className="text-primary-hover bg-transparent">
                         <Link href={item.href}>{item.title}</Link>
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>
