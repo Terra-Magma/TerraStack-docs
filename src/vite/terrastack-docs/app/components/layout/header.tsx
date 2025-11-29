@@ -87,7 +87,7 @@ export function Header() {
                 (item) =>
                   (item.children && (
                     <NavigationMenuItem key={item.href}>
-                      <NavigationMenuTrigger className="text-primary-hover bg-transparent nav-item">
+                      <NavigationMenuTrigger className="text-primary-hover bg-transparent nav-item !text-base font-normal">
                         <Link href={item.href}>{item.title}</Link>
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>

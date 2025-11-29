@@ -23,7 +23,7 @@ export default function HistoryPage() {
         <Breadcrumbs
           items={[
             { label: 'Our Vision', href: '/our-vision' },
-            { label: 'A Brief History', href: '/our-vision/history' },
+            { label: 'A Brief History', href: '/our-vision/history', current: true },
           ]}
         />
         <div className="row">
@@ -33,7 +33,7 @@ export default function HistoryPage() {
         </div>
         <div className="row">
           <div className="col">
-            <p className={'italic text-gray-200'}>The Internet is a hack.</p>
+            <p className={'italic dark:text-gray-200 text-gray-500'}>The Internet is a hack.</p>
             <h2 id="1969">1969</h2>
             <p className={'body-text'}>
               The hack started in 1969 with the{' '}

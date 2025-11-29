@@ -21,13 +21,13 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
           key={item.href}
           className="flex items-center"
         >
-          {index > 0 && <ChevronRight className="h-4 w-4 text-muted-foreground mx-2" />}
+          {index > 0 && <ChevronRight className="h-6 w-6 text-muted-foreground" />}
           {item.current ? (
-            <span className="text-foreground font-medium">{item.label}</span>
+            <span className="text-foreground font-medium !text-lg ml-2">{item.label}</span>
           ) : (
             <Link
               href={item.href}
-              className="text-muted-foreground hover:text-foreground transition-colors"
+              className="text-muted-foreground hover:text-foreground transition-colors !text-lg"
             >
               {item.label}
             </Link>
