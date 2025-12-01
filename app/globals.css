@@ -1,5 +1,4 @@
-﻿@import '../node_modules/tailwindcss/dist/lib.d.mts';
-@import '../node_modules/tw-animate-css';
+﻿@import 'tailwindcss';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -69,13 +68,13 @@
     --card-foreground: var(--color-dark-coal);
     --popover: #ffffff;
     --popover-foreground: var(--color-dark-coal);
-    --primary: var(--color-magma);
+    --primary: var(--color-lava);
     --primary-foreground: var(--color-very-light);
     --secondary: var(--color-sulfur);
     --secondary-foreground: var(--color-coal);
     --muted: #f7f7f7;
     --muted-foreground: #888888; /* More readable on pumice */
-    --accent: var(--color-clay);
+    --accent: var(--sidebar-border);
     --accent-foreground: var(--color-coal);
     --destructive: #d7263d;
     --border: #ebebeb;
@@ -94,7 +93,7 @@
     --sidebar-accent-foreground: var(--color-coal);
     --sidebar-border: #ebebeb;
     --sidebar-ring: var(--color-light-grayish);
-    --primary-hover: var(--color-lava);
+    --primary-hover: var(--color-magma);
     --accent-hover: var(--color-ember);
     --destructive-hover: var(--color-deep-lava);
     --destructive-foreground: var(--color-very-light);
