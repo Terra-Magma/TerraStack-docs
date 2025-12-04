@@ -1,6 +1,5 @@
-'use client';
-
-import React, { createContext, type ReactNode, useContext, useEffect, useState } from 'react';
+import React, {createContext, type ReactNode, useContext, useEffect, useState} from 'react';
+import {Cookies} from 'react-cookie';
 
 type ThemeContextType = {
   theme: LightDark;
@@ -11,27 +10,21 @@ type LightDark = 'light' | 'dark';
 
 const ThemeContext = createContext<ThemeContextType | null>(null);
 
-function getCookie(name: string) {
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${name}=`);
-  if (parts.length === 2) return parts.pop()!.split(';').shift();
-}
-
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const savedTheme = getCookie('theme') ?? 'light';
+  const cookies = new Cookies();
+  const savedTheme = cookies.get<string>('theme') ?? 'light';
 
-  document.cookie = `theme=${savedTheme}; path=/; max-age=` + 60 * 60 * 24 * 365;
+  cookies.set('theme', savedTheme, { maxAge: 60 * 60 * 24 * 365, path: '/' });
 
   const [theme, setTheme] = useState(savedTheme as LightDark);
 
   useEffect(() => {
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
-      document.cookie = `theme=${theme}; path=/; max-age=` + 60 * 60 * 24 * 365;
     } else {
       document.documentElement.classList.remove('dark');
-      document.cookie = `theme=${theme}; path=/; max-age=` + 60 * 60 * 24 * 365;
     }
+    cookies.set('theme', theme, { maxAge: 60 * 60 * 24 * 365, path: '/' });
   }, [theme]);
 
   // You can also provide functions to update the theme, e.g., toggle dark mode
