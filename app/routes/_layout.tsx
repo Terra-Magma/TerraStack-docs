@@ -1,7 +1,7 @@
 import { Header } from '~/components/layout/header';
 import { Outlet } from 'react-router';
 import type { Route } from '../../.react-router/types/app/routes/+types/home';
-import { ThemeProvider } from '~/components/theme';
+import { ThemeProvider, useTheme } from '~/components/theme';
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -13,11 +13,8 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  let theme = localStorage.getItem('theme');
-  if (theme === null) {
-    localStorage.setItem('theme', 'light');
-    theme = 'light';
-  }
+  const theme = useTheme()?.theme ?? 'light';
+
   return (
     <ThemeProvider>
       <div className="min-h-screen bg-background">

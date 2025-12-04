@@ -1,9 +1,10 @@
 'use client';
 
 import { Toaster as Sonner, type ToasterProps } from 'sonner';
+import { useTheme } from '../theme';
 
 const Toaster = ({ ...props }: ToasterProps) => {
-  const theme = localStorage.getItem('theme') ?? 'system';
+  const theme = useTheme()?.theme ?? 'light';
 
   return (
     <Sonner

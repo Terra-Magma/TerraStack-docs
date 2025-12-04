@@ -1,3 +1,5 @@
+'use client';
+
 import React, { createContext, type ReactNode, useContext, useEffect, useState } from 'react';
 
 type ThemeContextType = {
@@ -34,7 +36,6 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
   // You can also provide functions to update the theme, e.g., toggle dark mode
   const toggleDarkMode = () => {
-    console.log({ theme });
     setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
   };
 
