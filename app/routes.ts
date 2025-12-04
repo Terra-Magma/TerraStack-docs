@@ -20,6 +20,7 @@ export default [
     route('services', 'pages/services.tsx'),
     route('support', 'pages/support.tsx'),
     route('component-testing', 'pages/component-testing.tsx'),
+    route('globe', 'pages/globe.tsx'),
 
     route('*', 'routes/not-found.tsx'),
   ]),
