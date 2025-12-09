@@ -1,4 +1,4 @@
-import { Link } from '@mui/material';
+import { Link } from 'react-router';
 
 export default function VisionPage() {
   const links = [
@@ -28,7 +28,7 @@ export default function VisionPage() {
             {links.map((link) => (
               <Link
                 key={link.id}
-                href={link.href}
+                to={link.href}
                 style={{ fontSize: '2em' }}
                 className="!underline"
               >
@@ -50,7 +50,7 @@ export default function VisionPage() {
             </p>
             <p>
               <i>
-                Please <Link href="/Contact/Contact.stm">inform us</Link> of any factual errors so that we may correct
+                Please <Link to="/Contact/Contact.stm">inform us</Link> of any factual errors so that we may correct
                 them.
               </i>
             </p>

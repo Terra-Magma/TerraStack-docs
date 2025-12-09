@@ -16,7 +16,7 @@ import {
 import GithubButton from '~/components/layout/github-button';
 import './header.css';
 import { ThemeToggle } from '~/components/theme-toggle';
-import { Link } from '@mui/material';
+import { Link } from 'react-router';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
@@ -68,7 +68,7 @@ export function Header() {
       <div className="container flex h-16 items-center px-6">
         <div className="flex items-center gap-6 flex-1">
           <Link
-            href="/"
+            to="/"
             className="flex items-center gap-3 no-underline"
           >
             <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
@@ -86,7 +86,7 @@ export function Header() {
                   (item.children && (
                     <NavigationMenuItem key={item.href}>
                       <NavigationMenuTrigger className="text-primary-hover bg-transparent nav-item !text-base font-normal">
-                        <Link href={item.href}>{item.title}</Link>
+                        <Link to={item.href}>{item.title}</Link>
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>
                         <ul className="grid w-[200px] gap-4">
@@ -98,7 +98,7 @@ export function Header() {
                               <NavigationMenuLink asChild>
                                 <Link
                                   className="nav-item"
-                                  href={child.href}
+                                  to={child.href}
                                 >
                                   {child.title}
                                 </Link>
@@ -113,7 +113,7 @@ export function Header() {
                       <NavigationMenuLink asChild>
                         <Link
                           className="nav-item"
-                          href={item.href}
+                          to={item.href}
                         >
                           {item.title}
                         </Link>
@@ -197,7 +197,7 @@ export function Header() {
                       {item.children.map((child) => (
                         <Link
                           key={child.href}
-                          href={child.href}
+                          to={child.href}
                           className={cn(
                             'text-sm transition-colors group cursor-pointer nav-item hover:bg-accent rounded-sm !p-2'
                           )}
@@ -215,7 +215,7 @@ export function Header() {
                 )) || (
                   <Link
                     key={item.href}
-                    href={item.href}
+                    to={item.href}
                     className="block transition-colors nav-item  hover:bg-accent rounded-sm p-2"
                     onClick={() => setIsMenuOpen(false)}
                   >

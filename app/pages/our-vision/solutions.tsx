@@ -1,8 +1,8 @@
-﻿import { Link } from '@mui/material';
-import { TableOfContents } from '~/components/layout/table-of-contents';
+﻿import { TableOfContents } from '~/components/layout/table-of-contents';
 import { Breadcrumbs } from '~/components/ui/breadcrumbs';
 import { PageNavigation } from '~/components/layout/page-navigation';
 import Disclaimer from '~/components/layout/disclaimer';
+import { Link } from 'react-router';
 
 export default function SolutionsPage() {
   const tableOfContents = [
@@ -43,7 +43,8 @@ export default function SolutionsPage() {
                 of existing protocols, such as the{' '}
                 <Link
                   target="_blank"
-                  href="https://en.wikipedia.org/wiki/End-to-end_principle"
+                  to="https://en.wikipedia.org/wiki/End-to-end_principle"
+                  rel="noopener noreferrer"
                 >
                   end-to-end principle
                 </Link>
@@ -100,7 +101,8 @@ export default function SolutionsPage() {
               So-called{' '}
               <Link
                 target="_blank"
-                href="https://en.wikipedia.org/wiki/Fully_qualified_domain_name"
+                to="https://en.wikipedia.org/wiki/Fully_qualified_domain_name"
+                rel="noopener noreferrer"
               >
                 fully qualified domain names (FQDN)
               </Link>{' '}
@@ -141,14 +143,16 @@ export default function SolutionsPage() {
               The{' '}
               <Link
                 target="_blank"
-                href="https://en.wikipedia.org/wiki/Vehicle-to-everything"
+                to="https://en.wikipedia.org/wiki/Vehicle-to-everything"
+                rel="noopener noreferrer"
               >
                 Vehicle-To-Everything (V2X)
               </Link>{' '}
               industry, projected to grow to a market size of{' '}
               <Link
                 target="_blank"
-                href="https://straitsresearch.com/report/automotive-v2x-market"
+                to="https://straitsresearch.com/report/automotive-v2x-market"
+                rel="noopener noreferrer"
               >
                 $36 billion by 2031
               </Link>

@@ -1,6 +1,6 @@
 import { ChevronRight } from 'lucide-react';
 import { cn } from '~/lib/utils';
-import { Link } from '@mui/material';
+import { Link } from 'react-router';
 
 interface BreadcrumbItem {
   label: string;
@@ -26,7 +26,7 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
             <span className="text-foreground font-medium !text-lg ml-2">{item.label}</span>
           ) : (
             <Link
-              href={item.href}
+              to={item.href}
               className="text-muted-foreground hover:text-foreground transition-colors !text-lg"
             >
               {item.label}

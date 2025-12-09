@@ -1,8 +1,8 @@
-﻿import { Link } from '@mui/material';
-import { TableOfContents } from '~/components/layout/table-of-contents';
+﻿import { TableOfContents } from '~/components/layout/table-of-contents';
 import { Breadcrumbs } from '~/components/ui/breadcrumbs';
 import { PageNavigation } from '~/components/layout/page-navigation';
 import Disclaimer from '~/components/layout/disclaimer';
+import { Link } from 'react-router';
 
 export default function HistoryPage() {
   const tableOfContents = [
@@ -39,14 +39,16 @@ export default function HistoryPage() {
               The hack started in 1969 with the{' '}
               <Link
                 target="_blank"
-                href="https://en.wikipedia.org/wiki/ARPANET"
+                to="https://en.wikipedia.org/wiki/ARPANET"
+                rel="noopener noreferrer"
               >
                 ARPAnet
               </Link>
               . The US Department of Defense wanted a wide-scale self-healing network that relied on so-called{' '}
               <Link
                 target="_blank"
-                href="https://en.wikipedia.org/wiki/Packet_switching"
+                to="https://en.wikipedia.org/wiki/Packet_switching"
+                rel="noopener noreferrer"
               >
                 packet-switching
               </Link>
@@ -54,14 +56,16 @@ export default function HistoryPage() {
               various researchers including{' '}
               <Link
                 target="_blank"
-                href="https://en.wikipedia.org/wiki/Vint_Cerf"
+                to="https://en.wikipedia.org/wiki/Vint_Cerf"
+                rel="noopener noreferrer"
               >
                 Vint Cerf
               </Link>{' '}
               and{' '}
               <Link
                 target="_blank"
-                href="https://en.wikipedia.org/wiki/Bob_Kahn"
+                to="https://en.wikipedia.org/wiki/Bob_Kahn"
+                rel="noopener noreferrer"
               >
                 Bob Kahn
               </Link>{' '}
@@ -90,7 +94,8 @@ export default function HistoryPage() {
               for{' '}
               <Link
                 target="_blank"
-                href="https://users.cs.duke.edu/~narten/ipng.html"
+                to="https://users.cs.duke.edu/~narten/ipng.html"
+                rel="noopener noreferrer"
               >
                 Internet Protocol Next Generation
               </Link>
@@ -105,7 +110,8 @@ export default function HistoryPage() {
               The researchers agreed that, while they were fixing the{' '}
               <Link
                 target="_blank"
-                href="https://en.wikipedia.org/wiki/IPv4_address_exhaustion"
+                to="https://en.wikipedia.org/wiki/IPv4_address_exhaustion"
+                rel="noopener noreferrer"
               >
                 IP address space exhaustion problem
               </Link>
@@ -130,7 +136,8 @@ export default function HistoryPage() {
               While deliberation occurred{' '}
               <Link
                 target="_blank"
-                href="https://home.cern/science/computing/birth-web/short-history-web"
+                to="https://home.cern/science/computing/birth-web/short-history-web"
+                rel="noopener noreferrer"
               >
                 Tim Berners-Lee gave birth to the WWW
               </Link>
@@ -142,7 +149,8 @@ export default function HistoryPage() {
               The Internet did not implode due to lack of IP addreses. Very clever people of the{' '}
               <Link
                 target="_blank"
-                href="https://www.ietf.org/"
+                to="https://www.ietf.org/"
+                rel="noopener noreferrer"
               >
                 Internet Engineering Task Force (IETF)
               </Link>{' '}
@@ -168,14 +176,16 @@ export default function HistoryPage() {
                 To the great expectation and relief of many,{' '}
                 <Link
                   target="_blank"
-                  href="https://www.stanford.edu/"
+                  to="https://www.stanford.edu/"
+                  rel="noopener noreferrer"
                 >
                   Stanford University
                 </Link>
                 threw their hat into the ring. Unfortunately, their{' '}
                 <Link
                   target="_blank"
-                  href="https://en.wikipedia.org/wiki/Clean_Slate_Program"
+                  to="https://en.wikipedia.org/wiki/Clean_Slate_Program"
+                  rel="noopener noreferrer"
                 >
                   clean-slate program ceased in January 2012
                 </Link>
@@ -186,14 +196,16 @@ export default function HistoryPage() {
                 The US National Science Foundation funded four programs under its{' '}
                 <Link
                   target="_blank"
-                  href="http://www.nets-fia.net/"
+                  to="http://www.nets-fia.net/"
+                  rel="noopener noreferrer"
                 >
                   Future Internet Architecture Project
                 </Link>
                 . Of these projects, it appears that only{' '}
                 <Link
                   target="_blank"
-                  href="http://www.cs.cmu.edu/~xia/"
+                  to="http://www.cs.cmu.edu/~xia/"
+                  rel="noopener noreferrer"
                 >
                   XIA
                 </Link>{' '}
@@ -204,7 +216,8 @@ export default function HistoryPage() {
                 The US National Science Foundation operated the{' '}
                 <Link
                   target="_blank"
-                  href="https://new.nsf.gov/funding/opportunities/cns-networking-technology-systems-nets"
+                  to="https://new.nsf.gov/funding/opportunities/cns-networking-technology-systems-nets"
+                  rel="noopener noreferrer"
                 >
                   Networking Technology and Systems (NeTS)
                 </Link>{' '}
@@ -222,21 +235,24 @@ export default function HistoryPage() {
                 The{' '}
                 <Link
                   target="_blank"
-                  href="https://www.geni.net/"
+                  to="https://www.geni.net/"
+                  rel="noopener noreferrer"
                 >
                   Global Environment for Network Innovation (GENI)
                 </Link>{' '}
                 is/was a{' '}
                 <Link
                   target="_blank"
-                  href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=1541939"
+                  to="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=1541939"
+                  rel="noopener noreferrer"
                 >
                   $300 million program
                 </Link>{' '}
                 to create a global environment to{' '}
                 <Link
                   target="_blank"
-                  href="https://new.nsf.gov/funding/opportunities/global-environment-networking-innovations-geni"
+                  to="https://new.nsf.gov/funding/opportunities/global-environment-networking-innovations-geni"
+                  rel="noopener noreferrer"
                 >
                   ...inspire and accelerate the potential for groundbreaking innovations of significant socio-economic
                   impact.
@@ -247,7 +263,8 @@ export default function HistoryPage() {
                 The US National Science Foundation funded{' '}
                 <Link
                   target="_blank"
-                  href="https://learn.fabric-testbed.net/"
+                  to="https://learn.fabric-testbed.net/"
+                  rel="noopener noreferrer"
                 >
                   FABRIC
                 </Link>
@@ -258,14 +275,16 @@ export default function HistoryPage() {
               Other{' '}
               <Link
                 target="_blank"
-                href="https://en.wikipedia.org/wiki/Future_Internet"
+                to="https://en.wikipedia.org/wiki/Future_Internet"
+                rel="noopener noreferrer"
               >
                 Future Internet
               </Link>{' '}
               programs sprouted around the world. An example is{' '}
               <Link
                 target="_blank"
-                href="https://scion-architecture.net/"
+                to="https://scion-architecture.net/"
+                rel="noopener noreferrer"
               >
                 SCION
               </Link>
@@ -283,7 +302,8 @@ export default function HistoryPage() {
               prevent, with yet another hack, the Internet from collapsing onto itself because of{' '}
               <Link
                 target="_blank"
-                href="https://datatracker.ietf.org/doc/html/rfc1380#section-4.3"
+                to="https://datatracker.ietf.org/doc/html/rfc1380#section-4.3"
+                rel="noopener noreferrer"
               >
                 routing table explosion.
               </Link>
@@ -292,14 +312,16 @@ export default function HistoryPage() {
             <p className={'body-text'}>
               <Link
                 target="_blank"
-                href="https://www.geni.net/"
+                to="https://www.geni.net/"
+                rel="noopener noreferrer"
               >
                 GENI
               </Link>{' '}
               shut down its operations on August 1, 2023. It has since transitioned to{' '}
               <Link
                 target="_blank"
-                href="https://fabric-testbed.net/"
+                to="https://fabric-testbed.net/"
+                rel="noopener noreferrer"
               >
                 FABRIC
               </Link>
@@ -339,42 +361,48 @@ export default function HistoryPage() {
                 ancillary protocols such as (
                 <Link
                   target="_blank"
-                  href="https://en.wikipedia.org/wiki/Domain_Name_System"
+                  to="https://en.wikipedia.org/wiki/Domain_Name_System"
+                  rel="noopener noreferrer"
                 >
                   DNS
                 </Link>
                 ,{' '}
                 <Link
                   target="_blank"
-                  href="https://en.wikipedia.org/wiki/Network_address_translation"
+                  to="https://en.wikipedia.org/wiki/Network_address_translation"
+                  rel="noopener noreferrer"
                 >
                   NAT
                 </Link>
                 ,{' '}
                 <Link
                   target="_blank"
-                  href="https://en.wikipedia.org/wiki/Border_Gateway_Protocol"
+                  to="https://en.wikipedia.org/wiki/Border_Gateway_Protocol"
+                  rel="noopener noreferrer"
                 >
                   BGP
                 </Link>
                 ,{' '}
                 <Link
                   target="_blank"
-                  href="https://en.wikipedia.org/wiki/Interior_gateway_protocol"
+                  to="https://en.wikipedia.org/wiki/Interior_gateway_protocol"
+                  rel="noopener noreferrer"
                 >
                   IGP
                 </Link>
                 ,{' '}
                 <Link
                   target="_blank"
-                  href="https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol"
+                  to="https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol"
+                  rel="noopener noreferrer"
                 >
                   ICMP
                 </Link>
                 ,{' '}
                 <Link
                   target="_blank"
-                  href="https://en.wikipedia.org/wiki/Transport_Layer_Security"
+                  to="https://en.wikipedia.org/wiki/Transport_Layer_Security"
+                  rel="noopener noreferrer"
                 >
                   TLS
                 </Link>
@@ -385,7 +413,8 @@ export default function HistoryPage() {
                 over Ethernet and other{' '}
                 <Link
                   target="_blank"
-                  href="https://en.wikipedia.org/wiki/Data_link_layer"
+                  to="https://en.wikipedia.org/wiki/Data_link_layer"
+                  rel="noopener noreferrer"
                 >
                   Layer-
                 </Link>

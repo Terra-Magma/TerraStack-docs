@@ -1,6 +1,6 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '~/components/ui/button';
-import { Link } from '@mui/material';
+import { Link } from 'react-router';
 
 interface PageNavigationItem {
   title: string;
@@ -17,7 +17,7 @@ export function PageNavigation({ prev, next }: PageNavigationProps) {
     <div className="flex justify-between items-center pt-8 mt-12 border-t">
       <div className="flex-1 flex">
         {prev && (
-          <Link href={prev.href}>
+          <Link to={prev.href}>
             <Button
               variant="ghost"
               className="group p-0 h-auto"
@@ -36,7 +36,7 @@ export function PageNavigation({ prev, next }: PageNavigationProps) {
 
       <div className="flex-1 flex justify-end">
         {next && (
-          <Link href={next.href}>
+          <Link to={next.href}>
             <Button
               variant="ghost"
               className="group p-0 h-auto"

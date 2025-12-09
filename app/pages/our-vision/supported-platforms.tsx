@@ -1,8 +1,8 @@
-﻿import { Link } from '@mui/material';
-import { TableOfContents } from '~/components/layout/table-of-contents';
+﻿import { TableOfContents } from '~/components/layout/table-of-contents';
 import { Breadcrumbs } from '~/components/ui/breadcrumbs';
 import { PageNavigation } from '~/components/layout/page-navigation';
 import Disclaimer from '~/components/layout/disclaimer';
+import { Link } from 'react-router';
 
 export default function SupportedPlatformsPage() {
   const tableOfContents = [{ id: 'supported-platforms', title: 'Supported Platforms', level: 2 }];
@@ -37,7 +37,8 @@ export default function SupportedPlatformsPage() {
               <li>
                 <Link
                   target="_blank"
-                  href="https://en.wikipedia.org/wiki/ESP32"
+                  to="https://en.wikipedia.org/wiki/ESP32"
+                  rel="noopener noreferrer"
                 >
                   ESP32
                 </Link>{' '}
@@ -46,7 +47,8 @@ export default function SupportedPlatformsPage() {
               <li>
                 <Link
                   target="_blank"
-                  href="https://en.wikipedia.org/wiki/Arduino"
+                  to="https://en.wikipedia.org/wiki/Arduino"
+                  rel="noopener noreferrer"
                 >
                   Arduino
                 </Link>{' '}
@@ -58,14 +60,16 @@ export default function SupportedPlatformsPage() {
               We will also provide minimal support for unlisted platforms as time/resources allow, including{' '}
               <Link
                 target="_blank"
-                href="https://www.freebsd.org/"
+                to="https://www.freebsd.org/"
+                rel="noopener noreferrer"
               >
                 BSD
               </Link>{' '}
               and{' '}
               <Link
                 target="_blank"
-                href="https://www.openindiana.org/"
+                to="https://www.openindiana.org/"
+                rel="noopener noreferrer"
               >
                 Solaris
               </Link>

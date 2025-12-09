@@ -1,4 +1,4 @@
-﻿import { Link } from '@mui/material';
+﻿import { Link } from 'react-router';
 
 export default function Disclaimer() {
   return (
@@ -15,7 +15,7 @@ export default function Disclaimer() {
         </p>
         <p>
           <i>
-            Please <Link href="/Contact/Contact.stm">inform us</Link> of any factual errors so that we may correct them.
+            Please <Link to="/Contact/Contact.stm">inform us</Link> of any factual errors so that we may correct them.
           </i>
         </p>
       </div>

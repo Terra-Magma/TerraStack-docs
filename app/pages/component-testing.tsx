@@ -48,7 +48,7 @@ export default function ComponentTesting() {
           <BreadcrumbList>
             <BreadcrumbItem>
               <BreadcrumbLink asChild>
-                <Link href="/src/vite/terrastack-docs/public">Home</Link>
+                <Link to="/src/vite/terrastack-docs/public">Home</Link>
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
@@ -68,7 +68,7 @@ export default function ComponentTesting() {
             <BreadcrumbSeparator />
             <BreadcrumbItem>
               <BreadcrumbLink asChild>
-                <Link href="/docs/components">Components</Link>
+                <Link to="/docs/components">Components</Link>
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />

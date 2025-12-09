@@ -1,8 +1,8 @@
-﻿import { Link } from '@mui/material';
-import { TableOfContents } from '~/components/layout/table-of-contents';
+﻿import { TableOfContents } from '~/components/layout/table-of-contents';
 import { Breadcrumbs } from '~/components/ui/breadcrumbs';
 import { PageNavigation } from '~/components/layout/page-navigation';
 import Disclaimer from '~/components/layout/disclaimer';
+import { Link } from 'react-router';
 
 export default function ProblemsPage() {
   const tableOfContents = [
@@ -46,24 +46,27 @@ export default function ProblemsPage() {
               meet at{' '}
               <Link
                 target="_blank"
-                href="https://en.wikipedia.org/wiki/Nassau,_Bahamas"
+                to="https://en.wikipedia.org/wiki/Nassau,_Bahamas"
+                rel="noopener noreferrer"
               >
                 Nassau
               </Link>
               ,{' '}
               <Link
                 target="_blank"
-                href="https://en.wikipedia.org/wiki/The_Bahamas"
+                to="https://en.wikipedia.org/wiki/The_Bahamas"
+                rel="noopener noreferrer"
               >
                 The Bahamas
               </Link>
               . While in route, Alpha decides to use the .mp3-playback application on his smartphone to listen to .mp3
-              files on the mass storage device of Beta’s smartphone with no mediating cloud storage server. The
+              files on the mass storage device of Beta's smartphone with no mediating cloud storage server. The
               addressing scheme that identifies both smartphones to the .mp3 client application and server applications
               so that a connection between the devices can be established is the{' '}
               <Link
                 target="_blank"
-                href="https://en.wikipedia.org/wiki/Network_address"
+                to="https://en.wikipedia.org/wiki/Network_address"
+                rel="noopener noreferrer"
               >
                 addressing problem
               </Link>
@@ -71,12 +74,13 @@ export default function ProblemsPage() {
             </p>
             <h2 id="naming">Naming</h2>
             <p className={'body-text'}>
-              The .mp3-playback client should have a means of specifying which server application on Beta’s smartphone
+              The .mp3-playback client should have a means of specifying which server application on Beta's smartphone
               should be the focus of a connection. Identifying the .mp3-playback server application using an identifier
               that is easily remembered by humans is one aspect the{' '}
               <Link
                 target="_blank"
-                href="https://en.wikipedia.org/wiki/Computer_network_naming_scheme"
+                to="https://en.wikipedia.org/wiki/Computer_network_naming_scheme"
+                rel="noopener noreferrer"
               >
                 naming
               </Link>{' '}
@@ -84,18 +88,19 @@ export default function ProblemsPage() {
             </p>
             <h2 id="numbering">Numbering</h2>
             <p className={'body-text'}>
-              The .mp3-playback client should have a means of specifying which server application on Beta’s smartphone
+              The .mp3-playback client should have a means of specifying which server application on Beta's smartphone
               should be the focus of a connection. Identifying the .mp3-playback server application using an identifier
               that is easily efficiently manipulated by computers is one aspect the numbering problem.
             </p>
             <h2 id="reliability">Reliability</h2>
             <p className={'body-text'}>
-              The free Wi-Fi access point near Beta on Beta’s ship is so popular, it becomes nearly saturated. Packets
+              The free Wi-Fi access point near Beta on Beta's ship is so popular, it becomes nearly saturated. Packets
               become lost, corrupted, reordered, replicated, and delayed. Maintaining the semblance of faultless
               continuity of the data stream is the{' '}
               <Link
                 target="_blank"
-                href="https://en.wikipedia.org/wiki/Reliability_(computer_networking)"
+                to="https://en.wikipedia.org/wiki/Reliability_(computer_networking)"
+                rel="noopener noreferrer"
               >
                 reliability
               </Link>{' '}
@@ -103,13 +108,14 @@ export default function ProblemsPage() {
             </p>
             <h2 id="prioritization">Prioritization</h2>
             <p className={'body-text'}>
-              While Alpha is listening to one of Beta’s .mp3 files, Beta receives an important phone call from her
+              While Alpha is listening to one of Beta's .mp3 files, Beta receives an important phone call from her
               mother. Prioritizing the voice stream over the .mp3-playback stream to minimize the delay that the voice
-              packets experience in Beta’s smartphone, as well as every Internet net node between Beta’s smartphone and
-              her mother’s, if the <strong>prioritization</strong> problem, also known as the{' '}
+              packets experience in Beta's smartphone, as well as every Internet net node between Beta's smartphone and
+              her mother's, if the <strong>prioritization</strong> problem, also known as the{' '}
               <Link
                 target="_blank"
-                href="https://en.wikipedia.org/wiki/Quality_of_service"
+                to="https://en.wikipedia.org/wiki/Quality_of_service"
+                rel="noopener noreferrer"
               >
                 quality of service
               </Link>{' '}
@@ -137,10 +143,11 @@ export default function ProblemsPage() {
             </p>
             <h2 id="multicast">Multicast</h2>
             <p className={'body-text'}>
-              Suddenly, near Beta’s ship, out of the ocean arises the mythological beast,{' '}
+              Suddenly, near Beta's ship, out of the ocean arises the mythological beast,{' '}
               <Link
                 target="_blank"
-                href="https://en.wikipedia.org/wiki/Kraken"
+                to="https://en.wikipedia.org/wiki/Kraken"
+                rel="noopener noreferrer"
               >
                 The Kraken
               </Link>
