@@ -1,4 +1,5 @@
 ﻿import Globe from 'react-globe.gl';
+import globeImage from '~/assets/earth-blue-marble.jpg';
 
 export default function GlobePage() {
   const myData = [
@@ -9,7 +10,7 @@ export default function GlobePage() {
   return (
     <div>
       <Globe
-        globeImageUrl="//cdn.jsdelivr.net/npm/three-globe/example/img/earth-blue-marble.jpg"
+        globeImageUrl={globeImage}
         pointsData={myData}
         pointRadius="size"
         onPointClick={(point) => window.open((point as { href: string }).href, '_blank')}
