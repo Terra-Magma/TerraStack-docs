@@ -6,3 +6,7 @@ resource "portainer_stack" "terrastack-docs" {
   pull_image      = true
   stack_file_path = "${path.module}/../docker-compose.yml"
 }
+
+resource "portainer_stack_webhook" "trigger_my_stack" {
+  webhook_id = portainer_stack.terrastack-docs.webhook_id
+}
