@@ -8,6 +8,6 @@ resource "portainer_stack" "terrastack-docs" {
   stack_webhook   = true
 }
 
-resource "portainer_stack_webhook" "trigger_my_stack" {
-  webhook_id = portainer_stack.terrastack-docs.webhook_id
-}
+# resource "portainer_stack_webhook" "trigger_my_stack" {
+#   webhook_id = portainer_stack.terrastack-docs.webhook_id
+# }
