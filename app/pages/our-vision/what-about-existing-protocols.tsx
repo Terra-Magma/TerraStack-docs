@@ -2,9 +2,8 @@
 import { PageNavigation } from '~/components/layout/page-navigation';
 import Disclaimer from '~/components/layout/disclaimer';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '~/components/ui/table';
-import WifiIcon from '@mui/icons-material/Wifi';
-import WifiOffIcon from '@mui/icons-material/WifiOff';
-import Wifi2BarIcon from '@mui/icons-material/Wifi2Bar';
+import { MdOutlineWifi, MdOutlineWifi2Bar, MdOutlineWifiOff } from 'react-icons/md';
+import './what-about-existing-protocols.css';
 
 export default function ExistingProtocolsPage() {
   const data = [
@@ -64,13 +63,27 @@ export default function ExistingProtocolsPage() {
   const getIcon = (text: string) => {
     switch (text) {
       case 'yes':
-        return <WifiIcon className="text-success" />;
+        return (
+          <MdOutlineWifi
+            className="text-success"
+            style={{ width: '2rem', height: '2rem' }}
+          />
+        );
       case 'no':
-        return <WifiOffIcon className="text-ember" />;
+        return (
+          <MdOutlineWifiOff
+            className="text-ember"
+            style={{ width: '2rem', height: '2rem' }}
+          />
+        );
       case 'yes*':
         return (
-          <span>
-            <Wifi2BarIcon className="text-magma" />*
+          <span className="flex items-center justify-center text-2xl text-magma">
+            <MdOutlineWifi2Bar
+              className="text-magma"
+              style={{ width: '2rem', height: '2rem' }}
+            />
+            *
           </span>
         );
       default:

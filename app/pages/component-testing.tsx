@@ -8,7 +8,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '~/components/ui/breadcrumb';
-import { Link } from '@mui/material';
+import { Link } from 'react-router';
 import {
   DropdownMenu,
   DropdownMenuContent,
