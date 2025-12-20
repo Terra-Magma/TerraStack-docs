@@ -12,7 +12,7 @@
       - "traefik.enable=true"
       - "traefik.http.routers.terrastack-docs.rule=Host(`terramagma.barnes-development.com`)"
       - "traefik.http.routers.terrastack-docs.entrypoints=websecure"
-      - "traefik.http.services.terrastack-docs.loadbalancer.server.port=3000"
+      - "traefik.http.services.terrastack-docs.loadbalancer.server.port=80"
 
 networks:
   r_proxy:
