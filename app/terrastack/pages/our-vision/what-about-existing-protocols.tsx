@@ -3,7 +3,7 @@ import { PageNavigation } from '~/components/layout/page-navigation';
 import Disclaimer from '~/components/layout/disclaimer';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '~/components/ui/table';
 import { MdOutlineWifi, MdOutlineWifi2Bar, MdOutlineWifiOff } from 'react-icons/md';
-import './what-about-existing-protocols.css';
+import '~/terrastack/pages/our-vision/what-about-existing-protocols.css';
 
 export default function ExistingProtocolsPage() {
   const data = [

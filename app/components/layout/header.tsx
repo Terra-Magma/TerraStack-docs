@@ -18,7 +18,7 @@ import './header.css';
 import { ThemeToggle } from '~/components/theme-toggle';
 import { Link } from 'react-router';
 
-export function Header() {
+export function Header(props: { namespace: 'terramagma' | 'terrastack' } = { namespace: 'terramagma' }) {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
 
   const [navMenuOpenProducts, setNavMenuOpenProducts] = React.useState(false);
@@ -74,7 +74,9 @@ export function Header() {
             <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">TS</span>
             </div>
-            <span className="font-semibold text-lg">TerraMagma</span>
+            {(props.namespace == 'terramagma' && <span className="font-semibold text-lg">TerraMagma</span>) || (
+              <span className="font-semibold text-lg">TerraStack</span>
+            )}
           </Link>
           <NavigationMenu
             className="hidden lg:flex"
