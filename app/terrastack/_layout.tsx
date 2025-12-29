@@ -1,10 +1,9 @@
 import { Header } from '~/components/layout/header';
 import { Outlet } from 'react-router';
-import { ThemeProvider, useTheme } from '~/components/theme';
+import { ThemeProvider } from '~/components/theme';
 import * as React from 'react';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const theme = useTheme()?.theme ?? 'light';
   const [navMenuOpenVision, setNavMenuOpenVision] = React.useState(false);
   const [navMenuOpenAdoption, setNavMenuOpenAdoption] = React.useState(false);
 

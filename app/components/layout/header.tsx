@@ -42,10 +42,13 @@ export function Header(props: HeaderProps) {
 
   useEffect(() => {
     setHeaderCount(document.querySelectorAll('header').length);
+  });
+
+  useEffect(() => {
     window.addEventListener('scroll', pop);
 
     return () => window.removeEventListener('scroll', pop);
-  });
+  }, []);
 
   const pop = () => {
     if (headerCount > 1 && window.scrollY > 64) setHideMainMenu(true);

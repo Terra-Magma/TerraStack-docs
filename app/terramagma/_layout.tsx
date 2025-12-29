@@ -1,10 +1,9 @@
 import { Header } from '~/components/layout/header';
 import { Outlet } from 'react-router';
-import { ThemeProvider, useTheme } from '~/components/theme';
-import type { Route } from '../../.react-router/types/app/+types/root';
+import { ThemeProvider } from '~/components/theme';
 import * as React from 'react';
 
-export function meta({}: Route.MetaArgs) {
+export function meta() {
   return [
     { title: 'TerraStack Documentation' },
     {
@@ -15,8 +14,6 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const theme = useTheme()?.theme ?? 'light';
-
   const [navMenuOpenProducts, setNavMenuOpenProducts] = React.useState(false);
 
   const items = [

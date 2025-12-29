@@ -167,8 +167,8 @@ h2 {
 
 a {
     color: var(--primary) !important;
-    text-decoration-color: var(--primary) !important;
     text-decoration: none !important;
+    text-decoration-color: var(--primary) !important;
 
     padding: 0.25rem 0.25rem;
     width: auto;
@@ -186,8 +186,8 @@ a {
 
 .nav-item a, a.nav-item {
     color: var(--primary) !important;
-    text-decoration-color: var(--primary) !important;
     text-decoration: none !important;
+    text-decoration-color: var(--primary) !important;
 
     &:hover {
         color: var(--primary) !important;
