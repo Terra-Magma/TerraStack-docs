@@ -4,6 +4,9 @@ export default [
   layout('terramagma/_layout.tsx', [
     index('terramagma/home.tsx'),
     route('component-testing', 'components/ui/component-testing.tsx'),
+    route('products', 'terramagma/pages/products.tsx'),
+    route('services', 'terramagma/pages/services.tsx'),
+    route('support', 'terramagma/pages/support.tsx'),
 
     layout('terrastack/_layout.tsx', [
       ...prefix('terrastack', [
@@ -23,9 +26,7 @@ export default [
         route('docs', 'terrastack/pages/docs.tsx'),
         route('examples', 'terrastack/pages/examples.tsx'),
         route('installation', 'terrastack/pages/installation.tsx'),
-        route('products', 'terrastack/pages/products.tsx'),
-        route('services', 'terrastack/pages/services.tsx'),
-        route('support', 'terrastack/pages/support.tsx'),
+
         route('globe', 'terrastack/pages/globe.tsx'),
       ]),
     ]),
