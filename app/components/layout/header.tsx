@@ -45,7 +45,7 @@ export function Header(props: HeaderProps) {
     window.addEventListener('scroll', pop);
 
     return () => window.removeEventListener('scroll', pop);
-  }, [location]);
+  });
 
   const pop = () => {
     if (headerCount > 1 && window.scrollY > 64) setHideMainMenu(true);
