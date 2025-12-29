@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '~/components/ui/button';
 import { Input } from '~/components/ui/input';
 import { ChevronDownIcon, Menu, Search, X } from 'lucide-react';
@@ -16,7 +16,7 @@ import {
 import GithubButton from '~/components/layout/github-button';
 import './header.css';
 import { ThemeToggle } from '~/components/theme-toggle';
-import { Link } from 'react-router';
+import { Link, useLocation } from 'react-router';
 
 export interface HeaderProps {
   title: string;
@@ -36,12 +36,28 @@ export interface NavItem {
 
 export function Header(props: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const [hideMainMenu, setHideMainMenu] = useState(false);
+  const [headerCount, setHeaderCount] = useState(1);
+  const location = useLocation();
+
+  useEffect(() => {
+    setHeaderCount(document.querySelectorAll('header').length);
+    window.addEventListener('scroll', pop);
+
+    return () => window.removeEventListener('scroll', pop);
+  }, [location]);
+
+  const pop = () => {
+    if (headerCount > 1 && window.scrollY > 64) setHideMainMenu(true);
+    else setHideMainMenu(false);
+  };
 
   return (
     <header
       className={cn(
-        'sticky top-0 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60',
-        props.root ? 'z-100' : 'z-50'
+        'w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60',
+        props.root && (headerCount > 1 ? 'absolute top-0' : 'fixed top-0'),
+        !props.root && (hideMainMenu ? 'fixed top-0' : 'absolute top-16')
       )}
     >
       <div className="container flex h-16 items-center px-6">
@@ -70,8 +86,8 @@ export function Header(props: HeaderProps) {
                       <NavigationMenuTrigger className="text-primary-hover bg-transparent nav-item text-base! font-normal">
                         <Link to={(props.prefix ?? '') + item.href}>{item.title}</Link>
                       </NavigationMenuTrigger>
-                      <NavigationMenuContent>
-                        <ul className="grid w-[200px] gap-4">
+                      <NavigationMenuContent className="z-50">
+                        <ul className="grid w-[200px] gap-4 z-50">
                           {item.children.map((child) => (
                             <li
                               key={child.href}

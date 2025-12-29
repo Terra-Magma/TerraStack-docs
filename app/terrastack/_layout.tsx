@@ -39,17 +39,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <ThemeProvider>
       <div className="min-h-screen bg-background">
+        <div className="flex">
+          <main className="flex-1 w-max mt-16">
+            <Outlet />
+          </main>
+        </div>
         <Header
           items={items}
           title="TerraStack"
           root={false}
           prefix="/terrastack"
         />
-        <div className="flex">
-          <main className="flex-1 w-max">
-            <Outlet />
-          </main>
-        </div>
       </div>
     </ThemeProvider>
   );
