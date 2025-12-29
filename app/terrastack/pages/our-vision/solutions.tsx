@@ -24,8 +24,8 @@ export default function SolutionsPage() {
       <div className="flex-1 px-6 py-8 max-w-4xl">
         <Breadcrumbs
           items={[
-            { label: 'Our Vision', href: '/our-vision' },
-            { label: 'Solutions', href: '/our-vision/solutions', current: true },
+            { label: 'Our Vision', href: '/terrastack/our-vision' },
+            { label: 'Solutions', href: '/terrastack/our-vision/solutions', current: true },
           ]}
         />
         <div className="row">
@@ -166,8 +166,8 @@ export default function SolutionsPage() {
           </div>
         </div>
         <PageNavigation
-          prev={{ title: 'Problems', href: '/our-vision/problems' }}
-          next={{ title: 'Supported Platforms', href: '/our-vision/supported-platforms' }}
+          prev={{ title: 'Problems', href: '/terrastack/our-vision/problems' }}
+          next={{ title: 'Supported Platforms', href: '/terrastack/our-vision/supported-platforms' }}
         />
         <Disclaimer />
       </div>

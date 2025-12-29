@@ -1,27 +1,36 @@
-import { index, layout, route, type RouteConfig } from '@react-router/dev/routes';
+import { index, layout, prefix, route, type RouteConfig } from '@react-router/dev/routes';
 
 export default [
-  layout('routes/_layout.tsx', [
-    index('routes/home.tsx'),
-    route('terrastack', 'routes/terrastack.tsx'),
-    route('adoption', 'pages/adoption/index.tsx'),
-    route('adoption/current-adoption', 'pages/adoption/current-adoption.tsx'),
-    route('our-vision', 'pages/our-vision/index.tsx'),
-    route('our-vision/history', 'pages/our-vision/history.tsx'),
-    route('our-vision/problems', 'pages/our-vision/problems.tsx'),
-    route('our-vision/solutions', 'pages/our-vision/solutions.tsx'),
-    route('our-vision/schedule', 'pages/our-vision/schedule.tsx'),
-    route('our-vision/supported-platforms', 'pages/our-vision/supported-platforms.tsx'),
-    route('our-vision/what-about-existing-protocols', 'pages/our-vision/what-about-existing-protocols.tsx'),
-    route('docs', 'pages/docs.tsx'),
-    route('examples', 'pages/examples.tsx'),
-    route('installation', 'pages/installation.tsx'),
-    route('products', 'pages/products.tsx'),
-    route('services', 'pages/services.tsx'),
-    route('support', 'pages/support.tsx'),
-    route('component-testing', 'pages/component-testing.tsx'),
-    route('globe', 'pages/globe.tsx'),
+  layout('terramagma/_layout.tsx', [
+    index('terramagma/home.tsx'),
+    route('component-testing', 'components/ui/component-testing.tsx'),
+    route('products', 'terramagma/pages/products.tsx'),
+    route('services', 'terramagma/pages/services.tsx'),
+    route('support', 'terramagma/pages/support.tsx'),
 
-    route('*', 'routes/not-found.tsx'),
+    layout('terrastack/_layout.tsx', [
+      ...prefix('terrastack', [
+        index('terrastack/home.tsx'),
+        route('adoption', 'terrastack/pages/adoption/index.tsx'),
+        route('adoption/current-adoption', 'terrastack/pages/adoption/current-adoption.tsx'),
+        route('our-vision', 'terrastack/pages/our-vision/index.tsx'),
+        route('our-vision/history', 'terrastack/pages/our-vision/history.tsx'),
+        route('our-vision/problems', 'terrastack/pages/our-vision/problems.tsx'),
+        route('our-vision/solution', 'terrastack/pages/our-vision/solutions.tsx'),
+        route('our-vision/schedule', 'terrastack/pages/our-vision/schedule.tsx'),
+        route('our-vision/supported-platforms', 'terrastack/pages/our-vision/supported-platforms.tsx'),
+        route(
+          'our-vision/what-about-existing-protocols',
+          'terrastack/pages/our-vision/what-about-existing-protocols.tsx'
+        ),
+        route('docs', 'terrastack/pages/docs.tsx'),
+        route('examples', 'terrastack/pages/examples.tsx'),
+        route('installation', 'terrastack/pages/installation.tsx'),
+
+        route('globe', 'terrastack/pages/globe.tsx'),
+      ]),
+    ]),
+
+    route('*', 'terramagma/not-found.tsx'),
   ]),
 ] satisfies RouteConfig;
