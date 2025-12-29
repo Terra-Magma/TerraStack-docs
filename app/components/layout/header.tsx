@@ -94,7 +94,7 @@ export function Header(props: HeaderProps) {
                     <NavigationMenuItem key={item.href}>
                       <NavigationMenuLink
                         asChild
-                        className="px-4"
+                        className="px-4! py-2! rounded-md!"
                       >
                         <Link
                           className="nav-item text-base!"
