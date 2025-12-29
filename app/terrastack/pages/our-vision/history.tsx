@@ -22,8 +22,8 @@ export default function HistoryPage() {
       <div className="flex-1 px-6 py-8 max-w-4xl">
         <Breadcrumbs
           items={[
-            { label: 'Our Vision', href: '/our-vision' },
-            { label: 'A Brief History', href: '/our-vision/history', current: true },
+            { label: 'Our Vision', href: '/terrastack/our-vision' },
+            { label: 'A Brief History', href: '/terrastack/our-vision/history', current: true },
           ]}
         />
         <div className="row">
@@ -436,7 +436,7 @@ export default function HistoryPage() {
         </div>
         <PageNavigation
           prev={null}
-          next={{ title: 'Problems', href: '/our-vision/problems' }}
+          next={{ title: 'Problems', href: '/terrastack/our-vision/problems' }}
         />
         <Disclaimer />
       </div>

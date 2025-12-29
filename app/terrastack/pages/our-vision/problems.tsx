@@ -23,8 +23,8 @@ export default function ProblemsPage() {
       <div className="flex-1 px-6 py-8 max-w-4xl">
         <Breadcrumbs
           items={[
-            { label: 'Our Vision', href: '/our-vision' },
-            { label: 'Problems', href: '/our-vision/problems', current: true },
+            { label: 'Our Vision', href: '/terrastack/our-vision' },
+            { label: 'Problems', href: '/terrastack/our-vision/problems', current: true },
           ]}
         />
         <div className="row">
@@ -171,12 +171,12 @@ export default function ProblemsPage() {
           </div>
         </div>
         <PageNavigation
-          prev={{ title: 'A Brief History', href: '/our-vision/history' }}
-          next={{ title: 'Solutions', href: '/our-vision/solutions' }}
+          prev={{ title: 'A Brief History', href: '/terrastack/our-vision/history' }}
+          next={{ title: 'Solutions', href: '/terrastack/our-vision/solutions' }}
         />
         <Disclaimer />
       </div>
-      <div className="hidden xl:block w-64 flex-shrink-0">
+      <div className="hidden xl:block w-64 shrink-0">
         <div className="sticky top-24 p-6">
           <TableOfContents items={tableOfContents} />
         </div>

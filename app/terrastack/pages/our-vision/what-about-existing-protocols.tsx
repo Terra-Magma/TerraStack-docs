@@ -3,7 +3,7 @@ import { PageNavigation } from '~/components/layout/page-navigation';
 import Disclaimer from '~/components/layout/disclaimer';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '~/components/ui/table';
 import { MdOutlineWifi, MdOutlineWifi2Bar, MdOutlineWifiOff } from 'react-icons/md';
-import '~/terrastack/pages/our-vision/what-about-existing-protocols.css';
+import '~/terrastack/pages/terrastack/our-vision/what-about-existing-protocols.css';
 
 export default function ExistingProtocolsPage() {
   const data = [
@@ -96,10 +96,10 @@ export default function ExistingProtocolsPage() {
       <div className="flex-1 px-6 py-8 max-w-4xl">
         <Breadcrumbs
           items={[
-            { label: 'Our Vision', href: '/our-vision' },
+            { label: 'Our Vision', href: '/terrastack/our-vision' },
             {
               label: 'What About TCP/UDP/IPv4/IPv6?',
-              href: '/our-vision/what-about-existing-protocols',
+              href: '/terrastack/our-vision/what-about-existing-protocols',
               current: true,
             },
           ]}
@@ -136,8 +136,8 @@ export default function ExistingProtocolsPage() {
           </div>
         </div>
         <PageNavigation
-          next={{ title: 'Schedule', href: '/our-vision/schedule' }}
-          prev={{ title: 'Supported Platforms', href: '/our-vision/supported-platforms' }}
+          next={{ title: 'Schedule', href: '/terrastack/our-vision/schedule' }}
+          prev={{ title: 'Supported Platforms', href: '/terrastack/our-vision/supported-platforms' }}
         />
         <Disclaimer />
       </div>

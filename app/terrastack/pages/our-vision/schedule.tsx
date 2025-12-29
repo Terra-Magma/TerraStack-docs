@@ -47,8 +47,8 @@ export default function SchedulePage() {
       <div className="flex-1 px-6 py-8 max-w-4xl">
         <Breadcrumbs
           items={[
-            { label: 'Our Vision', href: '/our-vision' },
-            { label: 'Schedule', href: '/our-vision/schedule', current: true },
+            { label: 'Our Vision', href: '/terrastack/our-vision' },
+            { label: 'Schedule', href: '/terrastack/our-vision/schedule', current: true },
           ]}
         />
         <div className="row">
@@ -81,7 +81,10 @@ export default function SchedulePage() {
           </div>
         </div>
         <PageNavigation
-          prev={{ title: 'What About Existing Protocols?', href: '/our-vision/what-about-existing-protocols' }}
+          prev={{
+            title: 'What About Existing Protocols?',
+            href: '/terrastack/our-vision/what-about-existing-protocols',
+          }}
           next={null}
         />
         <Disclaimer />

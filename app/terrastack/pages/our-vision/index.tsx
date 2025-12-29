@@ -2,16 +2,16 @@ import { Link } from 'react-router';
 
 export default function VisionPage() {
   const links = [
-    { href: '/our-vision/history', label: 'A Brief History', id: 'history' },
-    { href: '/our-vision/problems', label: 'Problems', id: 'problems' },
-    { href: '/our-vision/solutions', label: 'Solutions', id: 'solutions' },
-    { href: '/our-vision/supported-platforms', label: 'Supported Platforms', id: 'supported-platforms' },
+    { href: '/terrastack/our-vision/history', label: 'A Brief History', id: 'history' },
+    { href: '/terrastack/our-vision/problems', label: 'Problems', id: 'problems' },
+    { href: '/terrastack/our-vision/solutions', label: 'Solutions', id: 'solutions' },
+    { href: '/terrastack/our-vision/supported-platforms', label: 'Supported Platforms', id: 'supported-platforms' },
     {
-      href: '/our-vision/what-about-existing-protocols',
+      href: '/terrastack/our-vision/what-about-existing-protocols',
       label: 'What About Existing Protocols?',
       id: 'what-about-existing-protocols',
     },
-    { href: '/our-vision/schedule', label: 'Schedule', id: 'schedule' },
+    { href: '/terrastack/our-vision/schedule', label: 'Schedule', id: 'schedule' },
   ];
 
   return (
@@ -30,7 +30,7 @@ export default function VisionPage() {
                 key={link.id}
                 to={link.href}
                 style={{ fontSize: '2em' }}
-                className="!underline"
+                className="underline!"
               >
                 {link.label}
               </Link>

@@ -12,8 +12,8 @@ export default function SupportedPlatformsPage() {
       <div className="flex-1 px-6 py-8 max-w-4xl">
         <Breadcrumbs
           items={[
-            { label: 'Our Vision', href: '/our-vision' },
-            { label: 'Supported Platforms', href: '/our-vision/supported-platforms', current: true },
+            { label: 'Our Vision', href: '/terrastack/our-vision' },
+            { label: 'Supported Platforms', href: '/terrastack/our-vision/supported-platforms', current: true },
           ]}
         />
         <div className="row">
@@ -78,8 +78,11 @@ export default function SupportedPlatformsPage() {
           </div>
         </div>
         <PageNavigation
-          next={{ title: 'What About Existing Protocols?', href: '/our-vision/what-about-existing-protocols' }}
-          prev={{ title: 'Solutions', href: '/our-vision/solutions' }}
+          next={{
+            title: 'What About Existing Protocols?',
+            href: '/terrastack/our-vision/what-about-existing-protocols',
+          }}
+          prev={{ title: 'Solutions', href: '/terrastack/our-vision/solutions' }}
         />
         <Disclaimer />
       </div>
