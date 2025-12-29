@@ -99,7 +99,7 @@ export function Header(props: HeaderProps) {
                               <NavigationMenuLink asChild>
                                 <Link
                                   className="nav-item"
-                                  to={child.href}
+                                  to={(props.prefix ?? '') + child.href}
                                 >
                                   {child.title}
                                 </Link>
@@ -205,7 +205,7 @@ export function Header(props: HeaderProps) {
                       {item.children.map((child) => (
                         <Link
                           key={child.href}
-                          to={child.href}
+                          to={(props.prefix ?? '') + child.href}
                           className={cn(
                             'text-sm transition-colors group cursor-pointer nav-item hover:bg-accent rounded-sm p-2!'
                           )}
