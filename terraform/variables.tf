@@ -19,4 +19,10 @@ variable "github_registry_access_token" {
 variable "terramagma_local_ip" {
   type        = string
   description = "Local IP address of the Terramagma host"
+  default     = "http://localhost:3000"
+}
+
+variable "gcp_project_id" {
+  type        = string
+  description = "GCP Project ID for Google Cloud resources"
 }
