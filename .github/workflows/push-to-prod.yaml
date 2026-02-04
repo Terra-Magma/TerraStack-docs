@@ -71,7 +71,10 @@ jobs:
           TF_VAR_github_registry_username: ${{ github.actor }}
           TF_VAR_github_registry_access_token: ${{ secrets.GITHUB_TOKEN }}
           TF_VAR_terramagma_local_ip: ${{ secrets.TERRAMAGMA_LOCAL_IP }}
+          TF_VAR_gcp_project_id: ${{ secrets.GCP_PROJECT_ID }}
+          TF_VAR_google_service_account_id: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_ID }}
           PG_CONN_STR: ${{ secrets.POSTGRES_CONNECTION_STRING }}
+          TF_VAR_app_image: ghcr.io/terra-magma/terrastack-docs:latest
         run: terraform plan -input=false
         working-directory: ./terraform
 
@@ -83,9 +86,12 @@ jobs:
           TF_VAR_github_registry_username: ${{ github.actor }}
           TF_VAR_github_registry_access_token: ${{ secrets.GITHUB_TOKEN }}
           TF_VAR_terramagma_local_ip: ${{ secrets.TERRAMAGMA_LOCAL_IP }}
+          TF_VAR_gcp_project_id: ${{ secrets.GCP_PROJECT_ID }}
+          TF_VAR_google_service_account_id: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_ID }}
           PG_CONN_STR: ${{ secrets.POSTGRES_CONNECTION_STRING }}
           PGUSER: ${{ secrets.POSTGRES_USER }}
           PGPASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          TF_VAR_app_image: ghcr.io/terra-magma/terrastack-docs:latest
         run: terraform apply -auto-approve -input=false
         working-directory: ./terraform
 

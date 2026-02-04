@@ -31,3 +31,9 @@ variable "google_service_account_id" {
   type        = string
   description = "GCP Service Account ID"
 }
+
+variable "app_image" {
+  type        = string
+  description = "Container image (including tag) to deploy to GKE"
+  default     = "ghcr.io/terra-magma/terrastack-docs:latest"
+}

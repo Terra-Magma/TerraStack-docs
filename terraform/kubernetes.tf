@@ -1,27 +1,35 @@
 resource "kubernetes_deployment_v1" "nginx_deployment" {
   metadata {
-    name = "nginx-deployment"
+    name = "terrastack-docs"
     labels = {
-      App = "nginx"
+      App = "terrastack-docs"
     }
   }
+
+  # Ensure nodes exist before attempting to schedule.
+  depends_on = [google_container_node_pool.primary_nodes]
+
   spec {
     replicas = 2
+
     selector {
       match_labels = {
-        App = "nginx"
+        App = "terrastack-docs"
       }
     }
+
     template {
       metadata {
         labels = {
-          App = "nginx"
+          App = "terrastack-docs"
         }
       }
+
       spec {
         container {
-          name  = "nginx"
-          image = "nginx:1.14.2" #todo change me
+          name  = "terrastack-docs"
+          image = var.app_image
+
           port {
             container_port = 80
           }
@@ -31,20 +39,24 @@ resource "kubernetes_deployment_v1" "nginx_deployment" {
   }
 }
 
-# Define a Kubernetes Service to expose the NGINX Deployment
 resource "kubernetes_service_v1" "nginx_service" {
   metadata {
-    name = "nginx-service"
+    name = "terrastack-docs-svc"
   }
+
+  depends_on = [kubernetes_deployment_v1.nginx_deployment]
+
   spec {
     selector = {
-      App = "nginx"
+      App = "terrastack-docs"
     }
+
     port {
       port        = 80
-      target_port = 3000
+      target_port = 80
     }
-    type = "LoadBalancer" # Expose the service externally with a LoadBalancer
+
+    type = "LoadBalancer"
   }
 }
 

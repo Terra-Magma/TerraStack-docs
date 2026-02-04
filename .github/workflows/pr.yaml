@@ -78,5 +78,6 @@ jobs:
           TF_VAR_gcp_project_id: ${{ secrets.GCP_PROJECT_ID }}
           TF_VAR_google_service_account_id: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_ID }}
           PG_CONN_STR: ${{ secrets.POSTGRES_CONNECTION_STRING }}
+          TF_VAR_app_image: ghcr.io/terra-magma/terrastack-docs:${{ github.sha }}.${{ steps.timestamp.outputs.container-tag }}
         run: terraform plan -input=false
         working-directory: ./terraform
