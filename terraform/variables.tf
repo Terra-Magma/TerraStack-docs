@@ -26,3 +26,8 @@ variable "gcp_project_id" {
   type        = string
   description = "GCP Project ID for Google Cloud resources"
 }
+
+variable "google_service_account_id" {
+  type        = string
+  description = "GCP Service Account ID"
+}
