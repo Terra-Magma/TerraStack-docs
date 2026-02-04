@@ -13,12 +13,12 @@ terraform {
 }
 
 
-provider "portainer" {
-  endpoint = var.portainer_url
-
-  # Option 1: API key authentication
-  api_key = var.portainer_api_key
-}
+# provider "portainer" {
+#   endpoint = var.portainer_url
+#
+#   # Option 1: API key authentication
+#   api_key = var.portainer_api_key
+# }
 
 provider "google" {
   project = var.gcp_project_id

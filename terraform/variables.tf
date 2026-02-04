@@ -1,11 +1,11 @@
-variable "portainer_url" {
-  type = string
-}
-
-variable "portainer_api_key" {
-  type      = string
-  sensitive = true
-}
+# variable "portainer_url" {
+#   type = string
+# }
+#
+# variable "portainer_api_key" {
+#   type      = string
+#   sensitive = true
+# }
 
 variable "github_registry_username" {
   type = string
