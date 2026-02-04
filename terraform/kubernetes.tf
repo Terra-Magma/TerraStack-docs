@@ -1,3 +1,25 @@
+resource "kubernetes_secret_v1" "ghcr_login_secret" {
+  metadata {
+    name = "ghcr-login-secret"
+  }
+
+  type = "kubernetes.io/dockerconfigjson"
+
+  data = {
+    ".dockerconfigjson" = jsonencode({
+      auths = {
+        "ghcr.io" = {
+          username = var.github_registry_username
+          password = var.github_registry_access_token
+          auth     = base64encode("${var.github_registry_username}:${var.github_registry_access_token}")
+        }
+      }
+    })
+  }
+
+  depends_on = [google_container_node_pool.primary_nodes]
+}
+
 resource "kubernetes_deployment_v1" "nginx_deployment" {
   metadata {
     name = "terrastack-docs"
@@ -6,8 +28,11 @@ resource "kubernetes_deployment_v1" "nginx_deployment" {
     }
   }
 
-  # Ensure nodes exist before attempting to schedule.
-  depends_on = [google_container_node_pool.primary_nodes]
+  # Ensure nodes + secret exist before attempting to schedule/pull.
+  depends_on = [
+    google_container_node_pool.primary_nodes,
+    kubernetes_secret_v1.ghcr_login_secret,
+  ]
 
   spec {
     replicas = 2
@@ -27,12 +52,16 @@ resource "kubernetes_deployment_v1" "nginx_deployment" {
 
       spec {
         container {
-          name  = "terrastack-docs"
-          image = var.app_image
+          name              = "terrastack-docs"
+          image             = var.app_image
+          image_pull_policy = "Always"
 
           port {
             container_port = 80
           }
+        }
+        image_pull_secrets {
+          name = kubernetes_secret_v1.ghcr_login_secret.metadata[0].name
         }
       }
     }
