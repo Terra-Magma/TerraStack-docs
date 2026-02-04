@@ -7,14 +7,14 @@
 #   sensitive = true
 # }
 
-variable "github_registry_username" {
-  type = string
-}
-
-variable "github_registry_access_token" {
-  type      = string
-  sensitive = true
-}
+# variable "github_registry_username" {
+#   type = string
+# }
+#
+# variable "github_registry_access_token" {
+#   type      = string
+#   sensitive = true
+# }
 
 variable "terramagma_local_ip" {
   type        = string

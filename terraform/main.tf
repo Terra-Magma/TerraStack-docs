@@ -1,8 +1,8 @@
 terraform {
   required_providers {
-    portainer = {
-      source  = "portainer/portainer"
-      version = "1.14.1"
+    google = {
+      source  = "hashicorp/google"
+      version = "7.18.0"
     }
   }
 
