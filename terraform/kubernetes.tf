@@ -57,7 +57,7 @@ resource "kubernetes_deployment_v1" "nginx_deployment" {
           image_pull_policy = "Always"
 
           port {
-            container_port = 80
+            container_port = 3000
           }
         }
         image_pull_secrets {
@@ -82,13 +82,13 @@ resource "kubernetes_service_v1" "nginx_service" {
 
     port {
       port        = 80
-      target_port = 80
+      target_port = 3000
     }
 
     type = "LoadBalancer"
   }
 }
 
-output "nginx_external_ip" {
+output "external_ip" {
   value = kubernetes_service_v1.nginx_service.status[0].load_balancer[0].ingress[0].ip
 }
