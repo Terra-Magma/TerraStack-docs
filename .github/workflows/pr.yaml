@@ -53,7 +53,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
@@ -75,6 +75,7 @@ jobs:
           TF_VAR_github_registry_username: ${{ github.actor }}
           TF_VAR_github_registry_access_token: ${{ secrets.GITHUB_TOKEN }}
           TF_VAR_terramagma_local_ip: ${{ secrets.TERRAMAGMA_LOCAL_IP }}
+          TV_VAR_gcp_project_id: ${{ secrets.GCP_PROJECT_ID }}
           PG_CONN_STR: ${{ secrets.POSTGRES_CONNECTION_STRING }}
         run: terraform plan -input=false
         working-directory: ./terraform
