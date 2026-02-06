@@ -19,6 +19,7 @@ resource "google_container_cluster" "primary" {
   location                 = "us-central1-a"
   remove_default_node_pool = true
   initial_node_count       = 1
+  subnetwork               = "projects/${var.gcp_project_id}/regions/us-central1/subnetworks/default"
 }
 
 resource "google_container_node_pool" "primary_nodes" {
