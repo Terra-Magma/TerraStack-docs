@@ -20,7 +20,7 @@ resource "kubernetes_secret_v1" "ghcr_login_secret" {
   depends_on = [google_container_node_pool.primary_nodes]
 }
 
-resource "kubernetes_deployment_v1" "nginx_deployment" {
+resource "kubernetes_deployment_v1" "web_deployment" {
   metadata {
     name = "terrastack-docs"
     labels = {
@@ -68,12 +68,12 @@ resource "kubernetes_deployment_v1" "nginx_deployment" {
   }
 }
 
-resource "kubernetes_service_v1" "nginx_service" {
+resource "kubernetes_service_v1" "web_service" {
   metadata {
     name = "terrastack-docs-svc"
   }
 
-  depends_on = [kubernetes_deployment_v1.nginx_deployment]
+  depends_on = [kubernetes_deployment_v1.web_deployment]
 
   spec {
     selector = {
@@ -90,5 +90,5 @@ resource "kubernetes_service_v1" "nginx_service" {
 }
 
 output "external_ip" {
-  value = kubernetes_service_v1.nginx_service.status[0].load_balancer[0].ingress[0].ip
+  value = kubernetes_service_v1.web_service.status[0].load_balancer[0].ingress[0].ip
 }
