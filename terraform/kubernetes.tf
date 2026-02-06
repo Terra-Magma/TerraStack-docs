@@ -35,7 +35,7 @@ resource "kubernetes_deployment_v1" "web_deployment" {
   ]
 
   spec {
-    replicas = 2
+    replicas = 1
 
     selector {
       match_labels = {
@@ -57,7 +57,12 @@ resource "kubernetes_deployment_v1" "web_deployment" {
           image_pull_policy = "Always"
 
           port {
-            container_port = 3000
+            container_port = 80
+          }
+
+          env {
+            name  = "NODE_ENV"
+            value = "production"
           }
         }
         image_pull_secrets {
@@ -81,8 +86,7 @@ resource "kubernetes_service_v1" "web_service" {
     }
 
     port {
-      port        = 80
-      target_port = 3000
+      port = 80
     }
 
     type = "LoadBalancer"
