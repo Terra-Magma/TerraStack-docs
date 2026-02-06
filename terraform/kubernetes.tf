@@ -70,8 +70,17 @@ resource "kubernetes_deployment_v1" "web_deployment" {
               path = "/"
               port = 80
             }
-            initial_delay_seconds = 60
+            initial_delay_seconds = 5
             period_seconds        = 10
+          }
+
+          liveness_probe {
+            http_get {
+              path = "/"
+              port = 80
+            }
+            initial_delay_seconds = 120
+            period_seconds        = 30
           }
         }
         image_pull_secrets {
