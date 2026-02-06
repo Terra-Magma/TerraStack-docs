@@ -70,7 +70,7 @@ resource "kubernetes_deployment_v1" "web_deployment" {
               path = "/"
               port = 80
             }
-            initial_delay_seconds = 5
+            initial_delay_seconds = 60
             period_seconds        = 10
           }
         }
