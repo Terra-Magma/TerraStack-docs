@@ -18,6 +18,8 @@ jobs:
 
   build-docker:
     runs-on: ubuntu-latest
+    outputs:
+      container-tag: ghcr.io/terra-magma/terrastack-docs:${{ github.sha }}.${{ steps.timestamp.outputs.container-tag }}
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -47,6 +49,7 @@ jobs:
   terraform:
     name: 'Terraform'
     runs-on: ubuntu-latest
+    needs: [ build, build-docker ]
 
     defaults:
       run:
@@ -78,6 +81,6 @@ jobs:
           TF_VAR_github_registry_access_token: ${{ secrets.GITHUB_TOKEN }}
           TF_VAR_gcp_project_id: ${{ secrets.GCP_PROJECT_ID }}
           TF_VAR_google_service_account_id: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_ID }}
-          TF_VAR_app_image: ghcr.io/terra-magma/terrastack-docs:${{ github.sha }}.${{ steps.timestamp.outputs.container-tag }}
+          TF_VAR_app_image: ${{ needs.build-docker.outputs.container-tag }}
         run: terraform plan -input=false
         working-directory: ./terraform

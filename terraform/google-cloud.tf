@@ -20,9 +20,9 @@ resource "google_service_account" "default" {
 }
 
 resource "google_container_cluster" "primary" {
-  name               = "terra-magma-cluster-primary"
-  location           = "us-central1-a"
-  initial_node_count = 1
+  name                     = "terra-magma-cluster-primary"
+  location                 = "us-central1-a"
+  remove_default_node_pool = true
 }
 
 resource "google_container_node_pool" "primary_nodes" {
