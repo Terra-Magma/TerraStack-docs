@@ -7,6 +7,7 @@ on:
 permissions:
   contents: read
   packages: write
+  id-token: write
 
 jobs:
   build-docker:
@@ -51,14 +52,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v3
+        with:
+          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
+
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
       - name: Terraform Init
         run: terraform init
         working-directory: ./terraform
-        env:
-          PG_CONN_STR: ${{ secrets.POSTGRES_CONNECTION_STRING }}
 
       - name: Terraform Format
         run: terraform fmt -check
@@ -66,26 +70,21 @@ jobs:
 
       - name: Terraform Plan
         env:
-          TF_VAR_portainer_url: ${{ secrets.PORTAINER_URL }}
-          TF_VAR_portainer_api_key: ${{ secrets.PORTAINER_API_KEY }}
           TF_VAR_github_registry_username: ${{ github.actor }}
           TF_VAR_github_registry_access_token: ${{ secrets.GITHUB_TOKEN }}
-          TF_VAR_terramagma_local_ip: ${{ secrets.TERRAMAGMA_LOCAL_IP }}
-          PG_CONN_STR: ${{ secrets.POSTGRES_CONNECTION_STRING }}
+          TF_VAR_gcp_project_id: ${{ secrets.GCP_PROJECT_ID }}
+          TF_VAR_google_service_account_id: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_ID }}
+          TF_VAR_app_image: ghcr.io/terra-magma/terrastack-docs:latest
         run: terraform plan -input=false
         working-directory: ./terraform
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         env:
-          TF_VAR_portainer_url: ${{ secrets.PORTAINER_URL }}
-          TF_VAR_portainer_api_key: ${{ secrets.PORTAINER_API_KEY }}
           TF_VAR_github_registry_username: ${{ github.actor }}
           TF_VAR_github_registry_access_token: ${{ secrets.GITHUB_TOKEN }}
-          TF_VAR_terramagma_local_ip: ${{ secrets.TERRAMAGMA_LOCAL_IP }}
-          PG_CONN_STR: ${{ secrets.POSTGRES_CONNECTION_STRING }}
-          PGUSER: ${{ secrets.POSTGRES_USER }}
-          PGPASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          TF_VAR_gcp_project_id: ${{ secrets.GCP_PROJECT_ID }}
+          TF_VAR_google_service_account_id: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_ID }}
+          TF_VAR_app_image: ghcr.io/terra-magma/terrastack-docs:latest
         run: terraform apply -auto-approve -input=false
         working-directory: ./terraform
-
