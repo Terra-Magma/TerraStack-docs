@@ -23,6 +23,7 @@ resource "google_container_cluster" "primary" {
   name                     = "terra-magma-cluster-primary"
   location                 = "us-central1-a"
   remove_default_node_pool = true
+  initial_node_count       = 1
 }
 
 resource "google_container_node_pool" "primary_nodes" {
@@ -38,6 +39,10 @@ resource "google_container_node_pool" "primary_nodes" {
     oauth_scopes = [
       "https://www.googleapis.com/auth/cloud-platform",
     ]
+
+    workload_metadata_config {
+      mode = "GKE_METADATA"
+    }
   }
 }
 
