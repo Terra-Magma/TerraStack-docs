@@ -16,7 +16,7 @@ resource "google_storage_bucket" "terra-stack-docs-bucket" {
 
 resource "google_service_account" "default" {
   account_id   = var.google_service_account_id
-  display_name = "Service Account"
+  create_ignore_already_exists = true
 }
 
 resource "google_container_cluster" "primary" {
