@@ -64,6 +64,15 @@ resource "kubernetes_deployment_v1" "web_deployment" {
             name  = "NODE_ENV"
             value = "production"
           }
+
+          readiness_probe {
+            http_get {
+              path = "/"
+              port = 80
+            }
+            initial_delay_seconds = 5
+            period_seconds        = 10
+          }
         }
         image_pull_secrets {
           name = kubernetes_secret_v1.ghcr_login_secret.metadata[0].name
