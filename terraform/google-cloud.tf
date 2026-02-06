@@ -14,11 +14,6 @@ resource "google_storage_bucket" "terra-stack-docs-bucket" {
   }
 }
 
-resource "google_service_account" "default" {
-  account_id                   = var.google_service_account_id
-  create_ignore_already_exists = true
-}
-
 resource "google_container_cluster" "primary" {
   name                     = "terra-magma-cluster-primary"
   location                 = "us-central1-a"
@@ -35,7 +30,7 @@ resource "google_container_node_pool" "primary_nodes" {
     preemptible  = false
     machine_type = "e2-medium"
 
-    service_account = google_service_account.default.email
+    service_account = var.google_service_account_email
     oauth_scopes = [
       "https://www.googleapis.com/auth/cloud-platform",
     ]
