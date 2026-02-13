@@ -107,10 +107,39 @@ resource "kubernetes_service_v1" "web_service" {
       port = 80
     }
 
-    type = "LoadBalancer"
+    type = "NodePort"
   }
 }
 
-output "external_ip" {
-  value = kubernetes_service_v1.web_service.status[0].load_balancer[0].ingress[0].ip
+resource "kubernetes_ingress_v1" "web_service_ingress" {
+  metadata {
+    name      = "app-ingress"
+    namespace = "default"
+    annotations = {
+      # Use the static IP created earlier.
+      "kubernetes.io/ingress.global-static-ip-name" = google_compute_global_address.ingress_static_ip.name
+      # Specify the GCE Ingress Controller.
+      "kubernetes.io/ingress.class" = "gce"
+      # Optional: Enable Cloud CDN for performance.
+      # "://cloud.google.com"                = "true"
+    }
+  }
+  spec {
+    rule {
+      http {
+        path {
+          path      = "/"
+          path_type = "Prefix"
+          backend {
+            service {
+              name = kubernetes_service_v1.web_service.metadata[0].name
+              port {
+                number = 80
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

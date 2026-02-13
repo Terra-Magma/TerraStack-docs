@@ -1,3 +1,8 @@
+resource "google_compute_global_address" "ingress_static_ip" {
+  name    = "gke-ingress-ip"
+  project = var.gcp_project_id
+}
+
 resource "google_container_cluster" "primary" {
   name                     = "terra-magma-cluster-primary"
   location                 = "us-central1-a"
@@ -29,3 +34,4 @@ output "cluster_name" {
 output "get_kubeconfig_command" {
   value = "gcloud container clusters get-credentials ${google_container_cluster.primary.name} --zone ${google_container_cluster.primary.location} --project ${var.gcp_project_id}"
 }
+
