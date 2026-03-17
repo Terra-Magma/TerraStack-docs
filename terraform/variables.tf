@@ -24,3 +24,15 @@ variable "app_image" {
   description = "Container image (including tag) to deploy to GKE"
   default     = "ghcr.io/terra-magma/terrastack-docs:latest"
 }
+
+variable "region" {
+  type        = string
+  description = "GCP region for resources (e.g., us-central1)"
+  default     = "us-central1"
+}
+
+variable "container_image" {
+  type        = string
+  description = "Container image (including tag) to deploy to Cloud Run"
+  default     = "ghcr.io/terra-magma/terrastack-docs:latest"
+}
