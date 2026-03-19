@@ -46,8 +46,10 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/terra-magma/terrastack-docs:latest,ghcr.io/terra-magma/terrastack-docs:${{ steps.timestamp.outputs.container-tag }}
-            gcr.io/${{secrets.GCP_PROJECT_ID}}/terrastack-docs:${{ steps.timestamp.outputs.container-tag }}
+            ghcr.io/terra-magma/terrastack-docs:latest,ghcr.io/terra-magma/terrastack-docs:${{ steps.timestamp.outputs.container-tag }}-pr${{ github.event.number }}
+            ghcr.io/terra-magma/terrastack-docs:latest,ghcr.io/terra-magma/terrastack-docs:latest
+            gcr.io/${{secrets.GCP_PROJECT_ID}}/terrastack-docs:${{ steps.timestamp.outputs.container-tag }}-pr${{ github.event.number }}
+            gcr.io/${{secrets.GCP_PROJECT_ID}}/terrastack-docs:latest
 
       - name: Output Container Tag
         run: |
