@@ -49,6 +49,10 @@ jobs:
             ghcr.io/terra-magma/terrastack-docs:latest,ghcr.io/terra-magma/terrastack-docs:${{ steps.timestamp.outputs.container-tag }}
             gcr.io/${{secrets.GCP_PROJECT_ID}}/terrastack-docs:${{ steps.timestamp.outputs.container-tag }}
 
+      - name: Output Container Tag
+        run: |
+          echo "Container Tag: ${{ steps.timestamp.outputs.container-tag }}"
+
   google-cloud:
     runs-on: ubuntu-latest
     needs: build-docker

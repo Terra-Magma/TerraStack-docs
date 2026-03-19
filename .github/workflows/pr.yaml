@@ -54,3 +54,7 @@ jobs:
           tags: |
             ghcr.io/terra-magma/terrastack-docs:latest,ghcr.io/terra-magma/terrastack-docs:${{ steps.timestamp.outputs.container-tag }}-pr${{ github.event.number }}
             gcr.io/${{secrets.GCP_PROJECT_ID}}/terrastack-docs:${{ steps.timestamp.outputs.container-tag }}-pr${{ github.event.number }}
+
+      - name: Output Container Tag
+        run: |
+          echo "Container Tag: ${{ steps.timestamp.outputs.container-tag }}-pr${{ github.event.number }}"
