@@ -3,13 +3,13 @@
 #   project = var.gcp_project_id
 # }
 #
-# resource "google_container_cluster" "primary" {
-#   name                     = "terra-magma-cluster-primary"
-#   location                 = var.region
-#   remove_default_node_pool = true
-#   initial_node_count       = 1
-#   subnetwork               = "projects/${var.gcp_project_id}/regions/us-central1/subnetworks/default"
-# }
+resource "google_container_cluster" "primary" {
+  name                     = "terra-magma-cluster-primary"
+  location                 = var.region
+  remove_default_node_pool = true
+  initial_node_count       = 1
+  subnetwork               = "projects/${var.gcp_project_id}/regions/us-central1/subnetworks/default"
+}
 #
 # resource "google_container_node_pool" "primary_nodes" {
 #   cluster    = google_container_cluster.primary.name
@@ -34,6 +34,32 @@
 # output "get_kubeconfig_command" {
 #   value = "gcloud container clusters get-credentials ${google_container_cluster.primary.name} --zone ${google_container_cluster.primary.location} --project ${var.gcp_project_id}"
 # }
+
+# Create a Google Cloud Storage bucket for the static website
+resource "google_storage_bucket" "react_app_bucket" {
+  name          = "unique-bucket-name-for-react-app" # Must be globally unique
+  location      = "US-CENTRAL1"
+  force_destroy = true # Allows bucket to be destroyed even if not empty
+
+  website {
+    main_page_suffix = "index.html"
+    not_found_page   = "index.html" # Handles client-side routing
+  }
+
+  uniform_bucket_level_access = true
+}
+
+# Make the bucket content publicly readable
+resource "google_storage_bucket_iam_member" "public_access" {
+  bucket = google_storage_bucket.react_app_bucket.name
+  role   = "roles/storage.objectViewer"
+  member = "allUsers"
+}
+
+# Output the website URL
+output "website_url" {
+  value = google_storage_bucket.react_app_bucket.url
+}
 
 
 resource "google_secret_manager_secret" "ghcr_token" {
