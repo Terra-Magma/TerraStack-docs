@@ -77,4 +77,4 @@ jobs:
           image: 'gcr.io/${{secrets.GCP_PROJECT_ID}}/terrastack-docs:${{ steps.timestamp.outputs.container-tag }}'
 
       - name: 'Use output'
-        run: 'curl "${{ steps.deploy.outputs.url }}"'
+        run: 'curl --fail --show-error --silent "${{ steps.deploy.outputs.url }}"'
