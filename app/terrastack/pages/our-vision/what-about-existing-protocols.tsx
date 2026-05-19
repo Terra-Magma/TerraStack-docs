@@ -117,7 +117,7 @@ export default function ExistingProtocolsPage() {
                   <TableHead className="w-[100px]">Feature</TableHead>
                   <TableHead className={'text-center'}>TCP/IP4</TableHead>
                   <TableHead className={'text-center'}>TCP/IP6</TableHead>
-                  <TableHead className={'text-center'}>TerraStack</TableHead>
+                  <TableHead className={'text-center'}>Terra Stack</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>

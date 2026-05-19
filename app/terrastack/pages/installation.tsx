@@ -39,8 +39,8 @@ export default function InstallationPage() {
           <h1 className="text-4xl font-bold text-foreground mb-4">Installation Guide</h1>
 
           <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-            Get TerraStack up and running on your system. This guide covers installation on all supported platforms with
-            multiple installation methods.
+            Get Terra Stack up and running on your system. This guide covers installation on all supported platforms
+            with multiple installation methods.
           </p>
 
           <section
@@ -232,7 +232,7 @@ export default function InstallationPage() {
             </h2>
 
             <p className="text-muted-foreground mb-4">
-              Verify that TerraStack is installed correctly by running the version command:
+              Verify that Terra Stack is installed correctly by running the version command:
             </p>
 
             <div className="bg-muted rounded-lg p-4 font-mono text-sm mb-4">
@@ -241,11 +241,11 @@ export default function InstallationPage() {
                 <span className="text-muted-foreground">Terminal</span>
               </div>
               <div>$ terrastack --version</div>
-              <div className="text-green-600 mt-1">TerraStack v1.0.0 (build: a1b2c3d)</div>
+              <div className="text-green-600 mt-1">Terra Stack v1.0.0 (build: a1b2c3d)</div>
             </div>
 
             <p className="text-sm text-muted-foreground">
-              If you see the version information, TerraStack has been installed successfully!
+              If you see the version information, Terra Stack has been installed successfully!
             </p>
           </section>
 
@@ -259,14 +259,14 @@ export default function InstallationPage() {
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardHeader>
                   <CardTitle className="text-lg">Quick Start Guide</CardTitle>
-                  <CardDescription>Get your first TerraStack network up and running in minutes</CardDescription>
+                  <CardDescription>Get your first Terra Stack network up and running in minutes</CardDescription>
                 </CardHeader>
               </Card>
 
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardHeader>
                   <CardTitle className="text-lg">Configuration</CardTitle>
-                  <CardDescription>Learn how to configure TerraStack for your specific needs</CardDescription>
+                  <CardDescription>Learn how to configure Terra Stack for your specific needs</CardDescription>
                 </CardHeader>
               </Card>
             </div>

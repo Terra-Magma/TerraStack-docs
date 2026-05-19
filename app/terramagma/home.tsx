@@ -8,7 +8,7 @@ import { ArrowRight } from 'lucide-react';
 const tableOfContents = [
   { id: 'overview', title: 'Overview', level: 2 },
   { id: 'key-features', title: 'Key Features', level: 2 },
-  { id: 'why-terrastack', title: 'Why TerraStack?', level: 2 },
+  { id: 'why-terrastack', title: 'Why Terra Stack?', level: 2 },
   { id: 'getting-started', title: 'Getting Started', level: 2 },
 ];
 
@@ -39,7 +39,7 @@ export default function Home() {
             </Badge>
           </div>
 
-          <h1 className="text-4xl font-bold text-foreground mb-4">Welcome to TerraStack</h1>
+          <h1 className="text-4xl font-bold text-foreground mb-4">Welcome to Terra Stack</h1>
 
           <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
             Terra Stack is a “clean-slate” network protocol stack. It answers the question:
@@ -126,7 +126,7 @@ export default function Home() {
             id="why-terrastack"
             className="mb-12"
           >
-            <h2 className="text-2xl font-semibold mb-4">Why TerraStack?</h2>
+            <h2 className="text-2xl font-semibold mb-4">Why Terra Stack?</h2>
             <div className="bg-muted/50 border-l-4 border-blue-500 p-6 rounded-r-lg mb-6">
               <p className="text-sm text-muted-foreground">
                 Terra Stack is the seed of advanced distributed Internet applications. It might be helpful to become
@@ -141,7 +141,7 @@ export default function Home() {
           >
             <h2 className="text-2xl font-semibold mb-4">Getting Started</h2>
             <p className="text-muted-foreground mb-6">
-              Ready to implement TerraStack in your network? Follow our comprehensive guides to get up and running
+              Ready to implement Terra Stack in your network? Follow our comprehensive guides to get up and running
               quickly.
             </p>
 

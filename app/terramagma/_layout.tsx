@@ -5,10 +5,10 @@ import * as React from 'react';
 
 export function meta() {
   return [
-    { title: 'TerraStack Documentation' },
+    { title: 'Terra Stack Documentation' },
     {
       name: 'description',
-      content: 'Comprehensive documentation for TerraStack - the next generation IPv4 alternative',
+      content: 'Comprehensive documentation for Terra Stack - the next generation IPv4 alternative',
     },
   ];
 }
@@ -21,7 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     {
       title: 'Products',
       href: '/products',
-      children: [{ title: 'TerraStack', href: '/terrastack' }],
+      children: [{ title: 'Terra Stack', href: '/terrastack' }],
       menuOpen: navMenuOpenProducts,
       setNavMenuOpen: setNavMenuOpenProducts,
     },
@@ -39,7 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </div>
         <Header
           items={items}
-          title="TerraMagma"
+          title="Terra Magma"
           root={true}
         />
       </div>

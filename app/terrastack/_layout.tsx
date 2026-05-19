@@ -45,7 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </div>
         <Header
           items={items}
-          title="TerraStack"
+          title="Terra Stack"
           root={false}
           prefix="/terrastack"
         />
