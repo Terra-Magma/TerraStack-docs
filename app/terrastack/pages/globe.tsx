@@ -7,6 +7,8 @@ export default function GlobePage() {
     { lat: 51.5074, lng: -0.1278, size: 3, color: 'blue', href: 'https://en.wikipedia.org/wiki/London' }, // London
     { lat: 35.6895, lng: 139.6917, size: 1, color: 'green', href: 'https://en.wikipedia.org/wiki/Tokyo' }, // Tokyo
   ];
+  //todo: add api service to get data from backend and display on globe
+  //todo: add total above globe
   return (
     <div>
       <Globe
