@@ -1,10 +1,10 @@
 ﻿import Globe from 'react-globe.gl';
 import globeImage from '~/assets/earth-blue-marble.jpg';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useSyncExternalStore } from 'react';
 import type { Location } from '../models/location';
 import ApiService from '~/terrastack/services/api.service';
 
-export default function GlobePage() {
+export default function GlobeComponent() {
   const [data, setData] = useState<{ lat: number; lng: number; size: number; href: string; users: number }[]>([]);
   const [range, setRange] = useState({ min: 0, max: 0 });
   const selectColor = (size: number): string => {
@@ -14,6 +14,18 @@ export default function GlobePage() {
     console.log({ red, green, size });
     return `#${red.toString(16).padStart(2, '0')}${green.toString(16).padStart(2, '0')}00`;
   };
+
+  const width = useSyncExternalStore(
+    // (1) Subscribe function
+    (callback) => {
+      window.addEventListener('resize', callback);
+      return () => window.removeEventListener('resize', callback);
+    },
+    // (2) Client-side snapshot
+    () => window.innerWidth,
+    // (3) Server-side snapshot (optional, e.g., for Next.js)
+    () => 0
+  );
 
   useEffect(() => {
     const service = new ApiService();
@@ -33,10 +45,15 @@ export default function GlobePage() {
       setData(formattedData);
     });
   }, []);
-  return (
+
+  return data.length === 0 ? (
+    <div>Loading...</div>
+  ) : (
     <div>
+      <h2 className="text-2xl font-semibold mb-4">We all ready have {data.length} users around the globe.</h2>
       <Globe
         globeImageUrl={globeImage}
+        width={Math.min(width, 800)}
         pointsData={data}
         pointColor={(location) => selectColor((location as { users: number }).users)}
         pointLabel={(point) => (point as { label: string }).label}
