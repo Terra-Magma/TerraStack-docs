@@ -1,19 +1,45 @@
 ﻿import Globe from 'react-globe.gl';
 import globeImage from '~/assets/earth-blue-marble.jpg';
+import React, { useEffect, useState } from 'react';
+import type { Location } from '../models/location';
+import ApiService from '~/terrastack/services/api.service';
 
 export default function GlobePage() {
-  const myData = [
-    { lat: 37.7749, lng: -122.4194, size: 2, color: 'red', href: 'https://en.wikipedia.org/wiki/San_Francisco' }, // San Francisco
-    { lat: 51.5074, lng: -0.1278, size: 3, color: 'blue', href: 'https://en.wikipedia.org/wiki/London' }, // London
-    { lat: 35.6895, lng: 139.6917, size: 1, color: 'green', href: 'https://en.wikipedia.org/wiki/Tokyo' }, // Tokyo
-  ];
-  //todo: add api service to get data from backend and display on globe
-  //todo: add total above globe
+  const [data, setData] = useState<{ lat: number; lng: number; size: number; href: string; users: number }[]>([]);
+  const [range, setRange] = useState({ min: 0, max: 0 });
+  const selectColor = (size: number): string => {
+    // red = start, green = end
+    const red = Math.round(((range.max - size) / (range.max - range.min)) * 255);
+    const green = Math.round(((size - range.min) / (range.max - range.min)) * 255);
+    console.log({ red, green, size });
+    return `#${red.toString(16).padStart(2, '0')}${green.toString(16).padStart(2, '0')}00`;
+  };
+
+  useEffect(() => {
+    const service = new ApiService();
+    service.getGlobeLocations().then((locations: Location[]) => {
+      const formattedData = locations.map((location) => ({
+        lat: location.latitude,
+        lng: location.longitude,
+        size: Math.sqrt(location.userCount), // Size based on user count
+        users: location.userCount,
+        href: `https://en.wikipedia.org/wiki/${location.name.replace(/ /g, '_')}`, // Link to Wikipedia page
+        label: `${location.name}${location.region ? ' ' + location.region : ''}, ${location.country}: ${location.userCount} users`, // Tooltip label
+      }));
+      setRange({
+        max: Math.max(...formattedData.map((d) => d.users)),
+        min: Math.min(...formattedData.map((d) => d.users)),
+      });
+      setData(formattedData);
+    });
+  }, []);
   return (
     <div>
       <Globe
         globeImageUrl={globeImage}
-        pointsData={myData}
+        pointsData={data}
+        pointColor={(location) => selectColor((location as { users: number }).users)}
+        pointLabel={(point) => (point as { label: string }).label}
         pointRadius="size"
         onPointClick={(point) => window.open((point as { href: string }).href, '_blank')}
       />
