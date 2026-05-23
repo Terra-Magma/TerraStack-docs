@@ -214,3 +214,7 @@ li.body-text {
 .body-text {
     margin-left: 1rem;
 }
+
+main {
+    width: auto !important;
+}
