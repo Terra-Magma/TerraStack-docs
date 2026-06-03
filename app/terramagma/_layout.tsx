@@ -27,6 +27,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     },
     { title: 'Services', href: '/services', children: [{ title: 'Terra Register', href: '/terra-register' }] },
     { title: 'Support', href: '/support' },
+    { title: 'About', href: '/about' },
+    { title: 'Contact', href: '/contact' },
   ];
 
   return (
