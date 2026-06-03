@@ -1,11 +1,11 @@
-﻿import Globe, { type GlobeMethods } from 'react-globe.gl';
+﻿import Globe, {type GlobeMethods} from 'react-globe.gl';
 import globeImage from '~/assets/earth-night.jpg';
 import bgImageDark from '~/assets/dark-bg.png';
 import bgImageLight from '~/assets/light-bg.png';
 import bumpImage from '~/assets/earth-topology.png';
-import React, { type ReactHTMLElement, useEffect, useRef, useState, useSyncExternalStore } from 'react';
-import { useTheme } from '~/components/theme';
-import type { Location } from '../models/location';
+import React, {type ReactHTMLElement, useEffect, useRef, useState, useSyncExternalStore} from 'react';
+import {useTheme} from '~/components/theme';
+import type {Location} from '../models/location';
 import ApiService from '~/terrastack/services/api.service';
 
 export default function GlobeComponent() {
@@ -59,8 +59,10 @@ export default function GlobeComponent() {
     }
   });
 
-  const getLabel: ReactHTMLElement<HTMLElement> = (d: { center: { lat: number; lng: number } }) => {
-    return <span>{data.find((x) => x.lat == d.center.lat && x.lng == d.center.lng)?.label || ''}</span>;
+  const getLabel = (d: { center: { lat: number; lng: number } }): ReactHTMLElement<HTMLElement> => {
+    return (
+      <div>{data.find((x) => x.lat == d.center.lat && x.lng == d.center.lng)?.label || ''}</div>
+    ) as ReactHTMLElement<HTMLDivElement>;
   };
 
   return data.length === 0 ? (
@@ -81,14 +83,20 @@ export default function GlobeComponent() {
         backgroundImageUrl={theme === 'light' ? bgImageLight : bgImageDark}
         width={Math.min(width - 50 - 32, 800)}
         height={Math.min(width - 50 - 32, 800)}
-        hexBinPointsData={data}
-        hexBinResolution={2.5}
-        hexBinPointWeight={'pop'}
-        hexTopColor={(d) => '#b7ff01'}
-        hexSideColor={(d) => '#b7ff01'}
-        hexBinMerge={true}
-        hexAltitude={(d) => 0.001}
-        hexLabel={(d) => getLabel(d)}
+        hexPolygonGeoJsonGeometry="Polygon"
+        hexPolygonsData={data}
+        hexPolygonResolution={2.5}
+        hexPolygonAltitude={0.001}
+        hexPolygonUseDots={true}
+        hexPolygonColor={(d) => '#b7ff01'}
+        hexPolygonDotResolution={10}
+        hexPolygonLabel={(d) => {
+          console.log({ d });
+          return getLabel(d as { center: { lat: number; lng: number } });
+        }}
+        enablePointerInteraction={true}
+        onHexPolygonHover={(e) => console.log(e)}
+        onHexPolygonClick={(e) => console.log(e)}
       />
     </div>
   );
