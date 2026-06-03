@@ -2,13 +2,15 @@
 import globeImage from '~/assets/earth-night.jpg';
 import bgImageDark from '~/assets/dark-bg.png';
 import bgImageLight from '~/assets/light-bg.png';
-import React, { useEffect, useRef, useState, useSyncExternalStore } from 'react';
+import bumpImage from '~/assets/earth-topology.png';
+import React, { type ReactHTMLElement, useEffect, useRef, useState, useSyncExternalStore } from 'react';
+import { useTheme } from '~/components/theme';
 import type { Location } from '../models/location';
 import ApiService from '~/terrastack/services/api.service';
-import { useTheme } from '~/components/theme';
 
 export default function GlobeComponent() {
-  const [data, setData] = useState<{ lat: number; lng: number; pop: number }[]>([]);
+  const [data, setData] = useState<{ lat: number; lng: number; pop: number; label: string }[]>([]);
+  const [users, setUsers] = useState(0);
   const [range, setRange] = useState({ min: 0, max: 0 });
   const selectColor = (size: number): string => {
     // red = start, green = end
@@ -33,7 +35,9 @@ export default function GlobeComponent() {
         lat: location.latitude,
         lng: location.longitude,
         pop: location.userCount,
+        label: `Terra\n${location.country}\n${location.region}`,
       }));
+      setUsers(formattedData.reduce((acc, loc) => acc + loc.pop, 0));
       setData(formattedData);
     });
   }, []);
@@ -55,6 +59,10 @@ export default function GlobeComponent() {
     }
   });
 
+  const getLabel: ReactHTMLElement<HTMLElement> = (d: { center: { lat: number; lng: number } }) => {
+    return <span>{data.find((x) => x.lat == d.center.lat && x.lng == d.center.lng)?.label || ''}</span>;
+  };
+
   return data.length === 0 ? (
     <div>Loading...</div>
   ) : (
@@ -64,19 +72,23 @@ export default function GlobeComponent() {
         position: 'relative',
       }}
     >
-      <h2 className="text-4xl! font-semibold mb-4 text-center italic">
-        {Math.sumPrecise(data.map((x) => x.pop))} users are forming a new internet.
-      </h2>
+      <h2 className="text-4xl! mb-1 font-semibold text-center italic">{users} users are forming a new internet.</h2>
 
       <Globe
         ref={globeRef}
         globeImageUrl={globeImage}
+        bumpImageUrl={bumpImage}
         backgroundImageUrl={theme === 'light' ? bgImageLight : bgImageDark}
         width={Math.min(width - 50 - 32, 800)}
+        height={Math.min(width - 50 - 32, 800)}
         hexBinPointsData={data}
+        hexBinResolution={2.5}
         hexBinPointWeight={'pop'}
+        hexTopColor={(d) => '#b7ff01'}
+        hexSideColor={(d) => '#b7ff01'}
         hexBinMerge={true}
-        hexAltitude="2"
+        hexAltitude={(d) => 0.001}
+        hexLabel={(d) => getLabel(d)}
       />
     </div>
   );
