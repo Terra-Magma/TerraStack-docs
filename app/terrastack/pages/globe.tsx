@@ -1,8 +1,11 @@
 ﻿import Globe, { type GlobeMethods } from 'react-globe.gl';
-import globeImage from '~/assets/earth-blue-marble.jpg';
+import globeImage from '~/assets/earth-night.jpg';
+import bgImageDark from '~/assets/dark-bg.png';
+import bgImageLight from '~/assets/light-bg.png';
 import React, { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import type { Location } from '../models/location';
 import ApiService from '~/terrastack/services/api.service';
+import { useTheme } from '~/components/theme';
 
 export default function GlobeComponent() {
   const [data, setData] = useState<{ lat: number; lng: number; size: number; href: string; users: number }[]>([]);
@@ -42,6 +45,7 @@ export default function GlobeComponent() {
     });
   }, []);
 
+  const { theme } = useTheme()!;
   const globeRef = useRef<GlobeMethods | undefined>(undefined);
 
   useEffect(() => {
@@ -67,27 +71,21 @@ export default function GlobeComponent() {
         position: 'relative',
       }}
     >
-      <h2 className="text-2xl font-semibold mb-4">We all ready have {data.length} users around the globe.</h2>
-      <div
-        style={{
-          borderRadius: '5rem',
-          overflow: 'hidden',
-          boxShadow: '0px 0px 20px 20px rgba(0,0,16,1)',
-          backgroundColor: 'rgba(0,0,16,1)',
-          margin: '3rem 1rem',
-        }}
-      >
-        <Globe
-          ref={globeRef}
-          globeImageUrl={globeImage}
-          width={Math.min(width - 50 - 32, 800)}
-          pointsData={data}
-          pointColor={(location) => selectColor((location as { users: number }).users)}
-          pointLabel={(point) => (point as { label: string }).label}
-          pointRadius="size"
-          onPointClick={(point) => window.open((point as { href: string }).href, '_blank')}
-        />
-      </div>
+      <h2 className="text-4xl! font-semibold mb-4 text-center italic">
+        {Math.sumPrecise(data.map((x) => x.users))} users are spawning a new internet.
+      </h2>
+
+      <Globe
+        ref={globeRef}
+        globeImageUrl={globeImage}
+        backgroundImageUrl={theme === 'light' ? bgImageLight : bgImageDark}
+        width={Math.min(width - 50 - 32, 800)}
+        pointsData={data}
+        pointColor={(location) => selectColor((location as { users: number }).users)}
+        pointLabel={(point) => (point as { label: string }).label}
+        pointRadius="size"
+        onPointClick={(point) => window.open((point as { href: string }).href, '_blank')}
+      />
     </div>
   );
 }

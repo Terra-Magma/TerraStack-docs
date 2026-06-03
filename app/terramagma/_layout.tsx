@@ -17,15 +17,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const [navMenuOpenProducts, setNavMenuOpenProducts] = React.useState(false);
 
   const items = [
-    { title: 'Packages', href: '/packages' },
+    { title: 'Packages', href: '/packages', children: [{ title: 'Terra Suite', href: '/terra-suite' }] },
     {
       title: 'Products',
       href: '/products',
-      children: [{ title: 'Terra Stack', href: '/terrastack' }],
+      children: [{ title: 'Terra Stack', href: '/terra-stack' }],
       menuOpen: navMenuOpenProducts,
       setNavMenuOpen: setNavMenuOpenProducts,
     },
-    { title: 'Services', href: '/services' },
+    { title: 'Services', href: '/services', children: [{ title: 'Terra Register', href: '/terra-register' }] },
     { title: 'Support', href: '/support' },
   ];
 

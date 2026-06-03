@@ -1,10 +1,8 @@
-import { Breadcrumbs } from '~/components/ui/breadcrumbs';
 import { Badge } from '~/components/ui/badge';
 import { Button } from '~/components/ui/button';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Download } from 'lucide-react';
 import { PageNavigation } from '~/components/layout/page-navigation';
 import { TableOfContents } from '~/components/layout/table-of-contents';
-import GlobeComponent from '~/terrastack/pages/globe';
 
 export default function TerraStackHome() {
   const tableOfContents = [
@@ -13,18 +11,22 @@ export default function TerraStackHome() {
     { id: 'why-terrastack', title: 'Why Terra Stack?', level: 2 },
     { id: 'getting-started', title: 'Getting Started', level: 2 },
   ];
+  // todo: use tailscale as example of long scroll page
 
   return (
     <div className="flex justify-center">
       <div className="flex-1 px-6 py-8 max-w-4xl">
-        <Breadcrumbs
-          items={[
-            { label: 'Documentation', href: '/docs' },
-            { label: 'Introduction', href: '/intro', current: true },
-          ]}
-        />
-
         <div className="mt-8">
+          <div className="flex flex-row justify-end">
+            <Button
+              variant="default"
+              size="lg"
+              className="flex items-center gap-2 right-0"
+            >
+              Download
+              <Download className="h-4 w-4" />
+            </Button>
+          </div>
           <div className="flex items-center gap-3 mb-6">
             <Badge
               variant="secondary"
@@ -135,8 +137,6 @@ export default function TerraStackHome() {
               </p>
             </div>
           </section>
-
-          <GlobeComponent />
 
           <section
             id="getting-started"
