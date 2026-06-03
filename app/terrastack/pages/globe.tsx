@@ -8,7 +8,7 @@ import ApiService from '~/terrastack/services/api.service';
 import { useTheme } from '~/components/theme';
 
 export default function GlobeComponent() {
-  const [data, setData] = useState<{ lat: number; lng: number; size: number; href: string; users: number }[]>([]);
+  const [data, setData] = useState<{ lat: number; lng: number; pop: number }[]>([]);
   const [range, setRange] = useState({ min: 0, max: 0 });
   const selectColor = (size: number): string => {
     // red = start, green = end
@@ -32,15 +32,8 @@ export default function GlobeComponent() {
       const formattedData = locations.map((location) => ({
         lat: location.latitude,
         lng: location.longitude,
-        size: Math.sqrt(location.userCount), // Size based on user count
-        users: location.userCount,
-        href: `https://en.wikipedia.org/wiki/${location.name.replace(/ /g, '_')}`, // Link to Wikipedia page
-        label: `${location.name}${location.region ? ' ' + location.region : ''}, ${location.country}: ${location.userCount} users`, // Tooltip label
+        pop: location.userCount,
       }));
-      setRange({
-        max: Math.max(...formattedData.map((d) => d.users)),
-        min: Math.min(...formattedData.map((d) => d.users)),
-      });
       setData(formattedData);
     });
   }, []);
@@ -72,7 +65,7 @@ export default function GlobeComponent() {
       }}
     >
       <h2 className="text-4xl! font-semibold mb-4 text-center italic">
-        {Math.sumPrecise(data.map((x) => x.users))} users are spawning a new internet.
+        {Math.sumPrecise(data.map((x) => x.pop))} users are forming a new internet.
       </h2>
 
       <Globe
@@ -80,11 +73,10 @@ export default function GlobeComponent() {
         globeImageUrl={globeImage}
         backgroundImageUrl={theme === 'light' ? bgImageLight : bgImageDark}
         width={Math.min(width - 50 - 32, 800)}
-        pointsData={data}
-        pointColor={(location) => selectColor((location as { users: number }).users)}
-        pointLabel={(point) => (point as { label: string }).label}
-        pointRadius="size"
-        onPointClick={(point) => window.open((point as { href: string }).href, '_blank')}
+        hexBinPointsData={data}
+        hexBinPointWeight={'pop'}
+        hexBinMerge={true}
+        hexAltitude="2"
       />
     </div>
   );
