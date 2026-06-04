@@ -28,8 +28,6 @@ export default [
       route('docs', 'terrastack/pages/docs.tsx'),
       route('examples', 'terrastack/pages/examples.tsx'),
       route('installation', 'terrastack/pages/installation.tsx'),
-
-      route('globe', 'terrastack/pages/globe.tsx'),
     ]),
 
     route('*', 'terramagma/not-found.tsx'),
