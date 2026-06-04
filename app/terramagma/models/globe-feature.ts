@@ -8,6 +8,7 @@
 interface GlobeFeatureProperties {
   country: string;
   region?: string;
+  scalerank: number;
 }
 
 interface GlobeFeatureGeometry {

@@ -39,14 +39,23 @@ export default function GlobeComponent() {
             properties: {
               country: location.country,
               region: location.region,
+              scalerank: 1,
             },
             geometry: {
               type: 'Polygon',
-              coordinates: [[[location.latitude, location.longitude]]],
+              coordinates: [
+                [
+                  [location.latitude, location.longitude],
+                  [location.latitude + 1, location.longitude + 1],
+                  [location.latitude - 1, location.longitude - 1],
+                ],
+              ],
             },
-            bbox: [60.52843, 29.318572, 75.158028, 38.486282],
+            bbox: [location.latitude - 1, location.longitude - 1, location.latitude + 1, location.longitude + 1],
           }) as GlobeFeature
       );
+
+      console.log({ formattedData });
       setUsers(locations.reduce((acc, loc) => acc + loc.userCount, 0));
       setData(formattedData);
     });
