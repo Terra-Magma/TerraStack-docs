@@ -3,13 +3,14 @@ import globeImage from '~/assets/earth-night.jpg';
 import bgImageDark from '~/assets/dark-bg.png';
 import bgImageLight from '~/assets/light-bg.png';
 import bumpImage from '~/assets/earth-topology.png';
-import React, {type ReactHTMLElement, useEffect, useRef, useState, useSyncExternalStore} from 'react';
+import React, {useEffect, useRef, useState, useSyncExternalStore} from 'react';
 import {useTheme} from '~/components/theme';
 import type {Location} from '../models/location';
 import ApiService from '~/terrastack/services/api.service';
+import type {GlobeFeature} from '~/terramagma/models/globe-feature';
 
 export default function GlobeComponent() {
-  const [data, setData] = useState<{ lat: number; lng: number; pop: number; label: string }[]>([]);
+  const [data, setData] = useState<GlobeFeature[]>([]);
   const [users, setUsers] = useState(0);
   const [range, setRange] = useState({ min: 0, max: 0 });
   const selectColor = (size: number): string => {
@@ -31,13 +32,22 @@ export default function GlobeComponent() {
   useEffect(() => {
     const service = new ApiService();
     service.getGlobeLocations().then((locations: Location[]) => {
-      const formattedData = locations.map((location) => ({
-        lat: location.latitude,
-        lng: location.longitude,
-        pop: location.userCount,
-        label: `Terra\n${location.country}\n${location.region}`,
-      }));
-      setUsers(formattedData.reduce((acc, loc) => acc + loc.pop, 0));
+      const formattedData = locations.map(
+        (location) =>
+          ({
+            type: 'Feature',
+            properties: {
+              country: location.country,
+              region: location.region,
+            },
+            geometry: {
+              type: 'Polygon',
+              coordinates: [[[location.latitude, location.longitude]]],
+            },
+            bbox: [60.52843, 29.318572, 75.158028, 38.486282],
+          }) as GlobeFeature
+      );
+      setUsers(locations.reduce((acc, loc) => acc + loc.userCount, 0));
       setData(formattedData);
     });
   }, []);
@@ -59,12 +69,6 @@ export default function GlobeComponent() {
     }
   });
 
-  const getLabel = (d: { center: { lat: number; lng: number } }): ReactHTMLElement<HTMLElement> => {
-    return (
-      <div>{data.find((x) => x.lat == d.center.lat && x.lng == d.center.lng)?.label || ''}</div>
-    ) as ReactHTMLElement<HTMLDivElement>;
-  };
-
   return data.length === 0 ? (
     <div>Loading...</div>
   ) : (
@@ -83,20 +87,15 @@ export default function GlobeComponent() {
         backgroundImageUrl={theme === 'light' ? bgImageLight : bgImageDark}
         width={Math.min(width - 50 - 32, 800)}
         height={Math.min(width - 50 - 32, 800)}
-        hexPolygonGeoJsonGeometry="Polygon"
         hexPolygonsData={data}
-        hexPolygonResolution={2.5}
-        hexPolygonAltitude={0.001}
+        hexPolygonResolution={3}
+        hexPolygonMargin={0.3}
         hexPolygonUseDots={true}
         hexPolygonColor={(d) => '#b7ff01'}
-        hexPolygonDotResolution={10}
         hexPolygonLabel={(d) => {
           console.log({ d });
-          return getLabel(d as { center: { lat: number; lng: number } });
+          return `Terra\n${(d as GlobeFeature).properties.country}\n${(d as GlobeFeature).properties.region}`;
         }}
-        enablePointerInteraction={true}
-        onHexPolygonHover={(e) => console.log(e)}
-        onHexPolygonClick={(e) => console.log(e)}
       />
     </div>
   );
