@@ -1,13 +1,13 @@
-﻿import Globe, {type GlobeMethods} from 'react-globe.gl';
+﻿import Globe, { type GlobeMethods } from 'react-globe.gl';
 import globeImage from '~/assets/earth-night.jpg';
 import bgImageDark from '~/assets/dark-bg.png';
 import bgImageLight from '~/assets/light-bg.png';
 import bumpImage from '~/assets/earth-topology.png';
-import React, {useEffect, useRef, useState, useSyncExternalStore} from 'react';
-import {useTheme} from '~/components/theme';
-import type {Location} from '../models/location';
+import React, { useEffect, useRef, useState, useSyncExternalStore } from 'react';
+import { useTheme } from '~/components/theme';
+import type { Location } from '../../terrastack/models/location';
 import ApiService from '~/terrastack/services/api.service';
-import type {GlobeFeature} from '~/terramagma/models/globe-feature';
+import type { GlobeFeature } from '~/components/globe/models/globe-feature';
 
 export default function GlobeComponent() {
   const [data, setData] = useState<GlobeFeature[]>([]);

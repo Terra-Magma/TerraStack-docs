@@ -1,4 +1,4 @@
-import GlobeComponent from '~/terrastack/pages/globe';
+import GlobeComponent from '~/components/globe/globe';
 
 const tableOfContents = [
   { id: 'overview', title: 'Overview', level: 2 },
