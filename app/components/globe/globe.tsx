@@ -83,13 +83,18 @@ export default function GlobeComponent() {
         width={Math.min(width - 50 - 32, 800)}
         height={Math.min(width - 50 - 32, 800)}
         hexBinPointsData={data}
-        hexLabel={(d) =>
-          data.find(
-            (x) => x.lat == (d.points[0] as { lat: number }).lat && x.lng == (d.points[0] as { lng: number }).lng
-          )?.label || ''
-        }
-        onHexClick={(hex) => {
-          alert('hi');
+        hexLabel={(d) => {
+          if (globeRef.current) {
+            globeRef.current.controls().autoRotateSpeed = 0;
+            setTimeout(() => {
+              if (globeRef.current) globeRef.current.controls().autoRotateSpeed = 0.7;
+            }, 1000);
+          }
+          return (
+            data.find(
+              (x) => x.lat == (d.points[0] as { lat: number }).lat && x.lng == (d.points[0] as { lng: number }).lng
+            )?.label || ''
+          );
         }}
         hexBinResolution={2}
         hexTopColor={(_) => '#b7ff01'}
