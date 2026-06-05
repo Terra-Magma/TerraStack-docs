@@ -1,16 +1,15 @@
-﻿import Globe, { type GlobeMethods } from 'react-globe.gl';
+﻿import Globe, {type GlobeMethods} from 'react-globe.gl';
 import globeImage from '~/assets/earth-night.jpg';
 import bgImageDark from '~/assets/dark-bg.png';
 import bgImageLight from '~/assets/light-bg.png';
 import bumpImage from '~/assets/earth-topology.png';
-import React, { useEffect, useRef, useState, useSyncExternalStore } from 'react';
-import { useTheme } from '~/components/theme';
-import type { Location } from '../../terrastack/models/location';
+import React, {useEffect, useRef, useState, useSyncExternalStore} from 'react';
+import {useTheme} from '~/components/theme';
+import type {Location} from '~/components/globe/models/location';
 import ApiService from '~/terrastack/services/api.service';
-import type { GlobeFeature } from '~/components/globe/models/globe-feature';
 
 export default function GlobeComponent() {
-  const [data, setData] = useState<GlobeFeature[]>([]);
+  const [data, setData] = useState<{ lat: number; lng: number; pop: number; label: string }[]>([]);
   const [users, setUsers] = useState(0);
   const [range, setRange] = useState({ min: 0, max: 0 });
   const selectColor = (size: number): string => {
@@ -32,28 +31,14 @@ export default function GlobeComponent() {
   useEffect(() => {
     const service = new ApiService();
     service.getGlobeLocations().then((locations: Location[]) => {
-      const formattedData = locations.map(
-        (location) =>
-          ({
-            type: 'Feature',
-            properties: {
-              country: location.country,
-              region: location.region,
-              scalerank: 1,
-            },
-            geometry: {
-              type: 'Polygon',
-              coordinates: [
-                [
-                  [location.latitude, location.longitude],
-                  [location.latitude + 1, location.longitude + 1],
-                  [location.latitude - 1, location.longitude - 1],
-                ],
-              ],
-            },
-            bbox: [location.latitude - 1, location.longitude - 1, location.latitude + 1, location.longitude + 1],
-          }) as GlobeFeature
-      );
+      const formattedData = locations.map((location) => {
+        return {
+          lat: location.latitude,
+          lng: location.longitude,
+          pop: 10,
+          label: `<div class="text-center">Terra<br/>${location.country}<br/>${location.region || ''}</div>`,
+        };
+      });
 
       console.log({ formattedData });
       setUsers(locations.reduce((acc, loc) => acc + loc.userCount, 0));
@@ -70,6 +55,7 @@ export default function GlobeComponent() {
       globeRef.current.controls().enablePan = false;
       globeRef.current.controls().autoRotate = true;
       globeRef.current.controls().autoRotateSpeed = 0.7;
+      // @ts-ignore
       if (width < 680 && globeRef.current.controls().getDistance() > 300) {
         // keep the globe at a reasonable size on smaller screens
         const altitude = -0.01 * width + 9.5;
@@ -96,15 +82,19 @@ export default function GlobeComponent() {
         backgroundImageUrl={theme === 'light' ? bgImageLight : bgImageDark}
         width={Math.min(width - 50 - 32, 800)}
         height={Math.min(width - 50 - 32, 800)}
-        hexPolygonsData={data}
-        hexPolygonResolution={3}
-        hexPolygonMargin={0.3}
-        hexPolygonUseDots={true}
-        hexPolygonColor={(d) => '#b7ff01'}
-        hexPolygonLabel={(d) => {
-          console.log({ d });
-          return `Terra\n${(d as GlobeFeature).properties.country}\n${(d as GlobeFeature).properties.region}`;
+        hexBinPointsData={data}
+        hexLabel={(d) =>
+          data.find(
+            (x) => x.lat == (d.points[0] as { lat: number }).lat && x.lng == (d.points[0] as { lng: number }).lng
+          )?.label || ''
+        }
+        onHexClick={(hex) => {
+          alert('hi');
         }}
+        hexBinResolution={2}
+        hexTopColor={(_) => '#b7ff01'}
+        hexSideColor={(_) => '#b7ff01'}
+        enablePointerInteraction={true}
       />
     </div>
   );
