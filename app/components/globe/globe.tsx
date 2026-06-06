@@ -1,23 +1,17 @@
-﻿import Globe, {type GlobeMethods} from 'react-globe.gl';
-import globeImage from '~/assets/earth-night.jpg';
+﻿import Globe, { type GlobeMethods } from 'react-globe.gl';
+import globeImageDark from '~/assets/earth-night.jpg';
+import globeImageLight from '~/assets/earth-blue-marble.jpg';
 import bgImageDark from '~/assets/dark-bg.png';
 import bgImageLight from '~/assets/light-bg.png';
 import bumpImage from '~/assets/earth-topology.png';
-import React, {useEffect, useRef, useState, useSyncExternalStore} from 'react';
-import {useTheme} from '~/components/theme';
-import type {Location} from '~/components/globe/models/location';
-import ApiService from '~/terrastack/services/api.service';
+import React, { useEffect, useRef, useState, useSyncExternalStore } from 'react';
+import { useTheme } from '~/components/theme';
+import type { Location } from '~/components/globe/models/location';
+import ApiService from '~/services/api.service';
 
 export default function GlobeComponent() {
   const [data, setData] = useState<{ lat: number; lng: number; pop: number; label: string }[]>([]);
   const [users, setUsers] = useState(0);
-  const [range, setRange] = useState({ min: 0, max: 0 });
-  const selectColor = (size: number): string => {
-    // red = start, green = end
-    const red = Math.round(((range.max - size) / (range.max - range.min)) * 255);
-    const green = Math.round(((size - range.min) / (range.max - range.min)) * 255);
-    return `#${red.toString(16).padStart(2, '0')}${green.toString(16).padStart(2, '0')}00`;
-  };
 
   const width = useSyncExternalStore(
     (callback) => {
@@ -32,17 +26,23 @@ export default function GlobeComponent() {
     const service = new ApiService();
     service.getGlobeLocations().then((locations: Location[]) => {
       const formattedData = locations.map((location) => {
+        let label = `<div class="text-center">Terra<br/>${location.country}`;
+        if (location.state) label += `<br/>${location.state}`;
+        if (location.county) label += `<br/>${location.county}`;
+        if (location.city) label += `<br/>${location.city}`;
+        label += `</div>`;
         return {
           lat: location.latitude,
           lng: location.longitude,
-          pop: 10,
-          label: `<div class="text-center">Terra<br/>${location.country}<br/>${location.region || ''}</div>`,
+          pop: 0,
+          label,
         };
       });
 
-      console.log({ formattedData });
-      setUsers(locations.reduce((acc, loc) => acc + loc.userCount, 0));
       setData(formattedData);
+    });
+    service.getUserCount().then((count) => {
+      setUsers(count);
     });
   }, []);
 
@@ -77,7 +77,7 @@ export default function GlobeComponent() {
 
       <Globe
         ref={globeRef}
-        globeImageUrl={globeImage}
+        globeImageUrl={theme === 'light' ? globeImageLight : globeImageDark}
         bumpImageUrl={bumpImage}
         backgroundImageUrl={theme === 'light' ? bgImageLight : bgImageDark}
         width={Math.min(width - 50 - 32, 800)}
@@ -88,7 +88,7 @@ export default function GlobeComponent() {
             globeRef.current.controls().autoRotateSpeed = 0;
             setTimeout(() => {
               if (globeRef.current) globeRef.current.controls().autoRotateSpeed = 0.7;
-            }, 1000);
+            }, 1500);
           }
           return (
             data.find(
@@ -96,10 +96,12 @@ export default function GlobeComponent() {
             )?.label || ''
           );
         }}
-        hexBinResolution={2}
+        hexBinResolution={3}
+        hexAltitude={0.005}
         hexTopColor={(_) => '#b7ff01'}
         hexSideColor={(_) => '#b7ff01'}
         enablePointerInteraction={true}
+        hexBinMerge={false}
       />
     </div>
   );

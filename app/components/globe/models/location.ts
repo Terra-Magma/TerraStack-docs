@@ -1,8 +1,8 @@
 export interface Location {
-  name: string;
-  region?: string;
+  state?: string;
   country: string;
-  userCount: number;
+  county: string;
+  city: string;
   latitude: number;
   longitude: number;
 }
