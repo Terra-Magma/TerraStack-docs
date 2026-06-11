@@ -1,4 +1,5 @@
-import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from '~/components/ui/chart';
+import type { ChartConfig } from '~/components/ui/chart';
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from '~/components/ui/chart';
 import { Bar, BarChart, CartesianGrid, XAxis } from 'recharts';
 
 export default function AdoptionVisual() {
