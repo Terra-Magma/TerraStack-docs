@@ -1,35 +1,25 @@
-﻿import { TableOfContents } from '~/components/layout/table-of-contents';
-import { Breadcrumbs } from '~/components/ui/breadcrumbs';
-import { PageNavigation } from '~/components/layout/page-navigation';
-import Disclaimer from '~/components/layout/disclaimer';
-import { Link } from 'react-router';
+﻿import { Link } from 'react-router';
+
+export const solutionsTableOfContents = [
+  { id: 'solutions', title: 'Solutions', level: 2 },
+  { id: 'addressing-1', title: 'Addressing', level: 3 },
+  { id: 'naming-1', title: 'Naming', level: 3 },
+  { id: 'numbering-1', title: 'Numbering', level: 3 },
+  { id: 'reliability-1', title: 'Reliability', level: 3 },
+  { id: 'routing', title: 'Routing', level: 3 },
+  { id: 'prioritization-1', title: 'Prioritization', level: 3 },
+  { id: 'security-1', title: 'Security', level: 3 },
+  { id: 'mobility-1', title: 'Mobility', level: 3 },
+  { id: 'multicast-1', title: 'Multicast', level: 3 },
+  { id: 'api-1', title: 'API', level: 3 },
+];
 
 export default function SolutionsPage() {
-  const tableOfContents = [
-    { id: 'solutions', title: 'Solutions', level: 2 },
-    { id: 'addressing-1', title: 'Addressing', level: 3 },
-    { id: 'naming-1', title: 'Naming', level: 3 },
-    { id: 'numbering-1', title: 'Numbering', level: 3 },
-    { id: 'reliability-1', title: 'Reliability', level: 3 },
-    { id: 'routing', title: 'Routing', level: 3 },
-    { id: 'prioritization-1', title: 'Prioritization', level: 3 },
-    { id: 'security-1', title: 'Security', level: 3 },
-    { id: 'mobility-1', title: 'Mobility', level: 3 },
-    { id: 'multicast-1', title: 'Multicast', level: 3 },
-    { id: 'api-1', title: 'API', level: 3 },
-  ];
-
   return (
     <div className="m-4 vision flex justify-center">
       <div className="flex-1 px-6 py-8 max-w-4xl">
-        <Breadcrumbs
-          items={[
-            { label: 'Our Vision', href: '/terrastack/our-vision' },
-            { label: 'Solutions', href: '/terrastack/our-vision/solutions', current: true },
-          ]}
-        />
         <div className="row">
-          <div className="col text-center">
+          <div className="col title-outdent">
             <h1 id="solutions">Solutions</h1>
           </div>
         </div>
@@ -164,16 +154,6 @@ export default function SolutionsPage() {
             <h2 id="api-1">API</h2>
             <p className={'body-text'}>To Be Done.</p>
           </div>
-        </div>
-        <PageNavigation
-          prev={{ title: 'Problems', href: '/terrastack/our-vision/problems' }}
-          next={{ title: 'Supported Platforms', href: '/terrastack/our-vision/supported-platforms' }}
-        />
-        <Disclaimer />
-      </div>
-      <div className="hidden xl:block w-64 flex-shrink-0">
-        <div className="sticky top-24 p-6">
-          <TableOfContents items={tableOfContents} />
         </div>
       </div>
     </div>

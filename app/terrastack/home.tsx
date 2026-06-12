@@ -1,8 +1,13 @@
 import { Badge } from '~/components/ui/badge';
 import { Button } from '~/components/ui/button';
 import { ArrowRight, Download } from 'lucide-react';
-import { PageNavigation } from '~/components/layout/page-navigation';
 import { TableOfContents } from '~/components/layout/table-of-contents';
+import HistoryPage, { historyTableOfContents } from '~/terrastack/pages/our-vision/history';
+import ProblemsPage, { problemsTableOfContents } from '~/terrastack/pages/our-vision/problems';
+import SolutionsPage, { solutionsTableOfContents } from '~/terrastack/pages/our-vision/solutions';
+import SupportedPlatformsPage from '~/terrastack/pages/our-vision/supported-platforms';
+import ExistingProtocolsPage from '~/terrastack/pages/our-vision/what-about-existing-protocols';
+import SchedulePage from '~/terrastack/pages/our-vision/schedule';
 
 export default function TerraStackHome() {
   const tableOfContents = [
@@ -10,6 +15,9 @@ export default function TerraStackHome() {
     { id: 'key-features', title: 'Key Features', level: 2 },
     { id: 'why-terrastack', title: 'Why Terra Stack?', level: 2 },
     { id: 'getting-started', title: 'Getting Started', level: 2 },
+    ...historyTableOfContents,
+    ...problemsTableOfContents,
+    ...solutionsTableOfContents,
   ];
   // todo: use tailscale as example of long scroll page
 
@@ -138,42 +146,49 @@ export default function TerraStackHome() {
             </div>
           </section>
 
-          <section
-            id="getting-started"
-            className="my-12"
-          >
-            <h2 className="text-2xl font-semibold mb-4">Getting Started</h2>
-            <p className="text-muted-foreground mb-6">
-              Ready to implement Terra Stack in your network? Follow our comprehensive guides to get up and running
-              quickly.
-            </p>
+          {/*  <section*/}
+          {/*    id="getting-started"*/}
+          {/*    className="my-12"*/}
+          {/*  >*/}
+          {/*    <h2 className="text-2xl font-semibold mb-4">Getting Started</h2>*/}
+          {/*    <p className="text-muted-foreground mb-6">*/}
+          {/*      Ready to implement Terra Stack in your network? Follow our comprehensive guides to get up and running*/}
+          {/*      quickly.*/}
+          {/*    </p>*/}
 
-            <div className="bg-card border rounded-lg p-6">
-              <h4 className="font-medium mb-3">Quick Start Options</h4>
-              <div className="grid sm:grid-cols-2 gap-4">
-                <Button
-                  variant="outline"
-                  className="justify-start h-auto p-4 flex-col items-start"
-                >
-                  <span className="font-medium">Installation Guide</span>
-                  <span className="text-sm text-muted-foreground mt-1">Step-by-step setup instructions</span>
-                </Button>
-                <Button
-                  variant="outline"
-                  className="justify-start h-auto p-4 flex-col items-start"
-                >
-                  <span className="font-medium">API Reference</span>
-                  <span className="text-sm text-muted-foreground mt-1">Complete API documentation</span>
-                </Button>
-              </div>
-            </div>
-          </section>
+          {/*    <div className="bg-card border rounded-lg p-6">*/}
+          {/*      <h4 className="font-medium mb-3">Quick Start Options</h4>*/}
+          {/*      <div className="grid sm:grid-cols-2 gap-4">*/}
+          {/*        <Button*/}
+          {/*          variant="outline"*/}
+          {/*          className="justify-start h-auto p-4 flex-col items-start"*/}
+          {/*        >*/}
+          {/*          <span className="font-medium">Installation Guide</span>*/}
+          {/*          <span className="text-sm text-muted-foreground mt-1">Step-by-step setup instructions</span>*/}
+          {/*        </Button>*/}
+          {/*        <Button*/}
+          {/*          variant="outline"*/}
+          {/*          className="justify-start h-auto p-4 flex-col items-start"*/}
+          {/*        >*/}
+          {/*          <span className="font-medium">API Reference</span>*/}
+          {/*          <span className="text-sm text-muted-foreground mt-1">Complete API documentation</span>*/}
+          {/*        </Button>*/}
+          {/*      </div>*/}
+          {/*    </div>*/}
+          {/*  </section>*/}
+
+          <HistoryPage />
+          <ProblemsPage />
+          <SolutionsPage />
+          <SupportedPlatformsPage />
+          <ExistingProtocolsPage />
+          <SchedulePage />
         </div>
 
-        <PageNavigation
-          prev={null}
-          next={{ title: 'Installation', href: '/installation' }}
-        />
+        {/*<PageNavigation*/}
+        {/*  prev={null}*/}
+        {/*  next={{ title: 'Installation', href: '/installation' }}*/}
+        {/*/>*/}
       </div>
 
       <div className="hidden xl:block w-64 flex-shrink-0">
