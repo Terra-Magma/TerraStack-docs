@@ -19,7 +19,6 @@ export default function TerraStackHome() {
     { id: 'what-about', title: 'What About Other Protocols', level: 2 },
     { id: 'schedule', title: 'Schedule', level: 2 },
   ];
-  // todo: use tailscale as example of long scroll page
 
   return (
     <div className="flex justify-center">
