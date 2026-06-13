@@ -1,7 +1,4 @@
-﻿import { Breadcrumbs } from '~/components/ui/breadcrumbs';
-import { PageNavigation } from '~/components/layout/page-navigation';
-import Disclaimer from '~/components/layout/disclaimer';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '~/components/ui/table';
+﻿import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '~/components/ui/table';
 
 export default function SchedulePage() {
   const events = [
@@ -45,15 +42,9 @@ export default function SchedulePage() {
   return (
     <div className="m-4 vision flex justify-center">
       <div className="flex-1 px-6 py-8 max-w-4xl">
-        <Breadcrumbs
-          items={[
-            { label: 'Our Vision', href: '/terrastack/our-vision' },
-            { label: 'Schedule', href: '/terrastack/our-vision/schedule', current: true },
-          ]}
-        />
         <div className="row">
-          <div className="col text-center">
-            <h1>Schedule</h1>
+          <div className="col title-outdent">
+            <h1 id="schedule">Schedule</h1>
           </div>
         </div>
         <div className="row">
@@ -80,14 +71,6 @@ export default function SchedulePage() {
             </Table>
           </div>
         </div>
-        <PageNavigation
-          prev={{
-            title: 'What About Existing Protocols?',
-            href: '/terrastack/our-vision/what-about-existing-protocols',
-          }}
-          next={null}
-        />
-        <Disclaimer />
       </div>
     </div>
   );

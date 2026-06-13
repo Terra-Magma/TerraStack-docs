@@ -1,33 +1,23 @@
-﻿import { TableOfContents } from '~/components/layout/table-of-contents';
-import { Breadcrumbs } from '~/components/ui/breadcrumbs';
-import { PageNavigation } from '~/components/layout/page-navigation';
-import Disclaimer from '~/components/layout/disclaimer';
-import { Link } from 'react-router';
+﻿import { Link } from 'react-router';
+
+export const historyTableOfContents = [
+  { id: 'history', title: 'A Brief History', level: 2 },
+  { id: '1969', title: '1969', level: 3 },
+  { id: '1983', title: '1983', level: 3 },
+  { id: '1990', title: '1990', level: 3 },
+  { id: '1996', title: '1996', level: 3 },
+  { id: '2005', title: '2005', level: 3 },
+  { id: '2013', title: '2013', level: 3 },
+  { id: '2023', title: '2023', level: 3 },
+  { id: '2024', title: '2024', level: 3 },
+];
 
 export default function HistoryPage() {
-  const tableOfContents = [
-    { id: 'history', title: 'A brief history', level: 2 },
-    { id: '1969', title: '1969', level: 3 },
-    { id: '1983', title: '1983', level: 3 },
-    { id: '1990', title: '1990', level: 3 },
-    { id: '1996', title: '1996', level: 3 },
-    { id: '2005', title: '2005', level: 3 },
-    { id: '2013', title: '2013', level: 3 },
-    { id: '2023', title: '2023', level: 3 },
-    { id: '2024', title: '2024', level: 3 },
-  ];
-
   return (
     <div className="m-4 vision flex justify-center">
       <div className="flex-1 px-6 py-8 max-w-4xl">
-        <Breadcrumbs
-          items={[
-            { label: 'Our Vision', href: '/terrastack/our-vision' },
-            { label: 'A Brief History', href: '/terrastack/our-vision/history', current: true },
-          ]}
-        />
         <div className="row">
-          <div className="col text-center">
+          <div className="col title-outdent">
             <h1 id="history">A Brief History</h1>
           </div>
         </div>
@@ -433,16 +423,6 @@ export default function HistoryPage() {
             </ol>
             <p>Terra Stack is functionally equivalent with TCP/IPv4 and TCP/IPv6.</p>
           </div>
-        </div>
-        <PageNavigation
-          prev={null}
-          next={{ title: 'Problems', href: '/terrastack/our-vision/problems' }}
-        />
-        <Disclaimer />
-      </div>
-      <div className="hidden xl:block w-64 flex-shrink-0">
-        <div className="sticky top-24 p-6">
-          <TableOfContents items={tableOfContents} />
         </div>
       </div>
     </div>

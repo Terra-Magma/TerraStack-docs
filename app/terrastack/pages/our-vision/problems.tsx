@@ -1,34 +1,24 @@
-﻿import { TableOfContents } from '~/components/layout/table-of-contents';
-import { Breadcrumbs } from '~/components/ui/breadcrumbs';
-import { PageNavigation } from '~/components/layout/page-navigation';
-import Disclaimer from '~/components/layout/disclaimer';
-import { Link } from 'react-router';
+﻿import { Link } from 'react-router';
+
+export const problemsTableOfContents = [
+  { id: 'problems', title: 'Problems', level: 2 },
+  { id: 'addressing', title: 'Addressing', level: 3 },
+  { id: 'naming', title: 'Naming', level: 3 },
+  { id: 'numbering', title: 'Numbering', level: 3 },
+  { id: 'reliability', title: 'Reliability', level: 3 },
+  { id: 'prioritization', title: 'Prioritization', level: 3 },
+  { id: 'security', title: 'Security', level: 3 },
+  { id: 'mobility', title: 'Mobility', level: 3 },
+  { id: 'multicast', title: 'Multicast', level: 3 },
+  { id: 'api', title: 'API', level: 3 },
+];
 
 export default function ProblemsPage() {
-  const tableOfContents = [
-    { id: 'problems', title: 'Problems', level: 2 },
-    { id: 'addressing', title: 'Addressing', level: 3 },
-    { id: 'naming', title: 'Naming', level: 3 },
-    { id: 'numbering', title: 'Numbering', level: 3 },
-    { id: 'reliability', title: 'Reliability', level: 3 },
-    { id: 'prioritization', title: 'Prioritization', level: 3 },
-    { id: 'security', title: 'Security', level: 3 },
-    { id: 'mobility', title: 'Mobility', level: 3 },
-    { id: 'multicast', title: 'Multicast', level: 3 },
-    { id: 'api', title: 'API', level: 3 },
-  ];
-
   return (
     <div className="m-4 vision flex justify-center">
       <div className="flex-1 px-6 py-8 max-w-4xl">
-        <Breadcrumbs
-          items={[
-            { label: 'Our Vision', href: '/terrastack/our-vision' },
-            { label: 'Problems', href: '/terrastack/our-vision/problems', current: true },
-          ]}
-        />
         <div className="row">
-          <div className="col text-center">
+          <div className="col title-outdent">
             <h1 id="problems">Problems</h1>
           </div>
         </div>
@@ -169,16 +159,6 @@ export default function ProblemsPage() {
               security, with confidence that the logic of the application is correct, is the programmer’s API problem.
             </p>
           </div>
-        </div>
-        <PageNavigation
-          prev={{ title: 'A Brief History', href: '/terrastack/our-vision/history' }}
-          next={{ title: 'Solutions', href: '/terrastack/our-vision/solutions' }}
-        />
-        <Disclaimer />
-      </div>
-      <div className="hidden xl:block w-64 shrink-0">
-        <div className="sticky top-24 p-6">
-          <TableOfContents items={tableOfContents} />
         </div>
       </div>
     </div>

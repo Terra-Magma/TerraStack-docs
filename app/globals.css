@@ -218,3 +218,7 @@ li.body-text {
 main {
     width: auto !important;
 }
+
+.title-outdent {
+    margin-left: -2rem;
+}
