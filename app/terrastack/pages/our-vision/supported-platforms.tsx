@@ -1,23 +1,15 @@
-﻿import { TableOfContents } from '~/components/layout/table-of-contents';
-import { Breadcrumbs } from '~/components/ui/breadcrumbs';
-import { PageNavigation } from '~/components/layout/page-navigation';
-import Disclaimer from '~/components/layout/disclaimer';
-import { Link } from 'react-router';
+﻿import { Link } from 'react-router';
+
+export const supportedPlatformsTableOfContents = [
+  { id: 'supported-platforms', title: 'Supported Platforms', level: 2 },
+];
 
 export default function SupportedPlatformsPage() {
-  const tableOfContents = [{ id: 'supported-platforms', title: 'Supported Platforms', level: 2 }];
-
   return (
     <div className="m-4 vision flex justify-center">
       <div className="flex-1 px-6 py-8 max-w-4xl">
-        <Breadcrumbs
-          items={[
-            { label: 'Our Vision', href: '/terrastack/our-vision' },
-            { label: 'Supported Platforms', href: '/terrastack/our-vision/supported-platforms', current: true },
-          ]}
-        />
         <div className="row">
-          <div className="col text-center">
+          <div className="col title-outdent">
             <h1 id="supported-platforms">Supported Platforms</h1>
           </div>
         </div>
@@ -76,19 +68,6 @@ export default function SupportedPlatformsPage() {
               .
             </p>
           </div>
-        </div>
-        <PageNavigation
-          next={{
-            title: 'What About Existing Protocols?',
-            href: '/terrastack/our-vision/what-about-existing-protocols',
-          }}
-          prev={{ title: 'Solutions', href: '/terrastack/our-vision/solutions' }}
-        />
-        <Disclaimer />
-      </div>
-      <div className="hidden xl:block w-64 flex-shrink-0">
-        <div className="sticky top-24 p-6">
-          <TableOfContents items={tableOfContents} />
         </div>
       </div>
     </div>

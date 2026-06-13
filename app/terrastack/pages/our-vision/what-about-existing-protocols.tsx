@@ -1,7 +1,4 @@
-﻿import { Breadcrumbs } from '~/components/ui/breadcrumbs';
-import { PageNavigation } from '~/components/layout/page-navigation';
-import Disclaimer from '~/components/layout/disclaimer';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '~/components/ui/table';
+﻿import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '~/components/ui/table';
 import { MdOutlineWifi, MdOutlineWifi2Bar, MdOutlineWifiOff } from 'react-icons/md';
 import '~/terrastack/pages/our-vision/what-about-existing-protocols.css';
 
@@ -94,19 +91,9 @@ export default function ExistingProtocolsPage() {
   return (
     <div className="m-4 vision flex justify-center">
       <div className="flex-1 px-6 py-8 max-w-4xl">
-        <Breadcrumbs
-          items={[
-            { label: 'Our Vision', href: '/terrastack/our-vision' },
-            {
-              label: 'What About TCP/UDP/IPv4/IPv6?',
-              href: '/terrastack/our-vision/what-about-existing-protocols',
-              current: true,
-            },
-          ]}
-        />
         <div className="row">
-          <div className="col text-center">
-            <h1>What About TCP/UDP/IPv4/IPv6?</h1>
+          <div className="col title-outdent">
+            <h1 id="what-about">What About TCP/UDP/IPv4/IPv6?</h1>
           </div>
         </div>
         <div className="row">
@@ -135,11 +122,6 @@ export default function ExistingProtocolsPage() {
             </Table>
           </div>
         </div>
-        <PageNavigation
-          next={{ title: 'Schedule', href: '/terrastack/our-vision/schedule' }}
-          prev={{ title: 'Supported Platforms', href: '/terrastack/our-vision/supported-platforms' }}
-        />
-        <Disclaimer />
       </div>
     </div>
   );

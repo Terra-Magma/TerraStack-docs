@@ -1,7 +1,7 @@
 ﻿import { Link } from 'react-router';
 
 export const historyTableOfContents = [
-  { id: 'history', title: 'A brief history', level: 2 },
+  { id: 'history', title: 'A Brief History', level: 2 },
   { id: '1969', title: '1969', level: 3 },
   { id: '1983', title: '1983', level: 3 },
   { id: '1990', title: '1990', level: 3 },
