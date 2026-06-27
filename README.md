@@ -3,6 +3,10 @@
 This is the official documentation for Terra Stack, a modern web protocol stack.
 It provides a comprehensive guide to using Terra Stack, including installation instructions, features, and examples.
 
+## Handoff
+
+See [HANDOFF.md](./HANDOFF.md) for project handoff details.
+
 ## Getting Started
 
 ### Installation
